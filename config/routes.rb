@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+  # All routes 
+  resources :users
+  resources :sessions, only: [:create]
 
-  # config/routes.rb
-Rails.application.routes.draw do
-  # route to test your configuration
+  # Test
   get '/hello', to: 'application#hello_world'
-end
+
+  # Authenication Routes
+  post '/signup', to: 'users#create'
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/logged_in", to: "sessions#logged_in"
+
 
 end
