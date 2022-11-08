@@ -1,4 +1,8 @@
-# CRYPTOAD ![cryptoad](./assets/toad.png)
+# CRYPTOAD
+
+![cryptoad](./assets/toad.png)
+
+Cryptoad is a tool for analyzing real-time market data and statistics, as well as offering the option for users to implement trading strategies through automated bot structures which are customizable.
 
 ## Objective
 
