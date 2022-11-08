@@ -1,6 +1,4 @@
-# CRYPTOAD
-
-![cryptoad](./assets/toad.png)
+# CRYPTOAD ![cryptoad](./assets/toad.png)
 
 ## Objective
 
