@@ -1,10 +1,10 @@
 # CRYPTOAD
 
-![cryptoad]("/assets/toad.png")
+![cryptoad]("./assets/toad.png")
 
 ## Objective
 
-This app serves to be a dashboard where a user can....
+This app serves to be a dashboard where a user can:
 
 - [ ] Create an account with basic CRUD
 - [ ] Connect a wallet and/or exchange
