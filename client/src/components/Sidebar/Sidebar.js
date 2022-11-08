@@ -16,9 +16,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
-import { SimmmpleLogoWhite } from "components/Icons/Icons";
 import { Separator } from "components/Separator/Separator";
-import { SidebarHelp } from "components/Sidebar/SidebarHelp";
+// import { SidebarHelp } from "components/Sidebar/SidebarHelp";
 import PropTypes from "prop-types";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -209,7 +208,7 @@ function Sidebar(props) {
           bg='linear-gradient(97.89deg, #FFFFFF 70.67%, rgba(117, 122, 140, 0) 108.55%)'
           bgClip='text'>
           <Text fontSize='lg' letterSpacing='3px' mt='3px' color='white'>
-            {logoText}
+            CRYPTOAD
           </Text>
         </Box>
       </Link>
@@ -242,7 +241,7 @@ function Sidebar(props) {
           <Stack direction='column' mb='40px'>
             <Box>{links}</Box>
           </Stack>
-          <SidebarHelp></SidebarHelp>
+          <></>
         </Box>
       </Box>
     </Box>
@@ -418,12 +417,12 @@ export function SidebarResponsive(props) {
         justifyContent='center'
         alignItems='center'
         fontSize='11px'>
-        <SimmmpleLogoWhite w='22px' h='22px' me='10px' mt='2px' />
+        <></>
         <Box
           bg='linear-gradient(97.89deg, #FFFFFF 70.67%, rgba(117, 122, 140, 0) 108.55%)'
           bgClip='text'>
           <Text fontSize='sm' letterSpacing='3px' mt='3px' color='transparent'>
-            {logoText}
+            CRYPTOAD
           </Text>
         </Box>
       </Link>
@@ -477,7 +476,7 @@ export function SidebarResponsive(props) {
               <Stack direction='column' mb='40px'>
                 <Box>{links}</Box>
               </Stack>
-              <SidebarHelp></SidebarHelp>
+              <></>
             </Box>
           </DrawerBody>
         </DrawerContent>

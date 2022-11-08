@@ -128,7 +128,7 @@ function SignIn() {
             </FormControl>
             <Button
               variant='brand'
-              fontSize='10px'
+              fontSize='15px'
               type='submit'
               w='100%'
               maxW='350px'

@@ -50,9 +50,10 @@ import { dashboardTableData, timelineData } from 'variables/general';
 
 export default function Dashboard() {
 	return (
+		
+		
 		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
 			<SimpleGrid columns={{ md:2}} spacing='24px'>
-				{/* MiniStatistics Card */}
 				<Card>
 					<CardBody>
 						<Flex flexDirection='row' align='center' justify='center' w='100%'>
@@ -82,7 +83,6 @@ export default function Dashboard() {
 						</Flex>
 					</CardBody>
 				</Card>
-				{/* MiniStatistics Card */}
 				<Card minH='83px'>
 					<CardBody>
 						<Flex flexDirection='row' align='center' justify='center' w='100%'>
@@ -114,9 +114,8 @@ export default function Dashboard() {
 				</Card>
 			</SimpleGrid>
 
-
+			{/* Welcome Card */}
 			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} my='26px' gap='18px'>
-				{/* Welcome Card */}
 				<Card
 					p='0px'
 					gridArea={{ md: '1 / 1 / 2 / 3', '2xl': 'auto' }}
@@ -171,10 +170,10 @@ export default function Dashboard() {
 					</CardBody>
 				</Card>
 				</Grid>
-
-				<Flex flexDirection='column' pt={{ base: '120px', md: '75px', mt: "-10px" }}>
-
+				
+					
 					{/* Sales Overview */}
+					<Flex flexDirection='column' pt={{ base: '120px', md: '75px', mt: "-10px" }}>
 					<SimpleGrid columns={{ lg:1}} spacing='0px'>
 					<Card p='28px 0px 0px 0px'>
 					<CardHeader mb='20px' ps='22px'>
@@ -202,7 +201,7 @@ export default function Dashboard() {
 				
 				
 				{/* Satisfaction Rate */}
-				<SimpleGrid columns={{ md:2}} spacing='24px' mb="20px">
+				<SimpleGrid columns={{ md:2}} spacing='24px' mb="5px">
 				<Card gridArea={{ md: '2 / 1 / 3 / 2', '2xl': 'auto' }}>
 					<CardHeader mb='24px'>
 						<Flex direction='column'>
@@ -259,6 +258,8 @@ export default function Dashboard() {
 						</Stack>
 					</Flex>
 				</Card>
+
+
 				{/* Referral Tracking */}
 				<Card gridArea={{ md: '2 / 2 / 3 / 3', '2xl': 'auto' }}>
 					<Flex direction='column'>
@@ -332,12 +333,197 @@ export default function Dashboard() {
 					</Flex>
 				</Card>
 				</SimpleGrid>
-			{/* </Grid> */}
-			
-			<SimpleGrid columns={{ lg: 2 }} spacing='24px'>
 
-			<Grid templateColumns={{ lg: '3fr 3fr' }} gap='24px'>
-				{/* Projects */}
+			{/* Watchlist */}
+			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} my='26px' gap='18px'>
+				<Card
+					p='0px'
+					gridArea={{ md: '1 / 1 / 2 / 3', '2xl': 'auto' }}
+					bgImage={medusa}
+					bgSize='cover'
+					bgPosition='50%'>
+					<CardBody w='100%' h='100%'>
+						<Flex flexDirection={{ sm: 'row', lg: 'row' }} w='100%' h='100%'>
+							<Flex flexDirection='column' h='100%' p='22px' minW='60%' lineHeight='1.6'>
+								<Text fontSize='28px' color='#fff' fontWeight='bold' mb='18px'>
+									Watchlist
+								</Text>
+								<Flex direction='row' justify='center' align='center' gap='60px'>
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										BNB
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										ETH
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										SOL
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										BTC
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										XRP
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										ADA
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										DOT
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										LTC
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								<Box mx={{ sm: 'auto', md: '0px' }} align='center'>
+									<Text color='gray.400' fontSize='sm'>
+										-3.5%
+									</Text>
+									<Text
+										color='#fff'
+										fontSize={{ md: '36px' }}
+										fontWeight='bold'
+										mb='4px'>
+										QNT
+									</Text>
+									<Text color='gray.400' fontSize='sm'>
+										*mini chart*
+									</Text>
+								</Box>	
+								</Flex>
+								<Spacer />
+								<Flex align='center'>
+									<Button
+										p='0px'
+										variant='no-hover'
+										bg='transparent'
+										my={{ sm: '1.5rem', lg: '0px' }}>
+										<Text
+											fontSize='sm'
+											color='#fff'
+											fontWeight='bold'
+											cursor='pointer'
+											transition='all .3s ease'
+											my={{ sm: '1.5rem', lg: '0px' }}
+											_hover={{ me: '4px' }}>
+											Manage list
+										</Text>
+										<Icon
+											as={BsArrowRight}
+											w='20px'
+											h='20px'
+											color='#fff'
+											fontSize='2xl'
+											transition='all .3s ease'
+											mx='.3rem'
+											cursor='pointer'
+											pt='4px'
+											_hover={{ transform: 'translateX(20%)' }}
+										/>
+									</Button>
+								</Flex>
+							</Flex>
+						</Flex>
+					</CardBody>
+				</Card>
+				</Grid>
+
+			{/* Trade Tracking */}
+			<Grid templateColumns={{ xl: '3fr 1fr' }} gap='24px'>
 				<Card p='16px' overflowX={{ sm: 'scroll', xl: 'hidden' }}>
 					<CardHeader p='12px 0px 28px 0px'>
 						<Flex direction='column'>
@@ -392,6 +578,7 @@ export default function Dashboard() {
 						</Tbody>
 					</Table>
 				</Card>
+
 				{/* Orders Overview */}
 				<Card>
 					<CardHeader mb='32px'>
@@ -428,7 +615,6 @@ export default function Dashboard() {
 					</CardBody>
 				</Card>
 			</Grid>
-			</SimpleGrid>
 		</Flex>
 		
 	);

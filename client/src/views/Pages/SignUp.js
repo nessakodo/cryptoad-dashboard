@@ -69,8 +69,6 @@ function SignUp() {
               fontWeight='normal'
               mt='10px'
               w={{ base: "100%", md: "90%", lg: "90%", xl: "80%" }}>
-              Use these awesome forms to login or create new account in your
-              project for free.
             </Text>
           </Flex>
           <GradientBorder p='2px' me={{ base: "none", lg: "30px", xl: "none" }}>
@@ -270,7 +268,7 @@ function SignUp() {
                 </FormControl>
                 <Button
                   variant='brand'
-                  fontSize='10px'
+                  fontSize='15px'
                   type='submit'
                   w='100%'
                   maxW='350px'
