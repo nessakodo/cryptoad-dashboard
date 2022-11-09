@@ -53,7 +53,7 @@ export default function Dashboard() {
 		
 		
 		<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
-			<SimpleGrid columns={{ md:2}} spacing='24px'>
+			<SimpleGrid columns={{ md:2}} spacing='30px'>
 				<Card>
 					<CardBody>
 						<Flex flexDirection='row' align='center' justify='center' w='100%'>
@@ -115,7 +115,7 @@ export default function Dashboard() {
 			</SimpleGrid>
 
 			{/* Welcome Card */}
-			<Grid templateColumns={{ sm: '1fr' }} mt='25px' mb='-48px' gap='18px'>
+			<Grid templateColumns={{ sm: '1fr' }} mt='5' gap='18px'>
 				<Card
 					p='0px'
 					gridArea={{ md: '1 / 1 / 2 / 3', '2xl': 'auto' }}
@@ -149,7 +149,7 @@ export default function Dashboard() {
 											transition='all .3s ease'
 											my={{ sm: '1.5rem', lg: '0px' }}
 											_hover={{ me: '4px' }}>
-											View bot activity
+											View account settings
 										</Text>
 										<Icon
 											as={BsArrowRight}
@@ -173,7 +173,7 @@ export default function Dashboard() {
 				
 					
 					{/* Sales Overview */}
-					<Flex flexDirection='column' mb='-20px' pt={{ base: '120px', md: '75px' }}>
+					<Flex flexDirection='column'  mt='-55' mb='5' pt={{ base: '120px', md: '75px' }}>
 					<SimpleGrid columns={{ lg:1}} spacing='0px'>
 					<Card p='28px 0px 0px 0px'>
 					<CardHeader mb='20px' ps='22px'>
@@ -199,7 +199,7 @@ export default function Dashboard() {
 				</SimpleGrid>
 				</Flex>
 				
-				<Grid templateColumns={{ xl: '1fr' }} mb='0' mt="45px" gap='24px'>
+				<Grid templateColumns={{ xl: '1fr' }} gap='24px'>
 				<Card p='16px' overflowX={{ sm: 'scroll', xl: 'hidden' }}>
 					<CardHeader p='12px 0px 28px 0px'>
 						<Flex direction='column'>
