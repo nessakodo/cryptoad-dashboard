@@ -7,7 +7,6 @@ import { Box, Button, Flex, Grid, Icon, Spacer, Text } from "@chakra-ui/react";
 import BackgroundCard1 from "assets/img/billing-background-card.png";
 
 // Custom components
-import Wallet from "components/Card/Wallet.js";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -102,7 +101,6 @@ function Billing() {
                 </Flex>
               </CardBody>
             </Card>
-            <Wallet />
             {/* Credit Balance */}
             <Card>
               <Flex direction='column'>
