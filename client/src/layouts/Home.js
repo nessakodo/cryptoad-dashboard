@@ -2,7 +2,7 @@ import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
 import Configurator from "components/Configurator/Configurator";
 import Footer from "components/Footer/Footer.js";
 // Layout components
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
+import HomeNavbar from "components/Navbars/HomeNavbar.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
@@ -109,9 +109,9 @@ export default function Dashboard(props) {
           xl: "calc(100% - 275px)",
         }}>
         <Portal>
-          <AdminNavbar
+          <HomeNavbar
             onOpen={onOpen}
-            logoText={"CRYPTOAD"}
+            logoText={"VISION UI FREE"}
             brandText={getActiveRoute(routes)}
             secondary={getActiveNavbar(routes)}
             fixed={fixed}

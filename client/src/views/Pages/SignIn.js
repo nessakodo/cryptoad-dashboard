@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
+
 // Chakra imports
 import {
   Box,
@@ -21,9 +23,61 @@ import signInImage from "assets/img/signInImage.png";
 import AuthFooter from "components/Footer/AuthFooter";
 import GradientBorder from "components/GradientBorder/GradientBorder";
 
+// Routes
+import routes from "routes.js";
+
 function SignIn() {
+  const history = useHistory();
   const titleColor = "white";
   const textColor = "gray.400";
+
+  // setting state
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+
+  // Sign up click
+  function onClick() {
+    history.push('/auth/signup')
+  }
+
+  // Sign in fetch
+  const [errors, setErrors] = useState([]);
+  const [formData, setFormData] = useState({
+      email: "",
+      password: ""
+  });
+
+  const { email, password } = formData;
+
+  function handleChange(e) {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+  }
+
+  function handleSubmit(e) {
+      e.preventDefault();
+      fetch('/login', {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+      }).then((res) => {
+          if (res.ok) {
+              res.json().then((formData) => {
+                  setCurrentUser(formData);
+                  setLoggedIn(formData)
+
+                  // home page pushed after login
+                  history.push('/admin/dashboard')
+              });
+          } else {
+              res.json().then((data) => {
+                  setErrors(data);
+              });
+          }
+      });
+  }
 
   return (
     <Flex position='relative'>
@@ -43,7 +97,9 @@ function SignIn() {
           mx={{ base: "auto", lg: "unset" }}
           ms={{ base: "auto", lg: "auto" }}
           w={{ base: "100%", md: "50%", lg: "450px" }}
-          px='50px'>
+          px='50px'
+          maxH='2xl'
+          >
           <Flex
             direction='column'
             w='100%'
@@ -61,7 +117,12 @@ function SignIn() {
               fontSize='14px'>
               Enter your email and password to sign in
             </Text>
-            <FormControl>
+            {errors.length > 0 ?
+            <></>
+            :
+            <Text>{errors.error}</Text>
+            }
+            <FormControl isRequired>
               <FormLabel
                 ms='4px'
                 fontSize='sm'
@@ -83,11 +144,15 @@ function SignIn() {
                   w={{ base: "100%", md: "346px" }}
                   maxW='100%'
                   h='46px'
+                  required={true}
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
                   placeholder='Your email adress'
                 />
               </GradientBorder>
-            </FormControl>
-            <FormControl>
+              </FormControl>
+              <FormControl isRequired>
               <FormLabel
                 ms='4px'
                 fontSize='sm'
@@ -108,9 +173,14 @@ function SignIn() {
                   size='lg'
                   w={{ base: "100%", md: "346px" }}
                   maxW='100%'
-                  type='password'
+                  h='46px'
+                  required={true}
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handleChange}
                   placeholder='Your password'
-                />
+                />  
               </GradientBorder>
             </FormControl>
             <FormControl display='flex' alignItems='center'>
@@ -126,7 +196,7 @@ function SignIn() {
                 Remember me
               </FormLabel>
             </FormControl>
-            <Button
+            <Button 
               variant='brand'
               fontSize='15px'
               type='submit'
@@ -134,7 +204,9 @@ function SignIn() {
               maxW='350px'
               h='45'
               mb='20px'
-              mt='20px'>
+              mt='20px'
+              onClick={handleSubmit}
+              >
               SIGN IN
             </Button>
 
@@ -146,7 +218,7 @@ function SignIn() {
               mt='0px'>
               <Text color={textColor} fontWeight='medium'>
                 Don't have an account?
-                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                <Link color={titleColor} as='span' ms='5px' fontWeight='bold' onClick={onClick}>
                   Sign Up
                 </Link>
               </Text>
@@ -185,19 +257,19 @@ function SignIn() {
               textAlign='center'
               color='white'
               letterSpacing='8px'
-              fontSize='20px'
+              fontSize='15px'
               fontWeight='500'>
-              INSPIRED BY THE FUTURE:
+              STRATEGY SIMPLIFIED
             </Text>
             <Text
               textAlign='center'
               color='transparent'
               letterSpacing='8px'
-              fontSize='36px'
+              fontSize='56px'
               fontWeight='bold'
               bgClip='text !important'
-              bg='linear-gradient(94.56deg, #FFFFFF 79.99%, #21242F 102.65%)'>
-              THE VISION UI DASHBOARD
+              bg='linear-gradient(45.56deg, #FFFFFF 85.99%, #21242F 102.65%)'>
+              CRYPTOAD
             </Text>
           </Box>
         </Box>

@@ -5,13 +5,15 @@ import './index.css';
 
 import AuthLayout from "layouts/Auth.js";
 import AdminLayout from "layouts/Admin.js";
+import HomeLayout from "layouts/Home.js";
 
 ReactDOM.render(
   <HashRouter>
     <Switch>
       <Route path={`/auth`} component={AuthLayout} />
       <Route path={`/admin`} component={AdminLayout} />
-      <Redirect from={`/`} to='/admin/dashboard' />
+      <Route path={`/home`} component={HomeLayout} />
+      <Redirect from={`/`} to='/auth/signup' />
     </Switch>
   </HashRouter>,
   document.getElementById("root")

@@ -289,9 +289,6 @@ export function SidebarResponsive(props) {
                 xl: "16px",
               }}
               py='12px'>
-              {document.documentElement.dir === "rtl"
-                ? prop.rtlName
-                : prop.name}
             </Text>
             {createLinks(prop.views)}
           </>
@@ -340,11 +337,6 @@ export function SidebarResponsive(props) {
                     {prop.icon}
                   </IconBox>
                 )}
-                <Text color={activeColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
               </Flex>
             </Button>
           ) : (
@@ -388,11 +380,6 @@ export function SidebarResponsive(props) {
                     {prop.icon}
                   </IconBox>
                 )}
-                <Text color={inactiveColor} my='auto' fontSize='sm'>
-                  {document.documentElement.dir === "rtl"
-                    ? prop.rtlName
-                    : prop.name}
-                </Text>
               </Flex>
             </Button>
           )}
@@ -408,7 +395,7 @@ export function SidebarResponsive(props) {
   var brand = (
     <Box pt={"35px"} mb='8px'>
       <Link
-        href={`${process.env.PUBLIC_URL}/#/`}
+        href={`${process.env.PUBLIC_URL}/`}
         target='_blank'
         display='flex'
         lineHeight='100%'

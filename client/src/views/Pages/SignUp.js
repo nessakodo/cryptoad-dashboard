@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 
 // Chakra imports
 import {
@@ -7,317 +8,273 @@ import {
   Button,
   FormControl,
   FormLabel,
-  HStack,
+  Heading,
   Input,
   Link,
   Switch,
   Text,
-  Icon,
   DarkMode,
 } from "@chakra-ui/react";
 
-// Icons
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+// Assets
+import signInImage from "assets/img/signInImage.png";
+
 // Custom Components
 import AuthFooter from "components/Footer/AuthFooter";
 import GradientBorder from "components/GradientBorder/GradientBorder";
 
-// Assets
-import signUpImage from "assets/img/signUpImage.png";
+// Routes
+import routes from "routes.js";
 
 function SignUp() {
+
+  const history = useHistory();
   const titleColor = "white";
   const textColor = "gray.400";
 
+  // setting state
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+
+  // Sign in click
+  function onClick() {
+    history.push('/auth/signin')
+  }
+
+  const [errors, setErrors] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+});
+
+const { name, email, password } = formData;
+
+function handleChange(e) {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+}
+
+function handleSubmit(e) {
+    e.preventDefault();
+    fetch('/signup', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+    }).then((res) => {
+        if (res.ok) {
+            res.json().then((formData) => {
+                setCurrentUser(formData);
+                setLoggedIn(formData)
+                history.push('/admin/dashboard')
+
+            });
+        } else {
+            res.json().then((data) => {
+                setErrors(Object.entries(data.errors));
+                console.log(errors)
+            });
+        }
+    });
+}
+
+
   return (
-    <Flex position='relative' overflow={{ lg: "hidden" }}>
+    <Flex position='relative'>
       <Flex
-        flexDirection='column'
-        h={{ sm: "initial", md: "unset" }}
-        w={{ base: "90%" }}
+        minH='100vh'
+        h={{ base: "120vh", lg: "fit-content" }}
+        w='100%'
         maxW='1044px'
         mx='auto'
-        justifyContent='space-between'
         pt={{ sm: "100px", md: "0px" }}
+        flexDirection='column'
         me={{ base: "auto", lg: "50px", xl: "auto" }}>
         <Flex
           alignItems='center'
           justifyContent='start'
           style={{ userSelect: "none" }}
-          flexDirection='column'
           mx={{ base: "auto", lg: "unset" }}
           ms={{ base: "auto", lg: "auto" }}
-          mb='50px'
-          w={{ base: "100%", md: "50%", lg: "42%" }}>
+          w={{ base: "100%", md: "50%", lg: "450px" }}
+          px='50px'
+          maxH='2xl'
+          >
           <Flex
             direction='column'
-            textAlign='center'
-            justifyContent='center'
-            align='center'
-            mt={{ base: "60px", md: "140px", lg: "200px" }}
-            mb='50px'>
-            <Text
-              fontSize='4xl'
-              lineHeight='39px'
-              color='white'
-              fontWeight='bold'>
+            w='100%'
+            background='transparent'
+            mt={{ base: "50px", md: "150px", lg: "160px", xl: "245px" }}
+            mb={{ base: "60px", lg: "95px" }}>
+            <Heading color={titleColor} fontSize='32px' mb='10px'>
               Welcome!
-            </Text>
+            </Heading>
             <Text
-              fontSize='md'
-              color='white'
-              fontWeight='normal'
-              mt='10px'
-              w={{ base: "100%", md: "90%", lg: "90%", xl: "80%" }}>
+              mb='36px'
+              ms='4px'
+              color={textColor}
+              fontWeight='bold'
+              fontSize='14px'>
+              Create an account to start trading
             </Text>
-          </Flex>
-          <GradientBorder p='2px' me={{ base: "none", lg: "30px", xl: "none" }}>
-            <Flex
-              background='transparent'
-              borderRadius='30px'
-              direction='column'
-              p='40px'
-              minW={{ base: "unset", md: "430px", xl: "450px" }}
+            {errors.length > 0 ?
+            <></>
+            :
+            <Text className='text-sm text-red-600'>{errors.error}</Text>
+            }
+            <FormControl isRequired>
+              <FormLabel
+                ms='4px'
+                fontSize='sm'
+                fontWeight='normal'
+                color='white'>
+                Name
+              </FormLabel>
+              <GradientBorder
+                mb='24px'
+                w={{ base: "100%", lg: "fit-content" }}
+                borderRadius='20px'>
+                <Input
+                  color='white'
+                  bg='rgb(19,21,54)'
+                  border='transparent'
+                  borderRadius='20px'
+                  fontSize='sm'
+                  name='name'
+                  value={name}
+                  onChange={handleChange}
+                  size='lg'
+                  w={{ base: "100%", md: "346px" }}
+                  maxW='100%'
+                  h='46px'
+                  placeholder='Your name'
+                />
+              </GradientBorder>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel
+                ms='4px'
+                fontSize='sm'
+                fontWeight='normal'
+                color='white'>
+                Email
+              </FormLabel>
+              <GradientBorder
+                mb='24px'
+                w={{ base: "100%", lg: "fit-content" }}
+                borderRadius='20px'>
+                <Input
+                  color='white'
+                  bg='rgb(19,21,54)'
+                  border='transparent'
+                  borderRadius='20px'
+                  fontSize='sm'
+                  size='lg'
+                  w={{ base: "100%", md: "346px" }}
+                  maxW='100%'
+                  h='46px'
+                  required={true}
+                  name="email"
+                  value={email}
+                  onChange={handleChange}
+                  placeholder='Your email adress'
+                />
+              </GradientBorder>
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel
+                ms='4px'
+                fontSize='sm'
+                fontWeight='normal'
+                color='white'>
+                Password
+              </FormLabel>
+              <GradientBorder
+                mb='24px'
+                w={{ base: "100%", lg: "fit-content" }}
+                borderRadius='20px'>
+                <Input
+                  color='white'
+                  bg='rgb(19,21,54)'
+                  border='transparent'
+                  borderRadius='20px'
+                  fontSize='sm'
+                  size='lg'
+                  w={{ base: "100%", md: "346px" }}
+                  maxW='100%'
+                  type="password"
+                  name="password"
+                  required={true}
+                  value={password}
+                  onChange={handleChange}
+                  placeholder='Your password'
+                />
+              </GradientBorder>
+            </FormControl>
+            <FormControl display='flex' alignItems='center'>
+              <DarkMode>
+                <Switch id='remember-login' colorScheme='brand' me='10px' />
+              </DarkMode>
+              <FormLabel
+                htmlFor='remember-login'
+                mb='0'
+                ms='1'
+                fontWeight='normal'
+                color='white'>
+                Remember me
+              </FormLabel>
+            </FormControl>
+            <Button
+              variant='brand'
+              fontSize='15px'
+              type='submit'
               w='100%'
-              mx={{ base: "0px" }}
-              bg={{
-                base: "rgb(19,21,56)",
-              }}>
-              <Text
-                fontSize='xl'
-                color={textColor}
-                fontWeight='bold'
-                textAlign='center'
-                mb='22px'>
-                Register With
-              </Text>
-              <HStack spacing='15px' justify='center' mb='22px'>
-                <GradientBorder borderRadius='15px'>
-                  <Flex
-                    _hover={{ filter: "brightness(120%)" }}
-                    transition='all .25s ease'
-                    cursor='pointer'
-                    justify='center'
-                    align='center'
-                    bg='rgb(19,21,54)'
-                    w='71px'
-                    h='71px'
-                    borderRadius='15px'>
-                    <Link href='#'>
-                      <Icon
-                        color={titleColor}
-                        as={FaFacebook}
-                        w='30px'
-                        h='30px'
-                        _hover={{ filter: "brightness(120%)" }}
-                      />
-                    </Link>
-                  </Flex>
-                </GradientBorder>
-                <GradientBorder borderRadius='15px'>
-                  <Flex
-                    _hover={{ filter: "brightness(120%)" }}
-                    transition='all .25s ease'
-                    cursor='pointer'
-                    justify='center'
-                    align='center'
-                    bg='rgb(19,21,54)'
-                    w='71px'
-                    h='71px'
-                    borderRadius='15px'>
-                    <Link href='#'>
-                      <Icon
-                        color={titleColor}
-                        as={FaApple}
-                        w='30px'
-                        h='30px'
-                        _hover={{ filter: "brightness(120%)" }}
-                      />
-                    </Link>
-                  </Flex>
-                </GradientBorder>
-                <GradientBorder borderRadius='15px'>
-                  <Flex
-                    _hover={{ filter: "brightness(120%)" }}
-                    transition='all .25s ease'
-                    cursor='pointer'
-                    justify='center'
-                    align='center'
-                    bg='rgb(19,21,54)'
-                    w='71px'
-                    h='71px'
-                    borderRadius='15px'>
-                    <Link href='#'>
-                      <Icon
-                        color={titleColor}
-                        as={FaGoogle}
-                        w='30px'
-                        h='30px'
-                        _hover={{ filter: "brightness(120%)" }}
-                      />
-                    </Link>
-                  </Flex>
-                </GradientBorder>
-              </HStack>
-              <Text
-                fontSize='lg'
-                color='gray.400'
-                fontWeight='bold'
-                textAlign='center'
-                mb='22px'>
-                or
-              </Text>
-              <FormControl>
-                <FormLabel
-                  color={titleColor}
-                  ms='4px'
-                  fontSize='sm'
-                  fontWeight='normal'>
-                  Name
-                </FormLabel>
+              maxW='350px'
+              h='45'
+              mb='20px'
+              mt='20px'
+              onClick={handleSubmit}
+              >
+              SIGN UP
+            </Button>
 
-                <GradientBorder
-                  mb='24px'
-                  h='50px'
-                  w={{ base: "100%", lg: "fit-content" }}
-                  borderRadius='20px'>
-                  <Input
-                    color={titleColor}
-                    bg={{
-                      base: "rgb(19,21,54)",
-                    }}
-                    border='transparent'
-                    borderRadius='20px'
-                    fontSize='sm'
-                    size='lg'
-                    w={{ base: "100%", md: "346px" }}
-                    maxW='100%'
-                    h='46px'
-                    type='text'
-                    placeholder='Your name'
-                  />
-                </GradientBorder>
-                <FormLabel
-                  color={titleColor}
-                  ms='4px'
-                  fontSize='sm'
-                  fontWeight='normal'>
-                  Email
-                </FormLabel>
-                <GradientBorder
-                  mb='24px'
-                  h='50px'
-                  w={{ base: "100%", lg: "fit-content" }}
-                  borderRadius='20px'>
-                  <Input
-                    color={titleColor}
-                    bg={{
-                      base: "rgb(19,21,54)",
-                    }}
-                    border='transparent'
-                    borderRadius='20px'
-                    fontSize='sm'
-                    size='lg'
-                    w={{ base: "100%", md: "346px" }}
-                    maxW='100%'
-                    h='46px'
-                    type='email'
-                    placeholder='Your email address'
-                  />
-                </GradientBorder>
-                <FormLabel
-                  color={titleColor}
-                  ms='4px'
-                  fontSize='sm'
-                  fontWeight='normal'>
-                  Password
-                </FormLabel>
-                <GradientBorder
-                  mb='24px'
-                  h='50px'
-                  w={{ base: "100%", lg: "fit-content" }}
-                  borderRadius='20px'>
-                  <Input
-                    color={titleColor}
-                    bg={{
-                      base: "rgb(19,21,54)",
-                    }}
-                    border='transparent'
-                    borderRadius='20px'
-                    fontSize='sm'
-                    size='lg'
-                    w={{ base: "100%", md: "346px" }}
-                    maxW='100%'
-                    h='46px'
-                    type='password'
-                    placeholder='Your password'
-                  />
-                </GradientBorder>
-                <FormControl display='flex' alignItems='center' mb='24px'>
-                  <DarkMode>
-                    <Switch id='remember-login' colorScheme='brand' me='10px' />
-                  </DarkMode>
-
-                  <FormLabel
-                    color={titleColor}
-                    htmlFor='remember-login'
-                    mb='0'
-                    fontWeight='normal'>
-                    Remember me
-                  </FormLabel>
-                </FormControl>
-                <Button
-                  variant='brand'
-                  fontSize='15px'
-                  type='submit'
-                  w='100%'
-                  maxW='350px'
-                  h='45'
-                  mb='20px'
-                  mt='20px'>
-                  SIGN UP
-                </Button>
-              </FormControl>
-              <Flex
-                flexDirection='column'
-                justifyContent='center'
-                alignItems='center'
-                maxW='100%'
-                mt='0px'>
-                <Text color={textColor} fontWeight='medium'>
-                  Already have an account?
-                  <Link
-                    color={titleColor}
-                    as='span'
-                    ms='5px'
-                    href='#'
-                    fontWeight='bold'>
-                    Sign In
-                  </Link>
-                </Text>
-              </Flex>
+            <Flex
+              flexDirection='column'
+              justifyContent='center'
+              alignItems='center'
+              maxW='100%'
+              mt='0px'>
+              <Text color={textColor} fontWeight='medium'>
+                Already have an account?
+                <Link color={titleColor} as='span' ms='5px' fontWeight='bold' onClick={onClick}>
+                  Sign In
+                </Link>
+              </Text>
             </Flex>
-          </GradientBorder>
+          </Flex>
         </Flex>
         <Box
           w={{ base: "335px", md: "450px" }}
           mx={{ base: "auto", lg: "unset" }}
           ms={{ base: "auto", lg: "auto" }}
-          mb='90px'>
+          mb='80px'>
           <AuthFooter />
         </Box>
         <Box
           display={{ base: "none", lg: "block" }}
           overflowX='hidden'
-          h='1300px'
-          maxW={{ md: "50vw", lg: "48vw" }}
+          h='100%'
+          maxW={{ md: "50vw", lg: "50vw" }}
+          minH='100vh'
           w='960px'
           position='absolute'
           left='0px'>
           <Box
-            bgImage={signUpImage}
+            bgImage={signInImage}
             w='100%'
-            h='1300px'
+            h='100%'
             bgSize='cover'
             bgPosition='50%'
             position='absolute'
@@ -330,19 +287,19 @@ function SignUp() {
               textAlign='center'
               color='white'
               letterSpacing='8px'
-              fontSize='20px'
+              fontSize='15px'
               fontWeight='500'>
-              INSPIRED BY THE FUTURE:
+              STRATEGY SIMPLIFIED
             </Text>
             <Text
               textAlign='center'
               color='transparent'
               letterSpacing='8px'
-              fontSize='36px'
+              fontSize='56px'
               fontWeight='bold'
               bgClip='text !important'
-              bg='linear-gradient(94.56deg, #FFFFFF 79.99%, #21242F 102.65%)'>
-              THE VISION UI DASHBOARD
+              bg='linear-gradient(45.56deg, #FFFFFF 85.99%, #21242F 102.65%)'>
+              CRYPTOAD
             </Text>
           </Box>
         </Box>

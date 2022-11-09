@@ -48,7 +48,7 @@ import {
 } from 'variables/charts';
 import { dashboardTableData, timelineData } from 'variables/general';
 
-export default function Dashboard() {
+export default function Home() {
 	return (
 		
 		
