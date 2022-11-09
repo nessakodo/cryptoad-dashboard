@@ -7,6 +7,7 @@ import AuthLayout from "layouts/Auth.js";
 import AdminLayout from "layouts/Admin.js";
 import HomeLayout from "layouts/Home.js";
 
+
 ReactDOM.render(
   <HashRouter>
     <Switch>
