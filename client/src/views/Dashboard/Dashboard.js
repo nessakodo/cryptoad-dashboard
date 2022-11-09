@@ -115,7 +115,7 @@ export default function Dashboard() {
 			</SimpleGrid>
 
 			{/* Welcome Card */}
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} mb='0px' my='26px' gap='18px'>
+			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} mt='25px' mb='-48px' gap='18px'>
 				<Card
 					p='0px'
 					gridArea={{ md: '1 / 1 / 2 / 3', '2xl': 'auto' }}
@@ -173,7 +173,7 @@ export default function Dashboard() {
 				
 					
 					{/* Sales Overview */}
-					<Flex flexDirection='column' pt={{ base: '120px', md: '75px' }}>
+					<Flex flexDirection='column' mb='-20px' pt={{ base: '120px', md: '75px' }}>
 					<SimpleGrid columns={{ lg:1}} spacing='0px'>
 					<Card p='28px 0px 0px 0px'>
 					<CardHeader mb='20px' ps='22px'>
@@ -199,6 +199,80 @@ export default function Dashboard() {
 				</SimpleGrid>
 				</Flex>
 				
+				<Grid templateColumns={{ xl: '1fr' }} mb='-5' mt="45px" gap='24px'>
+				<Card p='16px' overflowX={{ sm: 'scroll', xl: 'hidden' }}>
+					<CardHeader p='12px 0px 28px 0px'>
+						<Flex direction='column'>
+							<Text fontSize='lg' color='#fff' fontWeight='bold' pb='8px'>
+								Watchlist
+							</Text>
+							<Flex align='center'>
+							<Button
+										p='0px'
+										variant='no-hover'
+										bg='transparent'
+										my={{ sm: '1.5rem', lg: '0px' }}>
+										<Text
+											fontSize='sm'
+											color='#fff'
+											fontWeight='bold'
+											cursor='pointer'
+											transition='all .3s ease'
+											my={{ sm: '1.5rem', lg: '0px' }}
+											_hover={{ me: '4px' }}>
+											Manage list
+										</Text>
+										<Icon
+											as={BsArrowRight}
+											w='20px'
+											h='20px'
+											color='#fff'
+											fontSize='2xl'
+											transition='all .3s ease'
+											mx='.3rem'
+											cursor='pointer'
+											pt='4px'
+											_hover={{ transform: 'translateX(20%)' }}
+										/>
+									</Button>
+							</Flex>
+						</Flex>
+					</CardHeader>
+					<Table variant='simple' color='#fff'>
+						<Thead>
+							<Tr my='.8rem' ps='0px'>
+								<Th
+									ps='0px'
+									color='gray.400'
+									fontFamily='Plus Jakarta Display'
+									borderBottomColor='#56577A'>
+									Token
+								</Th>
+								<Th color='gray.400' fontFamily='Plus Jakarta Display' borderBottomColor='#56577A'>
+									Daily Change
+								</Th>
+								<Th color='gray.400' fontFamily='Plus Jakarta Display' borderBottomColor='#56577A'>
+									Chart
+								</Th>
+							</Tr>
+						</Thead>
+						<Tbody>
+							{dashboardTableData.map((row, index, arr) => {
+								return (
+									<DashboardTableRow
+										name={row.name}
+										logo={row.logo}
+										members={row.members}
+										budget={row.budget}
+										progression={row.progression}
+										lastItem={index === arr.length - 1 ? true : false}
+									/>
+								);
+							})}
+						</Tbody>
+					</Table>
+				</Card>
+			</Grid>
 				<br/>
 				
 				{/* Market Charts */}
