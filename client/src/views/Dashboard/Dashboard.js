@@ -115,7 +115,7 @@ export default function Dashboard() {
 			</SimpleGrid>
 
 			{/* Welcome Card */}
-			<Grid templateColumns={{ sm: '1fr', md: '1fr 1fr', '2xl': '2fr 1.2fr 1.5fr' }} mt='25px' mb='-48px' gap='18px'>
+			<Grid templateColumns={{ sm: '1fr' }} mt='25px' mb='-48px' gap='18px'>
 				<Card
 					p='0px'
 					gridArea={{ md: '1 / 1 / 2 / 3', '2xl': 'auto' }}
@@ -199,7 +199,7 @@ export default function Dashboard() {
 				</SimpleGrid>
 				</Flex>
 				
-				<Grid templateColumns={{ xl: '1fr' }} mb='-5' mt="45px" gap='24px'>
+				<Grid templateColumns={{ xl: '1fr' }} mb='0' mt="45px" gap='24px'>
 				<Card p='16px' overflowX={{ sm: 'scroll', xl: 'hidden' }}>
 					<CardHeader p='12px 0px 28px 0px'>
 						<Flex direction='column'>

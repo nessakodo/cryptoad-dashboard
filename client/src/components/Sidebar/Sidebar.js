@@ -203,12 +203,11 @@ function Sidebar(props) {
         justifyContent='center'
         alignItems='center'
         fontSize='11px'>
-        <></>
         <Box
           bg='linear-gradient(97.89deg, #FFFFFF 70.67%, rgba(117, 122, 140, 0) 108.55%)'
           bgClip='text'>
-          <Text fontSize='lg' letterSpacing='3px' mt='3px' color='white'>
-            CRYPTOAD
+          <Text fontSize='sm' letterSpacing='3px' mt='3px' color='transparent'>
+            {logoText}
           </Text>
         </Box>
       </Link>
@@ -289,6 +288,9 @@ export function SidebarResponsive(props) {
                 xl: "16px",
               }}
               py='12px'>
+              {document.documentElement.dir === "rtl"
+                ? prop.rtlName
+                : prop.name}
             </Text>
             {createLinks(prop.views)}
           </>
@@ -337,6 +339,11 @@ export function SidebarResponsive(props) {
                     {prop.icon}
                   </IconBox>
                 )}
+                <Text color={activeColor} my='auto' fontSize='sm'>
+                  {document.documentElement.dir === "rtl"
+                    ? prop.rtlName
+                    : prop.name}
+                </Text>
               </Flex>
             </Button>
           ) : (
@@ -380,6 +387,11 @@ export function SidebarResponsive(props) {
                     {prop.icon}
                   </IconBox>
                 )}
+                <Text color={inactiveColor} my='auto' fontSize='sm'>
+                  {document.documentElement.dir === "rtl"
+                    ? prop.rtlName
+                    : prop.name}
+                </Text>
               </Flex>
             </Button>
           )}
@@ -395,7 +407,7 @@ export function SidebarResponsive(props) {
   var brand = (
     <Box pt={"35px"} mb='8px'>
       <Link
-        href={`${process.env.PUBLIC_URL}/`}
+        href={`${process.env.PUBLIC_URL}/#/`}
         target='_blank'
         display='flex'
         lineHeight='100%'
@@ -404,12 +416,11 @@ export function SidebarResponsive(props) {
         justifyContent='center'
         alignItems='center'
         fontSize='11px'>
-        <></>
         <Box
           bg='linear-gradient(97.89deg, #FFFFFF 70.67%, rgba(117, 122, 140, 0) 108.55%)'
           bgClip='text'>
           <Text fontSize='sm' letterSpacing='3px' mt='3px' color='transparent'>
-            CRYPTOAD
+            {logoText}
           </Text>
         </Box>
       </Link>
