@@ -31,6 +31,7 @@ function SignUp() {
   const history = useHistory();
   const titleColor = "white";
   const textColor = "gray.400";
+  const errorColor = "red.300";
 
   // setting state
   const [loggedIn, setLoggedIn] = useState(false);
@@ -68,17 +69,17 @@ function handleSubmit(e) {
             res.json().then((formData) => {
                 setCurrentUser(formData);
                 setLoggedIn(formData)
-                history.push('/admin/dashboard')
-
+                // home page pushed after login
+                history.push('/admin/dashboard');
             });
-        } else {
-            res.json().then((data) => {
-                setErrors(Object.entries(data.errors));
-                console.log(errors)
-            });
-        }
-    });
-}
+            } else {
+                res.json().then((data) => {
+                    setErrors(Object.entries(data.errors));
+                    console.log(errors)
+                });
+            }
+        });
+    }
 
 
   return (
@@ -119,10 +120,24 @@ function handleSubmit(e) {
               fontSize='14px'>
               Create an account to start trading
             </Text>
-            {errors.length > 0 ?
-            <></>
+            {errors.length == 0 ?
+            <Text
+            mb='36px'
+            ms='4px'
+            color={textColor}
+            fontWeight='bold'
+            fontSize='14px'>
+                <></>
+            </Text>
             :
-            <Text className='text-sm text-red-600'>{errors.error}</Text>
+            <Text
+            mb='36px'
+            ms='4px'
+            color={errorColor}
+            fontWeight='bold'
+            fontSize='14px'>
+                This email has already been taken
+            </Text>
             }
             <FormControl isRequired>
               <FormLabel

@@ -30,6 +30,7 @@ function SignIn() {
   const history = useHistory();
   const titleColor = "white";
   const textColor = "gray.400";
+  const errorColor = "red.300";
 
   // setting state
   const [loggedIn, setLoggedIn] = useState(false);
@@ -67,9 +68,8 @@ function SignIn() {
               res.json().then((formData) => {
                   setCurrentUser(formData);
                   setLoggedIn(formData)
-
                   // home page pushed after login
-                  history.push('/admin/dashboard')
+                  history.push('/admin/dashboard');
               });
           } else {
               res.json().then((data) => {
@@ -117,10 +117,24 @@ function SignIn() {
               fontSize='14px'>
               Enter your email and password to sign in
             </Text>
-            {errors.length > 0 ?
-            <></>
+            {errors.length == 0 ?
+            <Text
+            mb='36px'
+            ms='4px'
+            color={textColor}
+            fontWeight='bold'
+            fontSize='14px'>
+                <></>
+            </Text>
             :
-            <Text>{errors.error}</Text>
+            <Text
+            mb='36px'
+            ms='4px'
+            color={errorColor}
+            fontWeight='bold'
+            fontSize='14px'>
+                {errors.error}
+            </Text>
             }
             <FormControl isRequired>
               <FormLabel

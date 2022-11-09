@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
   # All routes 
   resources :users
-  resources :sessions, only: [:create]
-
-  # Test
-  get '/hello', to: 'application#hello_world'
+  resources :sessions
 
   # Authenication Routes
   post '/signup', to: 'users#create'
