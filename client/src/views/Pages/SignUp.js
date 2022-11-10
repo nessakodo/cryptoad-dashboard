@@ -26,16 +26,13 @@ import GradientBorder from "components/GradientBorder/GradientBorder";
 // Routes
 import routes from "routes.js";
 
-function SignUp() {
+function SignUp( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
 
   const history = useHistory();
   const titleColor = "white";
   const textColor = "gray.400";
   const errorColor = "red.300";
 
-  // setting state
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
 
   // Sign in click
   function onClick() {
@@ -70,7 +67,7 @@ function handleSubmit(e) {
                 setCurrentUser(formData);
                 setLoggedIn(formData)
                 // home page pushed after login
-                history.push('/admin/dashboard');
+                history.push('/dashboard');
             });
             } else {
                 res.json().then((data) => {

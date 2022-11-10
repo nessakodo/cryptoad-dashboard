@@ -7,11 +7,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-export function SearchBar(props) {
+
+export default function SearchBar(props) {
   // Pass the computed styles into the `__css` prop
   const { variant, children, ...rest } = props;
   // Chakra Color Mode
-  const searchIconColor = "gray.700";
+  const searchIconColor = "white.900";
   const inputBg = "gray.800";
   return (
     <InputGroup bg={inputBg} borderRadius='15px' w='200px'>

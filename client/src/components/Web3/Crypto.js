@@ -2,6 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Coin from './Coin';
 
+import SearchBar from "../Navbars/SearchBar/SearchBar"
+
+import {
+  VStack,
+  useDisclosure,
+  Button,
+  Text,
+  HStack,
+  Select,
+  Input,
+  Box, 
+  Grid,
+  Flex
+} from "@chakra-ui/react";
+
 import './Crypto.css';
 
 export default function Crypto() {
@@ -29,17 +44,15 @@ export default function Crypto() {
   );
 
   return (
+
+    
     <div className='coin-app'>
       <div className='coin-search'>
-        <h1 className='coin-text'>Search a currency</h1>
-        <form>
-          <input
-            className='coin-input'
-            type='text'
-            onChange={handleChange}
-            placeholder='Search'
-          />
-        </form>
+        <Text className='coin-text'>Search a currency</Text>
+        <SearchBar 
+         type='text'
+         onChange={handleChange}
+      />
       </div>
       {filteredCoins.map(coin => {
         return (
