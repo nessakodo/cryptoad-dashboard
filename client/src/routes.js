@@ -4,7 +4,8 @@ import Billing from "views/Dashboard/Billing.js";
 import Profile from "views/Dashboard/Profile.js";
 import SignIn from "views/Pages/SignIn.js";
 import SignUp from "views/Pages/SignUp.js";
-import Home from "views/Dashboard/Home"
+import Home from "views/Dashboard/Home";
+import Stats from "views/Dashboard/Stats.js";
 
 import {
   HomeIcon,
@@ -13,6 +14,7 @@ import {
   PersonIcon,
   DocumentIcon,
   RocketIcon,
+  GlobeIcon
 } from "components/Icons/Icons";
 
 var routes = [
@@ -31,10 +33,17 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/stats",
-    name: "Stats",
+    path: "/tables",
+    name: "Tables",
     icon: <StatsIcon color='inherit' />,
     component: Tables,
+    layout: "/admin",
+  },
+  {
+    path: "/stats",
+    name: "Stats",
+    icon: <GlobeIcon color='inherit' />,
+    component: Stats,
     layout: "/admin",
   },
   {

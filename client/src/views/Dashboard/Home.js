@@ -114,9 +114,6 @@ export default function Home() {
   return (
     <>
     <div position='center'>
-      <Text position="absolute" top={0} right="15px">
-        If you're in the sandbox, first "Open in New Window" ⬆️
-      </Text>
       <VStack justifyContent="center" alignItems="center" h="100vh">
         <HStack marginBottom="10px">
           <Text
