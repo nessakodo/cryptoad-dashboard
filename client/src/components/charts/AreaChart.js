@@ -51,14 +51,14 @@ const AreaChart = () => {
             fontColor: colors.common.white,
             data: chartData.sort((a, b) => b.ath - a.ath).slice(0, 10).map(coin => coin.ath),
             fill: true,
-            backgroundColor: alpha(theme.palette.primary.main, 0.2),
-            borderColor: theme.palette.primary.main,
+            backgroundColor: alpha(theme.palette.primary.green, 0.2),
+            borderColor: theme.palette.primary.green,
             tension: 0.3,
             pointRadius: 3,
-            pointBackgroundColor: theme.palette.primary.main,
-            pointBorderColor: alpha(theme.palette.primary.main, 0.8),
+            pointBackgroundColor: theme.palette.primary.green,
+            pointBorderColor: alpha(theme.palette.primary.green, 0.8),
             pointHoverRadius: 3,
-            pointHoverBackgroundColor: theme.palette.primary.main,
+            pointHoverBackgroundColor: theme.palette.primary.green,
             pointHitRadius: 50,
             pointBorderWidth: 2
         }],
@@ -126,8 +126,6 @@ const AreaChart = () => {
             <CardContent>
                 <br></br>
                 <Box sx={{ height: 500, position: 'relative' }}>
-                    <br>
-                    </br>
                     <Line
                         data={data} 
                         options={options} 

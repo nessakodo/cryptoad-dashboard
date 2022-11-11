@@ -14,7 +14,7 @@ export default {
         palette: {
             mode: 'dark',
             background: {
-                default: '#16161c',
+                default: '#16161C',
                 paper: '#21212b',
               },
             text: {
@@ -25,6 +25,7 @@ export default {
                 main: '#04DDE3',
                 light: "#95f4b0",
                 dark: '#AB05F2',
+                green: "#A3E635",
                 contrastText: "#F04CFD",
             },
             // primary: {
@@ -84,10 +85,11 @@ export default {
                 main: '#04DDE3',
                 light: "#95f4b0",
                 dark: '#AB05F2',
+                green: "#A3E635",
                 contrastText: 'rgb(235, 234, 239)',
             },
             success: {
-                main: 'rgb(111, 214, 145)',
+                main: '#84CC16',
                 light: 'rgb(131, 231, 168)',
                 dark: "#92e200",
                 contrastText: 'rgb(235, 234, 239)',

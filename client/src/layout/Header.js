@@ -60,6 +60,7 @@ const Header = ({ onSidebarOpen }) => {
                 sx={{
                     top: 0,
                     border: 0,
+                    padding: 1,
                     backgroundColor: theme.palette.background.default,
                     color: theme.palette.text.secondary
                 }}
@@ -76,7 +77,7 @@ const Header = ({ onSidebarOpen }) => {
                             aria-label='Menu'
                             sx={{
                                 borderRadius: 2,
-                                marginRight: '10px',
+                                minWidth: 'auto',   
                                 color: theme.palette.text.secondary,
                                 borderColor: 'transparent',
                             }}
@@ -95,7 +96,7 @@ const Header = ({ onSidebarOpen }) => {
                                 >
                                 </Avatar>
                                 <Typography 
-                                    variant='h3' 
+                                    variant='h1' 
                                     component='div' 
                                     ml='10px'
                                     sx={{
@@ -124,17 +125,17 @@ const Header = ({ onSidebarOpen }) => {
                         <CustomButton 
                             href='/'
                             icon={<DashboardIcon />}
-                            text='Dashboard'
+                            text='DASHBOARD'
                         />
                         <CustomButton 
                             href='#'
                             icon={<HelpIcon />}
-                            text='About'
+                            text='ABOUT'
                         />
                         <CustomButton 
                             href='#'
                             icon={<EmailIcon />}
-                            text='Contact'
+                            text='CONTACT'
                         />
                     </Box>
                     <Divider

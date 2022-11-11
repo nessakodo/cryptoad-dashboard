@@ -70,7 +70,7 @@ const Layout = ({ children }) => {
                     <Box
                         onClick={() => scrollTo('page-top')}
                         role='presentation'
-                        sx={{ position: 'fixed', bottom: 24, right: 32 }}
+                        sx={{ position: 'fixed', bottom: 24, right: 20 }}
                     >
                         <Fab 
                             color='primary' 

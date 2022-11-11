@@ -38,12 +38,13 @@ const DashboardHeader = () => {
                             {' '}
                             <span 
                                 style={{ 
-                                    color: theme.palette.mode === 'dark' ? green[400] : theme.palette.success.dark, 
+                                    color: theme.palette.mode === 'dark' ? green[400] : theme.palette.success.main, 
                                     background: theme.palette.mode === 'dark' ? alpha(green[200], 0.1) : alpha(green[200], 0.2),
                                     padding: '7px', 
                                     borderRadius: '5px', 
                                     marginLeft: '10px' 
                                 }}
+
                                 
                             >
                                 {new Date().toLocaleDateString('en-US', {

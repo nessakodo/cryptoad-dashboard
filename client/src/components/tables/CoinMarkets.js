@@ -60,8 +60,8 @@ const CoinMarkets = () => {
                     <Card
                     sx={ { borderRadius: 4 } }
                     >
-                        <CardContent>
-                            <Box sx={ { borderRadius: 4, padding: 0 } }>
+                        <CardContent >
+                            <Box sx={ { borderRadius: 4, padding: 0, mt: 1} }>
                                 <TextField
 
                                     fullWidth
