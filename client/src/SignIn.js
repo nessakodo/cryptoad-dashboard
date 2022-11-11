@@ -16,6 +16,9 @@ import {
   DarkMode,
 } from "@chakra-ui/react";
 
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme/themeAuth.js";
+
 // Assets
 import signInImage from "assets/img/signInImage.png";
 
@@ -24,7 +27,6 @@ import AuthFooter from "components/Footer/AuthFooter";
 import GradientBorder from "components/GradientBorder/GradientBorder";
 
 // Routes
-import routes from "routes.js";
 
 function SignIn( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
   const history = useHistory();
@@ -38,7 +40,7 @@ function SignIn( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
 
   // Sign up click
   function onClick() {
-    history.push('/auth/signup')
+    history.push('/signup')
   }
 
   // Sign in fetch
@@ -69,7 +71,7 @@ function SignIn( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
                   setCurrentUser(formData);
                   setLoggedIn(formData)
                   // home page pushed after login
-                  history.push('/dashboard');
+                  // history.push('/dashboard');
               });
           } else {
               res.json().then((data) => {
@@ -80,6 +82,7 @@ function SignIn( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
   }
 
   return (
+    <ChakraProvider theme={theme} resetCss={false} w='100%'>
     <Flex position='relative'>
       <Flex
         minH='100vh'
@@ -289,6 +292,7 @@ function SignIn( currentUser, setCurrentUser, setLoggedIn, LoggedIn ) {
         </Box>
       </Flex>
     </Flex>
+    </ChakraProvider>
   );
 }
 

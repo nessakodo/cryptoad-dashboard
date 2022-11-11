@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
-import './index.css';
+import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
+// import './index.css';
 
-import AuthLayout from "layouts/Auth.js";
-import AdminLayout from "layouts/Admin.js";
-import SignUp from "views/Pages/SignUp";
-import SignIn from "views/Pages/SignIn";
-import Dashboard from "views/Dashboard/Dashboard";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 
 export default function App() {
@@ -36,9 +33,8 @@ const history = useHistory();
   }, [loggedIn]);
 
 return (
-    <HashRouter>
+    <BrowserRouter>
         <Switch>
-        <Redirect from={`/`} to='/auth/signup' />
         <Route path={`/signup`}>
         <SignUp
           setCurrentUser={setCurrentUser}
@@ -51,24 +47,7 @@ return (
               setLoggedIn={setLoggedIn}
             />
         </Route>
-        <Route  path={`/auth`}>
-            <AuthLayout 
-            loggedIn={loggedIn}
-            currentUser={currentUser}
-            setLoggedIn={setLoggedIn}
-            setCurrentUser={setCurrentUser}
-            />
-        </Route>
-
-        <Route path={`/admin`}>
-            <AdminLayout 
-            loggedIn={loggedIn}
-            currentUser={currentUser}
-            setLoggedIn={setLoggedIn}
-            setCurrentUser={setCurrentUser}
-            />
-        </Route>
         </Switch>
-    </HashRouter>
+    </BrowserRouter>
     )
 }
