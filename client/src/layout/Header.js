@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import ButtonBase from '@mui/material/ButtonBase';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -20,11 +21,11 @@ import DashboardIcon from '@mui/icons-material/DashboardOutlined';
 import EmailIcon from '@mui/icons-material/EmailOutlined';
 import HelpIcon from '@mui/icons-material/HelpOutlineOutlined';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsIcon from '@mui/icons-material/Settings';
 import UserIcon from '@mui/icons-material/Person';
 import { alpha, useTheme } from '@mui/material/styles';
-import { deepPurple } from '@mui/material/colors';
 
 // Font Awesome Icon
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -61,12 +62,53 @@ const Header = ({ onSidebarOpen }) => {
                     top: 0,
                     border: 0,
                     padding: 1,
-                    // background: 'linear-gradient(to right, #2f2f3c)',
-                    backgroundColor: theme.palette.background.secondary,
-
+                    backgroundColor: theme.palette.mode === 'dark' 
+                    ? theme.palette.background.default 
+                    : theme.palette.background.default,
                     color: theme.palette.text.secondary
                 }}
             >
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <Box
+                     display='flex'
+                     flexDirection="column"
+                     alignItems="center"
+                     justifyContent='center'
+                    >
+                        <Box >
+                            {/* <IconButton size='large' disabled>
+                                <Avatar
+                                    alt="toad"
+                                    src={toad}
+                                    style={{ height: '60px', width: '60px' }}
+                                >
+                                </Avatar>
+                            </IconButton> */}
+                        </Box>
+                        <Box>
+                            <Typography 
+                                variant='h1' 
+                                component='div' 
+                                ml='10px'
+                                // color='theme.pallete.text.primary'
+                                sx={{
+                                    flexGrow: 1,
+                                    fontWeight: 'bold',
+                                    fontSize: "30px",
+                                    display: {
+                                        md: 'inline',
+                                        xs: 'inline',
+                                        mr: '30px',
+                                        color: '#82ffa1',
+                                    },
+                                    }}
+                                >
+                                CRYPTOAD
+                            </Typography>
+                        </Box>
+                    </Box>
+                </Link>
+
                 <Toolbar sx={{ minHeight: 20 }}>
                     <Box 
                         alignItems='center'
@@ -79,7 +121,8 @@ const Header = ({ onSidebarOpen }) => {
                             aria-label='Menu'
                             sx={{
                                 borderRadius: 2,
-                                minWidth: 'auto',   
+                                minWidth: '20px',  
+                                minHeight: '20px', 
                                 color: theme.palette.text.secondary,
                                 borderColor: 'transparent',
                             }}
@@ -87,63 +130,42 @@ const Header = ({ onSidebarOpen }) => {
                             <MenuIcon fontSize='medium' />
                         </Button>
                     </Box>
-                    <Link to='/' style={{ textDecoration: 'none' }}>
-                        <Box>
-                            <IconButton size='large' disabled>
-                                <Avatar
+                
+                    <Box sx={{ flexGrow: 1}} 
+                    />
 
-                                    alt="toad"
-                                    src={toad}
-
-                                >
-                                </Avatar>
-                                <Typography 
-                                    variant='h1' 
-                                    component='div' 
-                                    ml='10px'
-                                    sx={{
-                                        flexGrow: 1,
-                                        color: theme.palette.text.primary,
-                                        fontWeight: 'bold',
-                                        display: {
-                                            md: 'inline',
-                                            xs: 'none',
-                                            mr: '30px'
-                                        },
-                                    }}
-                                >
-                                    CRYPTOAD
-                                </Typography>
-                            </IconButton>
-                        </Box>
-                    </Link>
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box
+                    <Stack
+                        justifyContent="center"
+                        gap={2}
+                        flexDirection="row"
+                        width={1.0}
+                        flexWrap="wrap"
+                        ml="180px"
+                        maxHeight=''
                         sx={{
-                            alignItems: 'center',
-                            display: { lg: 'flex', md: 'none', xs: 'none' }
+                            display: { lg: 'flex', md: 'none', xs: 'none'}
                         }}
                     >
                         <CustomButton 
+                            href='#'
+                            // icon={<HelpIcon />}
+                            text='CONNECT'
+                        />
+                          <CustomButton 
                             href='/'
-                            icon={<DashboardIcon />}
+                            // icon={<DashboardIcon />}
                             text='DASHBOARD'
                         />
                         <CustomButton 
                             href='#'
-                            icon={<HelpIcon />}
-                            text='ABOUT'
+                            // icon={<EmailIcon />}
+                            text='TRADES'
                         />
-                        <CustomButton 
-                            href='#'
-                            icon={<EmailIcon />}
-                            text='CONTACT'
-                        />
-                    </Box>
+                    </Stack>
                     <Divider
                         orientation='vertical'
                         sx={{ 
-                            height: 32, 
+                            height: 22, 
                             mx: 2,
                             display: { lg: 'flex', md: 'none', xs: 'none' }
                         }}
@@ -152,27 +174,28 @@ const Header = ({ onSidebarOpen }) => {
                         <IconButton
                             onClick={colorMode.toggleColorMode}
                             aria-label='Theme Mode'
-                            color={theme.palette.mode === 'dark' ? 'warning' : 'inherit' }
+                            color={theme.palette.mode === 'dark' ? 'default' : 'inherit' }
                         >
                             {theme.palette.mode === 'dark' 
                                 ? (
-                                    <LightModeIcon fontSize='medium' />
+                                    <LightModeIcon fontSize='small' />
                                 ) 
                                 : (
-                                    <DarkModeIcon fontSize='medium' />
+                                    <DarkModeIcon fontSize='small' />
                                 )
                             }
                         </IconButton>
                     </Box>
+                
                     <Divider
                         orientation='vertical'
                         sx={{ 
-                            height: 32, 
+                            height: 22, 
                             mx: 2,
-                            display: { lg: 'flex', md: 'none', xs: 'none' } 
+                            display: { lg: 'flex' } 
                         }} 
                     />
-                    <Box sx={{ display: { lg: 'flex', md: 'none', xs: 'none' } }}>
+                    <Box sx={{ display: { lg: 'flex' } }}>
                         <Box
                             component={ButtonBase}
                             onClick={handleOpen}
@@ -185,9 +208,9 @@ const Header = ({ onSidebarOpen }) => {
                             <Tooltip title='User Account'>
                                 <Avatar 
                                     sx={{ 
-                                        height: 32, 
-                                        width: 32, 
-                                        backgroundColor: theme.palette.primary.main 
+                                        height: 22, 
+                                        width: 22, 
+                                        backgroundColor: theme.palette.mode === 'dark' ? '#ffffff' : theme.palette.text.secondary
                                     }} 
                                 />
                             </Tooltip>

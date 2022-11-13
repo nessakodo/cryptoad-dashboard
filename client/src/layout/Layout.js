@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
             sx={{
                 backgroundColor: theme.palette.background.default,
                 height: '100%',
-                paddingTop: '50px'
+                paddingTop: '150px'
             }}
         >
             <Header onSidebarOpen={handleSidebarOpen} />
@@ -73,14 +73,16 @@ const Layout = ({ children }) => {
                         sx={{ position: 'fixed', bottom: 24, right: 20 }}
                     >
                         <Fab 
-                            color='primary' 
                             size='small' 
                             aria-label='scroll back to top'
                             sx={{
+                                    backgroundColor: 'transparent',
+                                    color: '#D946EF',
+                                    border: '2px solid' + '#D946EF',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
-                                    color: theme.palette.primary.main,
-                                    border: '2px solid' + theme.palette.primary.main,
+                                    color: '#D946EF',
+                                    border: '2px solid' + '#D946EF',
                                 },
                             }}
                         >

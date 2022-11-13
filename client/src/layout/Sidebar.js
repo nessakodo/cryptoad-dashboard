@@ -33,10 +33,12 @@ const Sidebar = ({ open, onClose }) => {
                 sx={{
                         color: "#000000",
                         width: '100%',
-                        maxWidth: 280
+                        minWidth: '30px',
+                        minHeight: '30px'
                     ,
                 }}
             >
+                <br></br>
                 <Box sx={{ height: '100%', padding: 1 }}>
                     <Box width={1} paddingX={5.5} paddingY={0}>
                         <Link to='/' style={{ textDecoration: 'none' }}>

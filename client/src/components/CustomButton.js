@@ -16,7 +16,7 @@ const CustomButton = ({ href, icon, text }) => {
                 color: theme.palette.mode === 'dark' 
                     ? theme.palette.text.secondary 
                     : theme.palette.text.primary,
-                fontSize: theme.typography.subtitle1,
+                fontSize: '15px',
                 fontWeight: 'medium',
                 mr: 2,
                 '&:active': {
