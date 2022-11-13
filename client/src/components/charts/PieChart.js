@@ -96,7 +96,7 @@ const CryptoByVolumePieChart = () => {
         >
             <CardHeader 
                 title='Top 3 Cryptocurrencies By Volume' 
-                subheader='Top 3 Cryptocurrencies Measured By Their Total Volume' 
+                // subheader='Top 3 Cryptocurrencies Measured By Their Total Volume' 
             />
             <Divider />
             <CardContent>

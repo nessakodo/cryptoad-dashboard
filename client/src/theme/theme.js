@@ -25,7 +25,8 @@ export default {
                 main: '#04DDE3',
                 light: "#95f4b0",
                 dark: '#AB05F2',
-                green: "#A3E635",
+                green: "#4D7C0F",
+                red: "#9D174D",
                 contrastText: "#F04CFD",
             },
             // primary: {
@@ -85,7 +86,8 @@ export default {
                 main: '#04DDE3',
                 light: "#95f4b0",
                 dark: '#AB05F2',
-                green: "#A3E635",
+                green: "#4D7C0F",
+                red: "#9D174D",
                 contrastText: 'rgb(235, 234, 239)',
             },
             success: {

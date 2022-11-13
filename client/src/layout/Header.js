@@ -56,16 +56,18 @@ const Header = ({ onSidebarOpen }) => {
     return (
         <React.Fragment>
             <AppBar
-                elevation={0}
+                elevation={12}
                 sx={{
                     top: 0,
                     border: 0,
                     padding: 1,
-                    backgroundColor: theme.palette.background.default,
+                    // background: 'linear-gradient(to right, #2f2f3c)',
+                    backgroundColor: theme.palette.background.secondary,
+
                     color: theme.palette.text.secondary
                 }}
             >
-                <Toolbar sx={{ minHeight: 70 }}>
+                <Toolbar sx={{ minHeight: 20 }}>
                     <Box 
                         alignItems='center'
                         sx={{ display: { md: 'block', lg: 'none' } }}

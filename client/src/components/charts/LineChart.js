@@ -10,7 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Divider from '@mui/material/Divider';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import { alpha, useTheme } from '@mui/material/styles';
 import { colors } from '@mui/material';
 
 Chart.register(...registerables);
@@ -43,16 +43,23 @@ const LineChart = () => {
     const data = {
         // copy data from the state to a new array,
         // sort it by ath in descending order,
-        // take top 5 results using slice
+        // take top 10 results using slice
         // and then map 
-        labels: chartData.sort((a, b) => b.atl - a.atl).slice(0, 5).map(coin => coin.name),
+       labels: chartData.sort((a, b) => b.atl - a.atl).slice(0, 5).map(coin => coin.name),
         datasets: [{
             label: 'All-Time-Low',
             fontColor: colors.common.white,
             data: chartData.sort((a, b) => b.atl - a.atl).slice(0, 5).map(coin => coin.ath),
-            fill: false,
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
+            fill: true,
+            backgroundColor: alpha(theme.palette.primary.red, 0.2),
+            borderColor: theme.palette.primary.red,
+            tension: 0.3,
+            pointRadius: 3,
+            pointBackgroundColor: theme.palette.primary.red,
+            pointBorderColor: alpha(theme.palette.primary.red, 0.8),
+            pointHoverRadius: 3,
+            pointHoverBackgroundColor: theme.palette.primary.red,
+            pointHitRadius: 50,
             pointBorderWidth: 2
         }],
     };
@@ -110,13 +117,15 @@ const LineChart = () => {
         <Card
         sx={ { borderRadius: 4, padding: 2 } }
         >
+            <br></br>
             <CardHeader 
-                title='Top 5 Cryptocurrencies By All-Time-Low' 
-                subheader='Top 5 Cryptocurrencies Measured By Their All-Time-Low (ATL)' 
+                title='Top 10 Cryptocurrencies By All-Time-Low' 
+                // subheader='Top 10 Cryptocurrencies Measured By Their All-Time-Low (ATL)' 
             />
             <Divider />
             <CardContent>
-                <Box sx={{ height: 400, position: 'relative' }}>
+                <br></br>
+                <Box sx={{ height: 500, position: 'relative' }}>
                     <Line
                         data={data} 
                         options={options} 

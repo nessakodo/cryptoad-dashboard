@@ -69,6 +69,7 @@ const BarChart = () => {
             }],
         };
     
+
     const options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -139,7 +140,7 @@ const BarChart = () => {
         >
             <CardHeader 
                 title='Top 10 Most Expensive Cryptocurrencies' 
-                subheader='Top 10 Most Expensive Cryptocurrencies Measured By Their Market Price' 
+                // subheader='Top 10 Most Expensive Cryptocurrencies Measured By Their Market Price' 
             />
             <Divider />
             <CardContent>

@@ -120,7 +120,7 @@ const AreaChart = () => {
             <br></br>
             <CardHeader 
                 title='Top 10 Cryptocurrencies By All-Time-High' 
-                subheader='Top 10 Cryptocurrencies Measured By Their All-Time-High (ATH)' 
+                // subheader='Top 10 Cryptocurrencies Measured By Their All-Time-High (ATH)' 
             />
             <Divider />
             <CardContent>

@@ -96,7 +96,7 @@ const PolarAreaChart = () => {
         >
             <CardHeader 
                 title='Top 3 Cryptocurrencies By Market Cap' 
-                subheader='Top 3 Cryptocurrencies Measured By Their Market Cap' 
+                // subheader='Top 3 Cryptocurrencies Measured By Their Market Cap' 
             />
             <Divider />
             <CardContent>

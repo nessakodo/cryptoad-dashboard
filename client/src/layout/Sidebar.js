@@ -15,10 +15,10 @@ import { deepPurple } from '@mui/material/colors';
 // Font Awesome Icon
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 library.add(faCoins)
 
 import CustomButton from '../components/CustomButton';
+import toad from "../assets/toad.png"
 
 const Sidebar = ({ open, onClose }) => {
     const theme = useTheme();
@@ -31,34 +31,26 @@ const Sidebar = ({ open, onClose }) => {
                 open={open}
                 variant='temporary'
                 sx={{
-                    '& .MuiPaper-root': {
+                        color: "#000000",
                         width: '100%',
                         maxWidth: 280
-                    },
+                    ,
                 }}
             >
                 <Box sx={{ height: '100%', padding: 1 }}>
-                    <Box width={1} paddingX={2} paddingY={1}>
+                    <Box width={1} paddingX={5.5} paddingY={0}>
                         <Link to='/' style={{ textDecoration: 'none' }}>
                             <IconButton size='large' disabled>
-                                <Avatar
-                                    variant='rounded'
-                                    sx={{
-                                        backgroundColor: deepPurple[600],
-                                        height: 52,
-                                        width: 52,
-                                        marginRight: '15px'
-                                    }}
-                                >
-                                    <FontAwesomeIcon 
-                                        icon={faCoins} 
-                                        style={{ 
-                                            color: theme.palette.common.white, 
-                                            height: 30, 
-                                            width: 30 
-                                        }} 
-                                    />
-                                </Avatar>
+                            <Avatar
+                                alt="toad"
+                                src={toad}
+                                style={{ height: '90px', width: '90px' }}
+                            >
+                            </Avatar>
+                            </IconButton>
+                            </Link>
+                            </Box>
+                            <Box pb={2}>
                                 <Typography 
                                     variant='h3' 
                                     component='div' 
@@ -66,32 +58,32 @@ const Sidebar = ({ open, onClose }) => {
                                     fontWeight='bold'
                                     textDecoration='none'
                                     flexGrow={1}
+                                    ml="30px"
+
                                 >
                                     CRYPTOAD
                                 </Typography>
-                            </IconButton>
-                        </Link>
                     </Box>
                     <Box paddingX={2} paddingY={2}>
                         <Box paddingY={1}>
                             <CustomButton 
                                 href='/'
                                 icon={<DashboardIcon />}
-                                text='Dashboard'
+                                text='DASHBOARD'
                             />
                         </Box>
                         <Box paddingY={1}>
                             <CustomButton 
                                 href='#'
                                 icon={<HelpIcon />}
-                                text='About'
+                                text='ABOUT'
                             />
                         </Box>
                         <Box paddingY={1}>
                             <CustomButton 
                                 href='#'
                                 icon={<EmailIcon />}
-                                text='Contact'
+                                text='CONTACT'
                             />
                         </Box>
                     </Box>

@@ -28,7 +28,7 @@ const DashboardHeader = () => {
                     >
                         Overview
                     </Typography>
-                    <Box sx={{ pt: 2 }}>
+                    <Box sx={{ pt: 2, pb: 3 }}>
                         <Typography
                             color={theme.palette.text.secondary}
                             variant='h5'
@@ -40,15 +40,15 @@ const DashboardHeader = () => {
                                 style={{ 
                                     color: theme.palette.mode === 'dark' ? green[400] : theme.palette.success.main, 
                                     background: theme.palette.mode === 'dark' ? alpha(green[200], 0.1) : alpha(green[200], 0.2),
-                                    padding: '7px', 
+                                    padding: '5px', 
                                     borderRadius: '5px', 
-                                    marginLeft: '10px' 
+                                    marginLeft: '6px' 
                                 }}
 
                                 
                             >
                                 {new Date().toLocaleDateString('en-US', {
-                                    weekday: 'long', 
+                                    weekday: 'short', 
                                     year: 'numeric', 
                                     month: 'long', 
                                     day: 'numeric'

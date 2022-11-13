@@ -100,7 +100,7 @@ const DoughnutChart = () => {
         >
             <CardHeader 
                 title='Top 5 Cheapest Cryptocurrencies' 
-                subheader='Top 5 Cheapest Cryptocurrencies Above $100 Measured By Their Market Price' 
+                // subheader='Top 5 Cheapest Cryptocurrencies Above $100 Measured By Their Market Price' 
             />
             <Divider />
             <CardContent>

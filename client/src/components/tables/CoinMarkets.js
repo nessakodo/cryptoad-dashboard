@@ -61,7 +61,7 @@ const CoinMarkets = () => {
                     sx={ { borderRadius: 4 } }
                     >
                         <CardContent >
-                            <Box sx={ { borderRadius: 4, padding: 0, mt: 1} }>
+                            <Box sx={ { borderRadius: 4, padding: 0, mt: 1, letterSpacing: 2 }}>
                                 <TextField
 
                                     fullWidth
@@ -86,24 +86,24 @@ const CoinMarkets = () => {
                     </Card>
                 </Box>
             </Box>
-            <Box sx={{ pt: 3 }}>
+            <Box sx={{ pt: 3, pb: 4}}>
                 <Card
                 sx={ { borderRadius: 4, padding: 2 } }>
                     <Box sx={{  pb: 3 }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Image</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Name</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Symbol</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Price</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>24h</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Volume</TableCell>
-                                    <TableCell sx={{ fontWeight: 'bold' }}>Market Cap</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2}}>Image</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Name</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Symbol</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Price</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>24h</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Volume</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Market Cap</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody
-                            style={{width: "100%" }}>
+                            style={{width: "100%"}}>
                                 {(rowsPerPage > 0
                                     ? filteredCoins.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                     : filteredCoins
@@ -113,20 +113,21 @@ const CoinMarkets = () => {
                                             <img 
                                                 src={coin.image} 
                                                 alt='' 
-                                                style={{ height: '40px', width: '40px' }}
+                                                style={{ height: '30px', width: '30px' }}
                                             />
                                         </TableCell>
-                                        <TableCell>{coin.name}</TableCell>
-                                        <TableCell>{coin.symbol}</TableCell>
-                                        <TableCell>${coin.current_price.toFixed(2)}</TableCell>
-                                        <TableCell>
+                                        <TableCell sx={{letterSpacing: 1 }}>{coin.name}</TableCell>
+                                        <TableCell sx={{letterSpacing: 1 }}>{coin.symbol.toUpperCase()}</TableCell>
+                                        <TableCell sx={{letterSpacing: 2 }}>${coin.current_price.toFixed(2)}</TableCell>
+                                        <TableCell sx={{letterSpacing: 2 }}>
                                             {coin.price_change_percentage_24h > 0 
                                                 ? (
                                                     <span 
                                                         style={{ 
+                                                            // fontWeight: 'bold',
                                                             color: theme.palette.mode === 'dark' 
-                                                                ? theme.palette.success.main 
-                                                                : theme.palette.success.dark
+                                                                ? theme.palette.primary.green 
+                                                                : theme.palette.primary.green
                                                              
                                                         }}
                                                     >
@@ -136,9 +137,10 @@ const CoinMarkets = () => {
                                                 : (
                                                     <span 
                                                         style={{ 
+                                                            // fontWeight: 'bold',
                                                             color: theme.palette.mode === 'dark' 
-                                                                ? theme.palette.error.main 
-                                                                : theme.palette.error.dark
+                                                                ? theme.palette.primary.red 
+                                                                : theme.palette.primary.red
                                                         }}
                                                     >
                                                         {coin.price_change_percentage_24h.toFixed(2)}%
@@ -146,8 +148,8 @@ const CoinMarkets = () => {
                                                 )
                                             }
                                         </TableCell>
-                                        <TableCell>${coin.total_volume.toLocaleString()}</TableCell>
-                                        <TableCell>${coin.market_cap.toLocaleString()}</TableCell>
+                                        <TableCell sx={{letterSpacing: 2 }}>${coin.total_volume.toLocaleString()}</TableCell>
+                                        <TableCell sx={{letterSpacing: 2 }}>${coin.market_cap.toLocaleString()}</TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

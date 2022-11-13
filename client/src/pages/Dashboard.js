@@ -65,22 +65,23 @@ const Dashboard = () => {
                             <BarChart />
                         </Grid>
                         
-                        <Grid item md={6} xs={12}>
+                        <Grid item md={4} xs={12}>
                             <PieChart />
                         </Grid>
-                        <Grid item md={6} xs={12}>
+                        <Grid item md={4} xs={12}>
                             <PolarAreaChart />
                         </Grid>
 
                         <Grid item md={4} xs={12}>
                             <DoughnutChart />
                         </Grid>
-                        <Grid item md={8} xs={12}>
-                            <LineChart />
+
+                        <Grid item md={12} xs={12}>
+                            <AreaChart />
                         </Grid>
 
-                        <Grid item xs={12}>
-                            <AreaChart />
+                        <Grid item md={12} xs={12}>
+                            <LineChart />
                         </Grid>
                         
                     </Grid>
