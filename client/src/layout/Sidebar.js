@@ -43,24 +43,23 @@ const Sidebar = ({ open, onClose }) => {
                     <Box width={1} paddingX={5.5} paddingY={0}>
                         <Link to='/' style={{ textDecoration: 'none' }}>
                             <IconButton size='large' disabled>
-                            <Avatar
+                            {/* <Avatar
                                 alt="toad"
                                 src={toad}
                                 style={{ height: '90px', width: '90px' }}
                             >
-                            </Avatar>
+                            </Avatar> */}
                             </IconButton>
                             </Link>
                             </Box>
-                            <Box pb={2}>
+                            <Box p={2}>
                                 <Typography 
-                                    variant='h3' 
+                                    variant='h1' 
                                     component='div' 
                                     color={theme.palette.text.primary}
                                     fontWeight='bold'
                                     textDecoration='none'
                                     flexGrow={1}
-                                    ml="30px"
 
                                 >
                                     CRYPTOAD

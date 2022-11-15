@@ -1,3 +1,4 @@
+import image from "../assets/cryptoad.png"
 
 const typography = {
     fontFamily: [
@@ -12,6 +13,10 @@ const typography = {
     fontWeightBold: 600,
     h1: {
         // fontFamily: 'Orbitron',
+        // background: 'radial-gradient(circle farthest-corner at center center,white,#111) no-repeat',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundImage: `url(${image})`,
         fontSize: '2rem',
         fontWeight: 300,
         lineHeight: 1.25,

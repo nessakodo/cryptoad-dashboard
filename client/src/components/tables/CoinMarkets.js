@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import InputAdornment from '@mui/material/InputAdornment';
+import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -13,17 +14,21 @@ import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import SvgIcon from '@mui/material/SvgIcon';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useTheme } from '@mui/material/styles';
 
 import TablePaginationActions from './TablePaginationActions';
+import { Typography } from '@mui/material';
 
-const CoinMarkets = () => {
+const CoinMarkets = ( {loggedIn} ) => {
     const theme = useTheme();
 
     const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [toAdd, setToAdd] = useState(false)
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -53,6 +58,13 @@ const CoinMarkets = () => {
         fetchCoinMarkets();
     }, []);
 
+    function handleAdd() {
+        onAdd(coin)
+        setToAdd(!toAdd)
+        // setHideAlert("")
+        // setTimeout(function () { setHideAlert("hidden") }, 5000)
+    }
+
     return (
         <React.Fragment>
             <Box >
@@ -61,7 +73,7 @@ const CoinMarkets = () => {
                     sx={ { borderRadius: 4 } }
                     >
                         <CardContent >
-                            <Box sx={ { borderRadius: 4, padding: 0, mt: 1, letterSpacing: 2 }}>
+                            <Box sx={ { borderRadius: 4, padding: 0, mt: 1, letterSpacing: 2}}>
                                 <TextField
 
                                     fullWidth
@@ -71,7 +83,7 @@ const CoinMarkets = () => {
                                         startAdornment: (
                                             <InputAdornment position='start'>
                                                 <SvgIcon 
-                                                fontSize='large' color='action'>
+                                                fontSize='medium' color='action'>
                                                     <SearchIcon />
                                                 </SvgIcon>
                                             </InputAdornment>
@@ -86,13 +98,14 @@ const CoinMarkets = () => {
                     </Card>
                 </Box>
             </Box>
-            <Box sx={{ pt: 3, pb: 4}}>
-                <Card
-                sx={ { borderRadius: 4, padding: 2 } }>
-                    <Box sx={{  pb: 3 }}>
-                        <Table>
+            <Box sx={{ pt: 3, pb: 4}} justifyContent="center"
+            >
+                <Card 
+                sx={ { overflow: 'auto', borderRadius: 4, padding: 2 } }>
+                    <Box sx={{ pb: 3 }}>
+                        <Table  >
                             <TableHead>
-                                <TableRow>
+                                <TableRow >
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2}}>Image</TableCell>
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Name</TableCell>
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Symbol</TableCell>
@@ -100,6 +113,7 @@ const CoinMarkets = () => {
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>24h</TableCell>
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Volume</TableCell>
                                     <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Market Cap</TableCell>
+                                    {loggedIn ? <TableCell sx={{ fontWeight: 'bold', letterSpacing: 2 }}>Watchlist</TableCell> : <></>}
                                 </TableRow>
                             </TableHead>
                             <TableBody
@@ -109,11 +123,13 @@ const CoinMarkets = () => {
                                     : filteredCoins
                                 ).map(coin => (
                                     <TableRow hover key={coin.id}>
+                                        
                                         <TableCell>
                                             <img 
                                                 src={coin.image} 
-                                                alt='' 
+                                                alt={coin.name} 
                                                 style={{ height: '30px', width: '30px' }}
+                                                
                                             />
                                         </TableCell>
                                         <TableCell sx={{letterSpacing: 1 }}>{coin.name}</TableCell>
@@ -150,11 +166,50 @@ const CoinMarkets = () => {
                                         </TableCell>
                                         <TableCell sx={{letterSpacing: 2 }}>${coin.total_volume.toLocaleString()}</TableCell>
                                         <TableCell sx={{letterSpacing: 2 }}>${coin.market_cap.toLocaleString()}</TableCell>
+                                        <TableCell>
+                                                   <Stack
+                                                   display='flex'
+                                                   flexDirection="row"
+                                                    >
+                                                {loggedIn ?
+                                                    <div onClick={handleAdd}>
+                                                    
+                                                <Typography
+                                                sx={{
+                                                    display: {
+                                                        md: 'inline',
+                                                        xs: 'inline',
+                                                
+                                                },
+
+                                                }}
+                                                >{toAdd ? "Added" : "Add"}</Typography>
+                                                    {toAdd ? <CheckCircleIcon
+                                                    sx={{
+                                                        fontSize: '20px',
+                                                        ml: 3
+                                                        }}/>
+                                                        :
+                                                        <AddCircleOutlineIcon
+                                                        
+                                                        sx={{
+                                                        fontSize: '20px',
+                                                        ml: 3,
+                                                        }}/>
+                                                        }
+                                                        </div>
+                                                        :
+                                                        <></>
+                                                        }
+                                                        </Stack>
+                                        </TableCell>
+                                 
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
-                        <TablePagination
+                        <TablePagination 
+                        
                             rowsPerPageOptions={[]}
                             colSpan={3}
                             count={coins.length}
@@ -162,7 +217,7 @@ const CoinMarkets = () => {
                             page={page}
                             onPageChange={handleChangePage}
                             ActionsComponent={TablePaginationActions}
-                            sx={{ display:'flex', justifyContent: 'center' }}
+                            sx={{ display: 'flex', justifyContent: 'center' }}
                         />
                     </Box>
                 </Card>

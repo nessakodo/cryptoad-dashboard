@@ -1,6 +1,7 @@
 import React, { useState, useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -39,12 +40,22 @@ import CustomButton from '../components/CustomButton';
 
 
 import toad from "../assets/toad.png"
+import cryptoad from "../assets/cryptoad.png"
 
-const Header = ({ onSidebarOpen }) => {
+const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const anchorRef = useRef(null);
     const colorMode = useContext(ColorModeContext);
+
+    let history = useNavigate();
+
+      
+    function toLogin() {
+        history('/login');
+        location.reload();
+    }
+
   
     const handleOpen = () => {
       setOpen(true);
@@ -53,6 +64,19 @@ const Header = ({ onSidebarOpen }) => {
     const handleClose = () => {
       setOpen(false);
     };
+
+    function onSignOut() {
+        fetch('/logout', { method: "DELETE" })
+            .then(res => {
+                if (res.ok) {
+                    setCurrentUser(null)
+                    setLoggedIn(false);
+                    <Navigate to="/"/>;
+                }
+            })
+        location.reload();
+    }
+
   
     return (
         <React.Fragment>
@@ -61,7 +85,7 @@ const Header = ({ onSidebarOpen }) => {
                 sx={{
                     top: 0,
                     border: 0,
-                    padding: 1,
+                    padding: 0.5,
                     backgroundColor: theme.palette.mode === 'dark' 
                     ? theme.palette.background.default 
                     : theme.palette.background.default,
@@ -70,10 +94,10 @@ const Header = ({ onSidebarOpen }) => {
             >
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <Box
-                     display='flex'
-                     flexDirection="column"
-                     alignItems="center"
-                     justifyContent='center'
+                        display='flex'
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent='center'
                     >
                         <Box >
                             {/* <IconButton size='large' disabled>
@@ -85,21 +109,21 @@ const Header = ({ onSidebarOpen }) => {
                                 </Avatar>
                             </IconButton> */}
                         </Box>
-                        <Box>
+                        <Box
+                            mt= '10px'
+                            mb= '10px'
+                        >
                             <Typography 
                                 variant='h1' 
                                 component='div' 
-                                ml='10px'
-                                // color='theme.pallete.text.primary'
                                 sx={{
                                     flexGrow: 1,
                                     fontWeight: 'bold',
-                                    fontSize: "30px",
+                                    fontSize: '38px',
                                     display: {
                                         md: 'inline',
                                         xs: 'inline',
-                                        mr: '30px',
-                                        color: '#82ffa1',
+                                    
                                     },
                                     }}
                                 >
@@ -140,7 +164,7 @@ const Header = ({ onSidebarOpen }) => {
                         flexDirection="row"
                         width={1.0}
                         flexWrap="wrap"
-                        ml="180px"
+                        ml="140px"
                         maxHeight=''
                         sx={{
                             display: { lg: 'flex', md: 'none', xs: 'none'}
@@ -151,7 +175,7 @@ const Header = ({ onSidebarOpen }) => {
                             // icon={<HelpIcon />}
                             text='CONNECT'
                         />
-                          <CustomButton 
+                            <CustomButton 
                             href='/'
                             // icon={<DashboardIcon />}
                             text='DASHBOARD'
@@ -221,76 +245,86 @@ const Header = ({ onSidebarOpen }) => {
                                 horizontal: 'center',
                                 vertical: 'bottom'
                             }}
-                            keepMounted
                             onClose={handleClose}
                             open={open}
                             PaperProps={{
                                 sx: { width: 240 }
                             }}
                         >
-                            <Box sx={{ p: 2 }}>
-                                <Typography
-                                    color={theme.palette.text.primary}
-                                    variant='subtitle2'
-                                >
-                                    Bob
-                                </Typography>
-                                <Typography
-                                    color={theme.palette.text.secondary}
-                                    variant='subtitle2'
-                                >
-                                    Your plan: Free
-                                </Typography>
-                            </Box>
-                            <Divider />
-                            <Box sx={{ mt: 2 }}>
-                                <MenuItem
-                                    component={Link}
-                                    to='#'
-                                >
-                                    <ListItemIcon>
-                                        <UserIcon fontSize='small' />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={(
-                                            <Typography
-                                                color={theme.palette.text.primary}
-                                                variant='subtitle2'
-                                            >
-                                                Profile
-                                            </Typography>
-                                        )}
-                                    />
-                                </MenuItem>
-                                <MenuItem
-                                    component={Link}
-                                    to='#'
-                                >
-                                    <ListItemIcon>
-                                        <SettingsIcon fontSize='small' />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={(
-                                            <Typography
-                                                color={theme.palette.text.primary}
-                                                variant='subtitle2'
-                                            >
-                                                Settings
-                                            </Typography>
-                                        )}
-                                    />
-                                </MenuItem>
-                            </Box>
-                            <Box sx={{ p: 2 }}>
-                                <Button
-                                    color='primary'
-                                    fullWidth
-                                    variant='outlined'
-                                    href='#'
-                                >
-                                    Logout
-                                </Button>
-                            </Box>
+            <Box sx={{ p: 2 }}>
+                <Typography
+                    color={theme.palette.text.primary}
+                    variant='subtitle2'
+                >
+                    {loggedIn ? `${currentUser.name}` : "Guest"}
+                </Typography>
+                <Typography
+                    color={theme.palette.text.secondary}
+                    variant='subtitle2'
+                >
+                    Your plan: Free
+                </Typography>
+            </Box>
+            <Divider />
+            <Box sx={{ mt: 2 }}>
+                <MenuItem
+                    component={Link}
+                    to='#'
+                >
+                    <ListItemIcon>
+                        <UserIcon fontSize='small' />
+                    </ListItemIcon>
+                    <ListItemText
+                        primary={(
+                            <Typography
+                                color={theme.palette.text.primary}
+                                variant='subtitle2'
+                            >
+                                Profile
+                            </Typography>
+                        )}
+                    />
+                </MenuItem>
+                <MenuItem
+                    component={Link}
+                    to='#'
+                >
+                    <ListItemIcon>
+                        <SettingsIcon fontSize='small' />
+                    </ListItemIcon>
+                    <ListItemText
+                        primary={(
+                            <Typography
+                                color={theme.palette.text.primary}
+                                variant='subtitle2'
+                            >
+                                Settings
+                            </Typography>
+                        )}
+                    />
+                </MenuItem>
+                </Box>
+                <Box sx={{ p: 2 }}>
+                {loggedIn ?
+					 <Button
+                     onClick={onSignOut}
+                     color='primary'
+                     fullWidth
+                     variant='outlined'
+                     href='#'
+                 > Log Out
+                </Button>
+					:
+                    <Button
+                    onClick={toLogin}
+                    color='primary'
+                    fullWidth
+                    variant='outlined'
+                    href='#'
+                > Log In
+                </Button>
+				}
+                </Box>
                         </Popover>
                     </Box>
                     {theme.palette.mode === 'dark' && <Divider />}

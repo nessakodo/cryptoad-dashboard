@@ -66,6 +66,13 @@ export default {
         },
         typography: typography,
         components: components,
+        position: "sticky",
+        ellipsis: {
+            maxWidth: 200, // percentage also works
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          },
     }),
     light: createTheme({
         spacing: 10,
@@ -121,6 +128,16 @@ export default {
             },
             divider: 'rgba(0, 0, 0, 0.12)',
         },
+        ellipsis: {
+            maxWidth: 200, // percentage also works
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          },
+
         typography: typography,
+        components: components,
+        position: "sticky",
+        
     })
 };

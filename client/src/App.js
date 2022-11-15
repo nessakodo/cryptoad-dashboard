@@ -8,8 +8,13 @@ import { theme as customTheme } from './theme';
 import ColorModeContext from './components/ColorModeContext';
 import Layout from './layout/Layout';
 import Dashboard from './pages/Dashboard';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 
 const App = () => {
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [currentUser, setCurrentUser] = useState({})
+
     const [mode, setMode] = useState('dark');
     const colorMode = useMemo(
         () => ({
@@ -31,6 +36,26 @@ const App = () => {
         }
     }, []);
 
+     // log in fetch
+   useEffect(() => {
+    fetch(`/logged_in`)
+      .then(res => {
+        if (res.ok) {
+          setLoggedIn(true)
+          res.json()
+            .then(
+              user => {
+                setCurrentUser(user)
+                // setMyJobs(candidate.jobs)
+                // fetchProfPhoto(candidate.id)
+              }
+            )
+        }
+      }
+      )
+  }, [loggedIn]);
+
+
     return (
         <HelmetProvider>
             <Helmet 
@@ -39,9 +64,32 @@ const App = () => {
                 <ThemeProvider theme={customTheme[mode]}>
                     <CssBaseline />
                     <BrowserRouter>
-                        <Layout>
+                        <Layout
+                         loggedIn={loggedIn}
+                         currentUser={currentUser}
+                         setLoggedIn={setLoggedIn}
+                         setCurrentUser={setCurrentUser}  
+                         >
                             <Routes>
-                                <Route exact path='/' element={<Dashboard />} />
+                                <Route exact path='/' element=
+                                {<Dashboard 
+                                loggedIn={loggedIn}
+                                />} />
+                                <Route exact path='/login' 
+                                element={
+                                    <Login 
+                                    setCurrentUser={setCurrentUser}
+                                    setLoggedIn={setLoggedIn}
+                                    />} 
+                                />
+
+                                <Route exact path='/signup' 
+                                element=
+                                    {<Signup 
+                                    setCurrentUser={setCurrentUser}
+                                    setLoggedIn={setLoggedIn}
+                                    />} 
+                                />
                             </Routes>
                         </Layout>
                     </BrowserRouter>

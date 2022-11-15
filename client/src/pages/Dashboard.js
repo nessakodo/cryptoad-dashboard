@@ -20,7 +20,7 @@ import AreaChart from '../components/charts/AreaChart';
 import Spacer from '../components/Spacer';
 
 
-const Dashboard = () => {
+const Dashboard = ( {loggedIn}) => {
     const theme = useTheme();
     
     return (
@@ -35,7 +35,7 @@ const Dashboard = () => {
                     py: 8
                 }}
             >
-                <Container maxWidth={false}>
+                <Container maxWidth={true}>
                     <Grid container spacing={3}>
 
                         <DashboardHeader 
@@ -57,8 +57,9 @@ const Dashboard = () => {
                             <MarketIndexes />
                         </Grid>
 
-                        <Grid item xs={12}>
-                            <CoinMarkets />
+                        <Grid item lg={12} sm={12} xl={12} xs={12} maxWidth={true}>
+                            <CoinMarkets 
+                            loggedIn={loggedIn}/>
                         </Grid>
 
                         <Grid item xs={12}>

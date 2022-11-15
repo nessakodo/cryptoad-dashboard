@@ -13,7 +13,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 
-const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
+const Auth = ({ children }) => {
     const theme = useTheme();
     const isLg = useMediaQuery(
         theme.breakpoints.up('lg'),
@@ -51,18 +51,13 @@ const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn }
         <Box 
             id='page-top'
             sx={{
-                backgroundColor: theme.palette.background.default,
-                height: '100%',
-                paddingTop: '90px'
+               xs: 'none', xl: 'none', lg: 'none' 
             }}
         >
-            <Header 
-            onSidebarOpen={handleSidebarOpen} 
-            loggedIn={loggedIn}
-            setCurrentUser={setCurrentUser}
-            currentUser={currentUser}
-            setLoggedIn={setLoggedIn}
-            />
+            <Header onSidebarOpen={handleSidebarOpen} 
+             sx={{
+                xs: 'none', md: 'none', xl: 'none', lg: 'none' 
+             }}/>
             <Sidebar 
                 onClose={handleSidebarClose}
                 open={open}
@@ -101,8 +96,8 @@ const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn }
     );
 };
 
-Layout.propTypes = {
+Auth.propTypes = {
     children: PropTypes.node
 };
 
-export default Layout;
+export default Auth;
