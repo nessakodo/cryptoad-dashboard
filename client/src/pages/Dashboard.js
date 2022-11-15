@@ -20,7 +20,7 @@ import AreaChart from '../components/charts/AreaChart';
 import Spacer from '../components/Spacer';
 
 
-const Dashboard = ( {loggedIn}) => {
+const Dashboard = ( {loggedIn, onAdd, setCoins, coins}) => {
     const theme = useTheme();
     
     return (
@@ -59,7 +59,10 @@ const Dashboard = ( {loggedIn}) => {
 
                         <Grid item lg={12} sm={12} xl={12} xs={12} maxWidth={true}>
                             <CoinMarkets 
-                            loggedIn={loggedIn}/>
+                            onAdd={onAdd}
+                            loggedIn={loggedIn}
+                            coins={coins}
+                            setCoins={setCoins}/>
                         </Grid>
 
                         <Grid item xs={12}>

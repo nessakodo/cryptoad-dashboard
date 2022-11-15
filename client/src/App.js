@@ -14,6 +14,8 @@ import Login from './pages/Login';
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
+    const [coins, setCoins] = useState([])
+
 
     const [mode, setMode] = useState('dark');
     const colorMode = useMemo(
@@ -46,7 +48,7 @@ const App = () => {
             .then(
               user => {
                 setCurrentUser(user)
-                // setMyJobs(candidate.jobs)
+                // setMyWatchlist(candidate.jobs)
                 // fetchProfPhoto(candidate.id)
               }
             )
@@ -55,6 +57,23 @@ const App = () => {
       )
   }, [loggedIn]);
 
+
+  
+  function onAdd(addedCoin) {
+    const add = {
+      user_id: currentUser.id,
+      coin_id: addedCoin.id,
+      added: true
+    }
+    fetch('/added_coins', {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(add),
+    })
+      .then((res) => res.json())
+      .then(setMyCoins([...myCoins, addedCoin]))
+
+  }
 
     return (
         <HelmetProvider>
@@ -73,10 +92,14 @@ const App = () => {
                             <Routes>
                                 <Route exact path='/' element=
                                 {<Dashboard 
-                                loggedIn={loggedIn}
+                                    loggedIn={loggedIn}
+                                    onAdd={onAdd}
+                                    coins={coins}
+                                    setCoins={setCoins}
+
                                 />} />
                                 <Route exact path='/login' 
-                                element={
+                                    element={
                                     <Login 
                                     setCurrentUser={setCurrentUser}
                                     setLoggedIn={setLoggedIn}
@@ -84,7 +107,7 @@ const App = () => {
                                 />
 
                                 <Route exact path='/signup' 
-                                element=
+                                    element=
                                     {<Signup 
                                     setCurrentUser={setCurrentUser}
                                     setLoggedIn={setLoggedIn}

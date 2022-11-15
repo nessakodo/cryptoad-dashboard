@@ -21,10 +21,10 @@ import { useTheme } from '@mui/material/styles';
 import TablePaginationActions from './TablePaginationActions';
 import { Typography } from '@mui/material';
 
-const CoinMarkets = ( {loggedIn} ) => {
+const CoinMarkets = ( {loggedIn, onAdd, setCoins, coins} ) => {
     const theme = useTheme();
 
-    const [coins, setCoins] = useState([]);
+    // const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -59,7 +59,7 @@ const CoinMarkets = ( {loggedIn} ) => {
     }, []);
 
     function handleAdd() {
-        onAdd(coin)
+        onAdd(coins)
         setToAdd(!toAdd)
         // setHideAlert("")
         // setTimeout(function () { setHideAlert("hidden") }, 5000)
@@ -172,7 +172,7 @@ const CoinMarkets = ( {loggedIn} ) => {
                                                    flexDirection="row"
                                                     >
                                                 {loggedIn ?
-                                                    <div onClick={handleAdd}>
+                                                    <Box>
                                                     
                                                 <Typography
                                                 sx={{
@@ -191,13 +191,13 @@ const CoinMarkets = ( {loggedIn} ) => {
                                                         }}/>
                                                         :
                                                         <AddCircleOutlineIcon
-                                                        
+                                                        onClick={handleAdd}
                                                         sx={{
                                                         fontSize: '20px',
                                                         ml: 3,
                                                         }}/>
                                                         }
-                                                        </div>
+                                                        </Box>
                                                         :
                                                         <></>
                                                         }
