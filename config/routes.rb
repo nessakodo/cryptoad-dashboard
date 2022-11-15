@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # All routes 
   resources :users
   resources :sessions, only: [:create]
+  resources :added_coins
 
   # Test
   get '/hello', to: 'application#hello_world'
