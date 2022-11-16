@@ -54,6 +54,7 @@ const CoinMarkets = ( {loggedIn, onAdd, setCoins, coins} ) => {
         .catch(error => console.log(error));
     };
 
+
     useEffect(() => {
         fetchCoinMarkets();
     }, []);
