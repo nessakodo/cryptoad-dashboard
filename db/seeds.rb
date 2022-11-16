@@ -2,7 +2,7 @@ User.destroy_all
 Coin.destroy_all
 Position.destroy_all
 
-nessa = User.create(email: 'nessa@nessakodo.com', name: 'Nessa Kodo', password: 'kodo', password_confirmation: 'kodo', admin: true)
+nessa = User.create(email: 'nessa@nessakodo.com', name: 'Nessa Kodo', password: 'kodo', password_confirmation: 'kodo')
 
 BTC = Coin.create(name: 'Bitcoin', symbol: 'BTC', api_id: '90')
 LTC = Coin.create(name: 'Litecoin', symbol: 'LTC', api_id: '1')
