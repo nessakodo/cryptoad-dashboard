@@ -5,7 +5,7 @@ import Portfolio from './Portfolio'
 
 import axios from 'axios'
 
-class Connect extends Component {
+class PortfolioContainer extends Component {
   state = {
     portfolio: [],
     search_results: [],
@@ -86,4 +86,4 @@ class Connect extends Component {
   }
 }
 
-export default Connect
+export default PortfolioContainer

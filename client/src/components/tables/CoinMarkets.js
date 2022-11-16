@@ -21,10 +21,11 @@ import { useTheme } from '@mui/material/styles';
 import TablePaginationActions from './TablePaginationActions';
 import { Typography } from '@mui/material';
 
-const CoinMarkets = ( {loggedIn, onAdd, setCoins, coins} ) => {
+const CoinMarkets = ( {loggedIn, onAdd} ) => {
     const theme = useTheme();
 
-    // const [coins, setCoins] = useState([]);
+    const [coins, setCoins] = useState([]);
+    const [coin, setCoin] = useState([])
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -50,6 +51,7 @@ const CoinMarkets = ( {loggedIn, onAdd, setCoins, coins} ) => {
         })
         .then(response => {
             setCoins(response.data);
+            console.log(coins)
         })
         .catch(error => console.log(error));
     };
@@ -59,12 +61,19 @@ const CoinMarkets = ( {loggedIn, onAdd, setCoins, coins} ) => {
         fetchCoinMarkets();
     }, []);
 
+
+
     function handleAdd() {
-        onAdd(coins)
+        coins.map()
+        setCoin(coin.id)
+        // onAdd(coin.id)
         setToAdd(!toAdd)
         // setHideAlert("")
         // setTimeout(function () { setHideAlert("hidden") }, 5000)
+        console.log(coin.id)
     }
+
+ 
 
     return (
         <React.Fragment>

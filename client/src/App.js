@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, Component, useEffect, useMemo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { ThemeProvider } from '@mui/material/styles';
@@ -15,11 +15,17 @@ import Login from './pages/Login';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile'
 
+// import axios from 'axios'
+
+// const csrfToken = document.querySelector('[name="csrf-token"]').content
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+
+
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
     const [coins, setCoins] = useState([])
-    const [myJobs, setMyJobs] = useState([])
 
 
     const [mode, setMode] = useState('dark');
@@ -64,10 +70,10 @@ const App = () => {
 
 
   
-  function onAdd(addedCoin) {
+  function onAdd() {
     const add = {
       user_id: currentUser.id,
-      coin_id: addedCoin.id,
+      coin_id: coin.id,
       added: true
     }
     fetch('/added_coins', {
@@ -76,7 +82,7 @@ const App = () => {
       body: JSON.stringify(add),
     })
       .then((res) => res.json())
-      .then(setMyCoins([...myCoins, addedCoin]))
+      .then(setMyCoins([...coins, coin]))
 
   }
 

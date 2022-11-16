@@ -35,7 +35,7 @@ import Spacer from '../components/Spacer';
 
 const Profile = ( {onAdd, setCoins, coins, currentUser, loggedIn}) => {
     const theme = useTheme();
-
+  
 
     
     return (
