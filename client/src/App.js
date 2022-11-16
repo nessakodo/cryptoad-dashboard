@@ -9,8 +9,11 @@ import ColorModeContext from './components/ColorModeContext';
 import Layout from './layout/Layout';
 import Dashboard from './pages/Dashboard';
 import Trades from './pages/Trades';
+import Connect from './pages/Connect'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Settings from './pages/Settings';
+import Profile from './pages/Profile'
 
 const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
@@ -119,6 +122,39 @@ const App = () => {
                                 <Route exact path='/trades' 
                                     element={
                                     <Trades 
+                                    currentUser={currentUser}
+                                    loggedIn={loggedIn}
+                                    onAdd={onAdd}
+                                    coins={coins}
+                                    setCoins={setCoins}
+
+                                    />} 
+                                />
+                                 <Route exact path='/connect' 
+                                    element={
+                                    <Connect 
+                                    currentUser={currentUser}
+                                    loggedIn={loggedIn}
+                                    onAdd={onAdd}
+                                    coins={coins}
+                                    setCoins={setCoins}
+
+                                    />} 
+                                />
+                                <Route exact path='/profile' 
+                                    element={
+                                    <Profile 
+                                    currentUser={currentUser}
+                                    loggedIn={loggedIn}
+                                    onAdd={onAdd}
+                                    coins={coins}
+                                    setCoins={setCoins}
+
+                                    />} 
+                                />
+                                <Route exact path='/settings' 
+                                    element={
+                                    <Settings 
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     onAdd={onAdd}

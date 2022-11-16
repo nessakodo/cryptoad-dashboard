@@ -55,7 +55,16 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
         history('/login');
         location.reload();
     }
+    
+    function toProfile() {
+        history('/profile');
+        location.reload();
+    }
 
+    function toSettings() {
+        history('/settings');
+        location.reload();
+    }
   
     const handleOpen = () => {
       setOpen(true);
@@ -275,6 +284,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                         <UserIcon fontSize='small' />
                     </ListItemIcon>
                     <ListItemText
+                        onClick={toProfile}
                         primary={(
                             <Typography
                                 color={theme.palette.text.primary}
@@ -293,6 +303,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                         <SettingsIcon fontSize='small' />
                     </ListItemIcon>
                     <ListItemText
+                        onClick={toSettings}
                         primary={(
                             <Typography
                                 color={theme.palette.text.primary}
