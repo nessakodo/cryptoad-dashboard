@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material/styles';
 import DashboardHeader from '../components/DashboardHeader';
 
 import WelcomeCard from '../components/WelcomeCard';
-import CoinsCard from '../components/statistics/BotsCard';
+import CoinsCard from '../components/statistics/CoinsCard';
 import PositionsCard from '../components/statistics/PositionsCard';
 import BotsCard from '../components/statistics/BotsCard';
 import TradesCard from '../components/statistics/TradesCard';

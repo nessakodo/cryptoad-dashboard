@@ -1,6 +1,14 @@
 User.destroy_all
 Coin.destroy_all
 Position.destroy_all
+Bot.destroy_all
+
+Bot.create(name: "Arbitrage", description: "Arbitrage involves buying from one platform and selling on another to make a profit. The main aim of arbitrage is to take advantage of the price imbalance across multiple platforms when placing a trade.")
+Bot.create(name: "Coin Lending", description: "One way to profit from cryptocurrency trading is to lend coins to margin traders, with the understanding that they will pay back the loan with an additional percentage. Certain crypto exchange platforms offer users this option, although it can be very tedious to manually set the parameters for payments and new loan requests." )
+Bot.create(name: "Margin Trading", description: "Margin trading refers to borrowing funds from an exchange to execute a trade larger than the equity of the trader's account. It involves leveraging on third-party capital to execute a trade. In margin trading, traders can execute a buy if they believe that the price of a coin will go up and also take a sell when there's a drawdown.")
+Bot.create(name: "Market Making", description: "First, we need to understand the term “market making.” This refers to buying and selling an asset to take advantage of the difference between the bid and ask prices, which is known as the spread. A market making bot is one that is used to provide liquidity and, as a result, establishes a certain level of trust within the crypto ecosystem.")
+Bot.create(name: "Technical", description: "Technical trading bots are the most frequently used bots on the market today. Employing predefined technical indicators, these trading bots predict future price movements of a coin using predefined indicators and signals, which are then used to make a profit.")
+
 
 nessa = User.create(email: 'nessa@nessakodo.com', name: 'Nessa Kodo', password: 'kodo', password_confirmation: 'kodo')
 

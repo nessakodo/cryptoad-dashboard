@@ -9,35 +9,35 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const CoinsCard = () => {
+const BotsCard = () => {
     const theme = useTheme();
 
-    const [exchanges, setExchanges] = useState([]);
+    const [bots, setBots] = useState([]);
 
-    const fetchExchanges = () => {
+    const fetchBots = () => {
         axios.get('https://api.coingecko.com/api/v3/exchanges', {
             headers: {
                 'Accept': 'application/json',
             }
         })
         .then(response => {
-            setExchanges(response.data);
+            setBots(response.data);
         })
         .catch(error => console.log(error));
     };
 
     useEffect(() => {
-        fetchExchanges();
+        fetchBots();
     }, []);
     
     return (
         <CustomCard 
             text='EXCHANGES'
-            value={exchanges.length}
+            // value={exchanges.length}
             color={theme.palette.success.dark}
-            icon={ChartAreaIcon}
+            // icon={ChartAreaIcon}
         />
     );
 };
 
-export default CoinsCard;
+export default BotsCard;

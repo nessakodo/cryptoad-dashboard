@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+# Resources routes 
+  resources :currencies
+  resources :users
+  resources :sessions, only: [:create]
+  resources :bots
+  resources :active_bots
+
 # API routes
   scope '/api' do
     get 'coins/list' => 'coins#list'
@@ -9,7 +16,7 @@ Rails.application.routes.draw do
     get 'positions/delete/:id' => 'positions#delete'
     resources :positions
     # post 'user_token' => 'user_token#create'
-    get 'whoami' => 'positions#whoami'
+    # get 'whoami' => 'positions#whoami'
   end
 
 
@@ -17,10 +24,6 @@ Rails.application.routes.draw do
   post 'search', to: 'currencies#search'
   post 'calculate', to: 'currencies#calculate'
 
-  # User routes 
-  resources :currencies
-  resources :users
-  resources :sessions, only: [:create]
 
   # Authenication routes
   post '/signup', to: 'users#create'
@@ -28,5 +31,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/logged_in", to: "sessions#logged_in"
 
+   # Remove bot route
+   delete "/remove", to: "bots#remove"
 
 end

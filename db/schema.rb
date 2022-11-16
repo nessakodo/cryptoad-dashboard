@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_16_190232) do
+ActiveRecord::Schema.define(version: 2022_11_16_203917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_bots", force: :cascade do |t|
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.bigint "bot_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bot_id"], name: "index_active_bots_on_bot_id"
+    t.index ["user_id"], name: "index_active_bots_on_user_id"
+  end
+
+  create_table "bots", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_bots_on_user_id"
+  end
 
   create_table "coins", force: :cascade do |t|
     t.string "name"
@@ -53,6 +73,9 @@ ActiveRecord::Schema.define(version: 2022_11_16_190232) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_bots", "bots"
+  add_foreign_key "active_bots", "users"
+  add_foreign_key "bots", "users"
   add_foreign_key "positions", "coins"
   add_foreign_key "positions", "users"
 end
