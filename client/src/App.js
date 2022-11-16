@@ -8,6 +8,7 @@ import { theme as customTheme } from './theme';
 import ColorModeContext from './components/ColorModeContext';
 import Layout from './layout/Layout';
 import Dashboard from './pages/Dashboard';
+import Trades from './pages/Trades';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 
@@ -93,6 +94,7 @@ const App = () => {
                             <Routes>
                                 <Route exact path='/' element=
                                 {<Dashboard 
+                                    currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     onAdd={onAdd}
                                     coins={coins}
@@ -112,6 +114,17 @@ const App = () => {
                                     {<Signup 
                                     setCurrentUser={setCurrentUser}
                                     setLoggedIn={setLoggedIn}
+                                    />} 
+                                />
+                                <Route exact path='/trades' 
+                                    element={
+                                    <Trades 
+                                    currentUser={currentUser}
+                                    loggedIn={loggedIn}
+                                    onAdd={onAdd}
+                                    coins={coins}
+                                    setCoins={setCoins}
+
                                     />} 
                                 />
                             </Routes>

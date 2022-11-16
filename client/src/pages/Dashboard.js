@@ -20,7 +20,7 @@ import AreaChart from '../components/charts/AreaChart';
 import Spacer from '../components/Spacer';
 
 
-const Dashboard = ( {loggedIn, onAdd, setCoins, coins}) => {
+const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
     const theme = useTheme();
     
     return (

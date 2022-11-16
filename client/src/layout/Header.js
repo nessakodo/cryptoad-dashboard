@@ -171,7 +171,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                         }}
                     >
                         <CustomButton 
-                            href='#'
+                            href='/connect'
                             // icon={<HelpIcon />}
                             text='CONNECT'
                         />
@@ -181,7 +181,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                             text='DASHBOARD'
                         />
                         <CustomButton 
-                            href='#'
+                            href='/trades'
                             // icon={<EmailIcon />}
                             text='TRADES'
                         />
