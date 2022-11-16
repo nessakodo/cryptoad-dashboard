@@ -1,7 +1,7 @@
 class AddedCoinSerializer < ActiveModel::Serializer
     attributes :id, :added, :coin_name, :user_name
   
-    has_one :user
+    # has_one :user
     # has_one :coin
 
   
@@ -9,8 +9,8 @@ class AddedCoinSerializer < ActiveModel::Serializer
       "#{object.coin.name}"
     end
   
-    def user_name
-      "#{object.user.name}"
-    end
+    # def user_name
+    #   "#{object.user.name}"
+    # end
   
   end

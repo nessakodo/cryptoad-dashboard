@@ -15,6 +15,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
     const [coins, setCoins] = useState([])
+    const [myJobs, setMyJobs] = useState([])
 
 
     const [mode, setMode] = useState('dark');
