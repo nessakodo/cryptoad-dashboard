@@ -62,9 +62,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
                             /> */}
                         {/* </Avatar> */}
                     </Grid>
-                    <Grid item>
-                        Yo
-                    </Grid>
+                  
                 </Grid>
             </CardContent>
         </Card>
