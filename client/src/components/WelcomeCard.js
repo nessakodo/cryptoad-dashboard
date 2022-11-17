@@ -18,6 +18,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
     return (
         <Card
         sx={ { borderRadius: 4, p: 2 } }
+       
         >
             <CardContent>
                 <Grid 
@@ -56,7 +57,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                         </Grid>
                     </Grid>
 
-                    <Spacer sx={{m: 4}}/>
+                    <Spacer sx={{m: 3}}/>
                      
                    
                     {/* <Grid item> */}
@@ -96,14 +97,14 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                     </Grid>
                 }
 
-                        <Spacer sx={{m: 4}}/>
+                        <Spacer sx={{m: 2}}/>
                     <Button
                         alignContent= 'center'
                         justifyContent='center'
                         color='primary'
                         variant='outlined'
                         href='/settings'
-                        sx={{height: 50, width: 230, fontSize: '15px'}}
+                        sx={{height: 40, width: 200, fontSize: '13px'}}
                         > Manage Membership
                     </Button>
                   

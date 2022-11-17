@@ -75,7 +75,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
                     py: 8,
-                    mt: '-700px'
+                    mt: '-720px'
                 }}
             >
                 <Container maxWidth={true}>
@@ -89,7 +89,6 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                         />
                     </Grid>
 
-                    <Spacer sx={{m: 5}}/>
 
              
    
@@ -104,7 +103,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 6,
+                    py: 2,
                 }}
                 >
 
@@ -128,7 +127,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                sx={{height: 50, width: 250, fontSize: '15px'}}
+                                sx={{mt: '80px', height: 50, width: 250, fontSize: '15px'}}
                                 > Edit User Profile
                             </Button>
 
