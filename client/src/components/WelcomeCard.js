@@ -104,7 +104,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                         color='primary'
                         variant='outlined'
                         href='/settings'
-                        sx={{height: 40, width: 200, fontSize: '13px'}}
+                        sx={{height: 40, width: 200, fontSize: '13px', borderRadius: 4 }}
                         > Manage Membership
                     </Button>
                   

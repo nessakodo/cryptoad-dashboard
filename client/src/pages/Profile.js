@@ -122,12 +122,13 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
 
                             
                             <Button
+                        
                                 onClick={onEdit}
                                 alignContent= 'center'
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                sx={{mt: '80px', height: 50, width: 250, fontSize: '15px'}}
+                                sx={{mt: '80px', height: 50, width: 250, fontSize: '15px', borderRadius: 4  }}
                                 > Edit User Profile
                             </Button>
 
@@ -174,7 +175,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
 
     <Grid item lg={3} sm={12} xl={3} xs={12}>
 
-    <Stack width='70' display='flex' flexDirection='row'>
+    <Stack width='70' display='flex' flexDirection='row' >
         <FormLabel sx={{mt: '15px', mr: '25px'}}>
             Email: 
         </FormLabel>
@@ -266,7 +267,7 @@ fullWidth
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                sx={{height: 50, width: 250, fontSize: '15px'}}
+                                sx={{height: 50, width: 250, fontSize: '15px', borderRadius: 4 }}
                                 > Submit Changes
                             </Button>
 </Grid>

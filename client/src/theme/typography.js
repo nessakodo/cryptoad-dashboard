@@ -1,4 +1,7 @@
 import image from "../assets/cryptoad.png"
+import gradient from "../assets/gradient.png"
+import spin from "../assets/spin.png"
+import green from "../assets/green.png"
 
 const typography = {
     fontFamily: [
@@ -16,7 +19,7 @@ const typography = {
         // background: 'radial-gradient(circle farthest-corner at center center,white,#111) no-repeat',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${gradient})`,
         fontSize: '2rem',
         fontWeight: 300,
         lineHeight: 1.25,
@@ -56,6 +59,24 @@ const typography = {
         fontWeight: 500,
         lineHeight: 1.25,
         letterSpacing: 1,
+    },
+    h7: {
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundImage: `url(${spin})`,
+        fontSize: '2rem',
+        fontWeight: 300,
+        lineHeight: 1.25,
+        letterSpacing: 3,
+    },
+    h8: {
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundImage: `url(${green})`,
+        fontSize: '2rem',
+        fontWeight: 300,
+        lineHeight: 1.25,
+        letterSpacing: 3,
     },
     overline: {
         fontFamily: 'Orbitron',

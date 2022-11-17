@@ -210,6 +210,8 @@ const App = () => {
                                     onAdd={onAdd}
                                     coins={coins}
                                     setCoins={setCoins}
+                                    setMembership={setMembership}
+                                    membership={membership}
 
                                     />} 
                                 />
