@@ -16,6 +16,7 @@
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "chartjs-plugin-datalabels": "^2.0.0",
+    "mui-image": "^1.0.7",
     "numeral": "^2.0.6",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",

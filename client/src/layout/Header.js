@@ -1,4 +1,8 @@
 import React, { useState, useRef, useContext } from 'react';
+import toady from "../assets/toady.png"
+import CardMedia from '@mui/material/CardMedia';
+
+import { Image } from 'mui-image'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -92,9 +96,10 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
             <AppBar
                 elevation={12}
                 sx={{
+                   
                     top: 0,
                     border: 0,
-                    padding: 0.5,
+                    padding: 0.0,
                     backgroundColor: theme.palette.mode === 'dark' 
                     ? theme.palette.background.default 
                     : theme.palette.background.default,
@@ -103,6 +108,7 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
             >
                 <Link to='/' style={{ textDecoration: 'none' }}>
                     <Box
+                    sx={{ mb: '-12px',}}
                         display='flex'
                         flexDirection="column"
                         alignItems="center"
@@ -119,16 +125,17 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                             </IconButton> */}
                         </Box>
                         <Box
-                            mt= '10px'
+                            mt= '6px'
                             mb= '0px'
                         >
+                               <Image src={toady} sx={{maxHeight: '50px', maxWidth: '50px', mb:'4px'}}></Image>
                             <Typography 
                                 variant='h1' 
                                 component='div' 
                                 sx={{
                                     flexGrow: 1,
                                     fontWeight: 'bold',
-                                    fontSize: '38px',
+                                    fontSize: '30px',
                                     display: {
                                         md: 'inline',
                                         xs: 'inline',
@@ -153,7 +160,7 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                             onClick={() => onSidebarOpen()}
                             aria-label='Menu'
                             sx={{
-                                borderRadius: 2,
+                                borderRadius: 4,
                                 minWidth: '20px',  
                                 minHeight: '20px', 
                                 color: theme.palette.text.secondary,
@@ -173,9 +180,10 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                         flexDirection="row"
                         width={1.0}
                         flexWrap="wrap"
-                        ml="140px"
+                        ml="160px"
+                        mt='10px'
                         maxHeight=''
-                        sx={{
+                        sx={{ 
                             display: { lg: 'flex', md: 'none', xs: 'none'}
                         }}
                     >
@@ -198,7 +206,7 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                     <Divider
                         orientation='vertical'
                         sx={{ 
-                            height: 22, 
+                            height: 28, 
                             mx: 2,
                             display: { lg: 'flex', md: 'none', xs: 'none' }
                         }}
