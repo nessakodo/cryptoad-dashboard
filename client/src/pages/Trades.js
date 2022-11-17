@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import WelcomeCard from '../components/WelcomeCard';
 import PositionsCard from '../components/statistics/PositionsCard';
 import BotsList from '../components/statistics/BotsList';
-import ActiveCard from '../components/statistics/ActiveCard';
+import ActiveList from '../components/statistics/ActiveList';
 import TradingHeader from '../components/TradingHeader';
 import PositionsForm from '../components/statistics/PositionsForm';
 import WalletStatus from '../components/statistics/WalletStatus';
@@ -75,17 +75,17 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
 
                     <Grid container spacing={3}>
 
-                        <Grid item lg={3} sm={6} xl={3} xs={12}>
-                            <ActiveCard 
+                        <Grid item lg={12} sm={12} xl={12} xs={12}>
+                            <ActiveList 
                             loggedIn={loggedIn}
                             currentUser={currentUser}
                             handleIsActive={handleIsActive}
                             isActive={isActive}
                             setActive={setActive}
-                            bots={bots}
                             setBots={setBots}
                             myBots={myBots}
                             setMyBots={setMyBots}
+                            membership={membership}
                             />
                         </Grid>
 
@@ -93,13 +93,7 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
 
                     <Spacer sx={{m: 3}}/>
 
-                    <Grid container spacing={3}>
-
-                        <Grid item lg={3} sm={6} xl={3} xs={12}>
-                            <PositionsCard />
-                        </Grid>
-
-                    </Grid>
+                  
 
                     <Spacer sx={{m: 6}}/>
 

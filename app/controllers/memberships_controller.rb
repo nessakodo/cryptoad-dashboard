@@ -15,13 +15,13 @@ class MembershipsController < Knock::AuthTokenController
         render json: "You have successfully downgraded to the free plan.", status: :accepted
     end
 
-    def membership  
-        if self.user.membership == false
-          self.user.membership = true
-        end
-      end
+    # def membership  
+    #     if self.user.membership == false
+    #       self.user.membership = true
+    #     end
+    #   end
     
-    After self.user.membership = true add self.user.save
+    # After self.user.membership = true add self.user.save
 
 private
 

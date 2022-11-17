@@ -46,14 +46,14 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                             {description}
                         </Typography>
                         
-                            {membership ?
+                            {loggedIn ?
                                     
                                 <Stack
                                 display='flex'
                                 flexDirection="row"
                                 justifyContent='center'
-                                // position= "absolute"
-                                // bottom= '25px'
+                                position= "absolute"
+                                bottom= '15px'
                                 >
                                 <Typography
                                 sx={{ ml: 3}}

@@ -72,7 +72,7 @@ const App = () => {
             } else {
                 setMembership(false)
             }
-            console.log(currentUser.membership)
+            // console.log(currentUser.membership)
         }
       }
     )
@@ -150,6 +150,26 @@ const App = () => {
 
     useEffect(() => {
         fetchBots();
+    }, []);
+
+
+
+    
+    const fetchMyBots = () => {
+        axios.get(`/active/bots${currentUser.id}`, {
+            headers: {
+                'Accept': 'application/json',
+            }
+        })
+        .then(response => {
+            setMyBots(response.data);
+            console.log(myBots)
+        })
+        .catch(error => console.log(error));
+    };
+
+    useEffect(() => {
+        fetchMyBots();
     }, []);
 
     

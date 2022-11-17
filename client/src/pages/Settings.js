@@ -49,18 +49,22 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
     }
 
 
-    function handleUpgrade(e) {
-        fetch(`/users/${currentUser.id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+   
+    function handleUpgrade() {
+        const upgrade = {
+          user_id: currentUser.id,
+          membership: true
+        }
+        fetch(`/memberships/${currentUser.id}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(upgrade),
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setCurrentUser(data)
-                setMembership(true)
-            });
-    }
+          .then((res) => res.json())
+          .then(setMembership(true))
+    
+      }
+    
 
     function handleDowngrade(e) {
         fetch(`/users/${currentUser.id}`, {
