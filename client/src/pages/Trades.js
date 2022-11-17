@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 
 
-const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots}) => {
+const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots, membership, setMembership}) => {
     const theme = useTheme();
 
     useEffect(() => {
@@ -48,10 +48,10 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
 
                     <Spacer sx={{m: 3}}/>
 
-                    <Grid  alignContent='center' justifyContent='center'
+                    <Grid  alignContent='center' justifyContent= 'center' 
                      sx={{  display: 'flex', flexDirection: 'row' }}>
-                        <Grid item lg={12} sm={12} xl={12} xs={12}  gap={3}
-                        sx={{  display: 'flex', flexDirection: 'row' }}>
+                        <Grid item lg={4} sm={12} xl={4} xs={12}  gap={3}
+                        sx={{  display: 'flex', flexDirection: 'row', wrap: 'wrap'}}>
                             <BotsList 
                             loggedIn={loggedIn}
                             currentUser={currentUser}
@@ -63,6 +63,8 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
                             myBots={myBots}
                             setMyBots={setMyBots}
                             onAddBots={onAddBots}
+                            setMembership={setMembership}
+                            membership={membership}
 
                             />
                         </Grid>

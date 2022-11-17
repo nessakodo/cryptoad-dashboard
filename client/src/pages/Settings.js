@@ -49,7 +49,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
     }
 
 
-    function handleSubmit(e) {
+    function handleUpgrade(e) {
         fetch(`/users/${currentUser.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -58,10 +58,24 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
             .then((res) => res.json())
             .then((data) => {
                 setCurrentUser(data)
-                // setShowEdit(false)
-                // form.reset()
+                setMembership(true)
             });
     }
+
+    function handleDowngrade(e) {
+        fetch(`/users/${currentUser.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setCurrentUser(data)
+                setMembership(false)
+            });
+    }
+
+    
 
     function onEdit() {
         setEdit(!edit)
@@ -85,9 +99,9 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                 <Stack maxWidth={true} >
 
                     <Grid fullWidth
-                    sx={{padding: 2}}
+                    sx={{padding: 1}}
                         
-                        container spacing={6}
+                        container spacing={3}
                         alignContent= 'center'
                         justifyContent='center'
                         alignItems='center'
@@ -98,7 +112,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                           
                         <Card
                         
-        sx={ { borderRadius: 4, height: '444px', p: '30px'} }
+        sx={ { borderRadius: 4, height: '330px', p: '4px'} }
         >
             <CardContent>
                 <Grid 
@@ -116,17 +130,17 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         >
                             CRYPTOAD
                         </Typography>
-                        <Spacer sx={{m: 3}}/>
+                        <Spacer sx={{m: 2}}/>
                         <Typography 
-                        sx={{letterSpacing: '2px'}}
+                        sx={{letterSpacing: '2px', fontSize: '25px'}}
                             variant='h2' 
                             color={theme.palette.text.primary}
                         >
                             Free Plan
                         </Typography>
-                        <Spacer sx={{m: 3}}/>
+                        <Spacer sx={{m: 2}}/>
                         <Typography 
-                        sx={{letterSpacing: '2px'}}
+                        sx={{letterSpacing: '2px', fontSize: '15px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -139,8 +153,8 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         <Avatar
                             sx={{
                                 // backgroundColor: color,
-                                height: 122,
-                                width: 122,
+                                height: 80,
+                                width: 80,
                             }}
                         >
                             {/* <FontAwesomeIcon 
@@ -151,14 +165,15 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Avatar>
                         { membership ?
                         <Button
+                        onClick={handleDowngrade}
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px'}}>
+                        sx={{mt: '20px',height: 50, width: 260, fontSize: '20px', borderRadius: 4, letterSpacing: '3px'}}>
                             Downgrade
                         </Button> 
                         :
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px'}}>
+                        sx={{mt: '20px',height: 50, width: 260, fontSize: '20px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px'}}>
                             Active
                         </Button>
                         }
@@ -174,7 +189,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         <Grid item lg={6} sm={12} xl={6} xs={12}>
                           
                         <Card
-        sx={ { borderRadius: 4, height: '444px', p: '30px'} }
+        sx={ { borderRadius: 4, height: '330px', p: '4px'} }
         >
             <CardContent>
                 <Grid 
@@ -192,17 +207,17 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         >
                             CRYPTOAD
                         </Typography>
-                        <Spacer sx={{m: 3}}/>
+                        <Spacer sx={{m: 2}}/>
                         <Typography 
-                        sx={{letterSpacing: '2px'}}
+                        sx={{letterSpacing: '2px', fontSize: '25px'}}
                             variant='h2' 
                             color={theme.palette.text.primary}
                         >
                             PRO Plan
                         </Typography>
-                        <Spacer sx={{m: 3}}/>
+                        <Spacer sx={{m: 2}}/>
                         <Typography 
-                        sx={{letterSpacing: '2px'}}
+                        sx={{letterSpacing: '2px', fontSize: '15px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -217,8 +232,8 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         <Avatar
                             sx={{
                                 // backgroundColor: color,
-                                height: 122,
-                                width: 122,
+                                height: 80,
+                                width: 80,
                             }}
                         >
                             {/* <FontAwesomeIcon 
@@ -230,13 +245,14 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         { membership ?
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px' }}>
+                        sx={{mt: '20px',height: 50, width: 260, fontSize: '20px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px' }}>
                             Active
                         </Button> 
                         :
                         <Button
+                        onClick={handleUpgrade}
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px' }}>
+                        sx={{mt: '20px',height: 50, width: 260, fontSize: '20px', borderRadius: 4, letterSpacing: '3px' }}>
                             Upgrade
                         </Button>
                         }
@@ -272,7 +288,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         <Button
                         variant='outlined'
                         href='/login'
-                        sx={{mt: '20px', height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px'}}>
+                        sx={{mt: '20px', height: 50, width: 270, fontSize: '20px', borderRadius: 4, letterSpacing: '3px'}}>
                             Log In
                         </Button>
 

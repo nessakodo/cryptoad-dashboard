@@ -72,7 +72,7 @@ const App = () => {
             } else {
                 setMembership(false)
             }
-            console.log(currentUser.bots)
+            console.log(currentUser.membership)
         }
       }
     )
@@ -227,6 +227,8 @@ const App = () => {
                                     onAddBots={onAddBots}
                                     isActive={isActive}
                                     setIsActive={setIsActive}
+                                    setMembership={setMembership}
+                                    membership={membership}
 
                                     />} 
                                 />
@@ -254,6 +256,7 @@ const App = () => {
                                 <Route exact path='/settings' 
                                     element={
                                     <Settings 
+                                    setCurrentUser={setCurrentUser}
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     onAdd={onAdd}

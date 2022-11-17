@@ -11,7 +11,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
-const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, setMyBots, onAddBots, isActive, setIsActive}) => {
+const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, setMyBots, onAddBots, isActive, setIsActive, membership, setMembership}) => {
     const theme = useTheme();
 
 
@@ -23,8 +23,8 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                 <Grid 
                     minHeight= '270px'
                     maxHeight= '270px'
-                    minWidth= '270px'
-                    maxWidth= '270px'
+                    minWidth= '200px'
+                    maxWidth= '200px'
                 >
                     <Grid item>
                         <Typography 
@@ -46,14 +46,14 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                             {description}
                         </Typography>
                         
-                            {loggedIn ?
+                            {membership ?
                                     
                                 <Stack
                                 display='flex'
                                 flexDirection="row"
                                 justifyContent='center'
-                                position= "absolute"
-                                bottom= '275px'
+                                // position= "absolute"
+                                // bottom= '25px'
                                 >
                                 <Typography
                                 sx={{ ml: 3}}
@@ -65,7 +65,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                                         :
                                         <AddCircleOutlineIcon
                                         onClick={onAddBots}
-                                        sx={{ fontSize: '25px', ml: 7}}/>
+                                        sx={{ fontSize: '25px', ml: 3}}/>
                                     }
                                 </Stack>
 
