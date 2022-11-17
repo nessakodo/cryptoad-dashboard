@@ -20,7 +20,7 @@ const PositionsForm = ({ text, value, color, icon }) => {
 
     return (
         <Card
-        sx={ { borderRadius: 4 } }
+        sx={ { borderRadius: 4, width: '900px'} }
         >
             <CardContent>
                 {/* <Grid 
@@ -37,11 +37,17 @@ const PositionsForm = ({ text, value, color, icon }) => {
 
 <Grid  alignContent='center' justifyContent= 'center' fullWidth >
   
-<Grid  gap={3} sx={{ p: 1.8}}>
 <Typography
 variant='h8'>Position Tracking Form</Typography>
 
-<Spacer sx={{m: 3}}/>
+<Spacer sx={{m: 8}}/>
+
+<Stack>
+
+<Grid  alignContent='center' justifyContent= 'center' fullWidth 
+                     sx={{  display: 'flex', flexDirection: 'row' }}>
+                        <Grid  gap={3}
+                        sx={{  display: 'flex', flexDirection: 'row', wrap: 'wrap'}}>
 
 <FormLabel component="legend">Currency Name</FormLabel>
   <TextField
@@ -55,9 +61,13 @@ variant='h8'>Position Tracking Form</Typography>
     // onChange={handleChange}
     autoFocus
   />
-    <Spacer sx={{m: 1}}/>
+  
+    <Spacer sx={{m: 6}}/>
 
     </Grid>
+    </Grid>
+    </Stack>
+    
     </Grid>
 <Grid  alignContent='center' justifyContent= 'center' fullWidth 
                      sx={{  display: 'flex', flexDirection: 'row' }}>
@@ -66,7 +76,7 @@ variant='h8'>Position Tracking Form</Typography>
 
                           <Stack  >
 
-<FormLabel component="legend">Price At Entry</FormLabel>
+<FormLabel component="legend">Purchase Date</FormLabel>
   <TextField
   fullWidth
   margin="normal"
@@ -82,7 +92,7 @@ variant='h8'>Position Tracking Form</Typography>
   />
   </Stack>
   <Stack>
-    <FormLabel component="legend">Quantity Bought</FormLabel>
+    <FormLabel component="legend">Number Of Shares Bought</FormLabel>
   <TextField
     margin="normal"
     required
@@ -106,7 +116,7 @@ variant='h8'>Position Tracking Form</Typography>
 
                           <Stack  >
 
-<FormLabel component="legend">Price At Exit</FormLabel>
+<FormLabel component="legend">Date Of Sale</FormLabel>
   <TextField
   fullWidth
   margin="normal"
@@ -122,7 +132,7 @@ variant='h8'>Position Tracking Form</Typography>
   />
   </Stack>
   <Stack>
-    <FormLabel component="legend">Quantity Sold</FormLabel>
+    <FormLabel component="legend">Number Of Shares Sold</FormLabel>
   <TextField
     margin="normal"
     required

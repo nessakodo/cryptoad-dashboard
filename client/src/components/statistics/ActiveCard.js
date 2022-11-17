@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
@@ -25,8 +26,8 @@ const ActiveCard = ({id, name, onAddBots, description, myBots, setMyBots, member
         sx={ { borderRadius: 4, p: 2} }>
             <CardContent>
                 <Grid 
-                    minHeight= '200px'
-                    maxHeight= '200px'
+                    minHeight= '320px'
+                    maxHeight= '320px'
                     minWidth= '270px'
                     maxWidth= '270px'
                 >
@@ -44,7 +45,7 @@ const ActiveCard = ({id, name, onAddBots, description, myBots, setMyBots, member
                         <Typography 
                             variant='h6' 
                             color={theme.palette.text.primary}
-                            sx={{ fontSize: '12px'}}
+                            sx={{ fontSize: '12px', mb: '20px'}}
                             gutterBottom 
                         >
                             {description}
@@ -67,11 +68,19 @@ const ActiveCard = ({id, name, onAddBots, description, myBots, setMyBots, member
                                         sx={{fontSize: '25px', ml: 7}}/>
                                        
                                     
+                                    
                                 </Stack>
+                                <Button
+                type="submit"
+                fullWidth
+                variant="outlined"
+                sx={{height: 40, width: 200, fontSize: '15px', borderRadius: 4, mt: 4, mb: 4, ml:3}}
+              >Customize Bot</Button>
 
                      
                     </Grid>
                 </Grid>
+                
             </CardContent> 
         </Card>   
     );

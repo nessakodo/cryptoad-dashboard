@@ -47,7 +47,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                             {description}
                         </Typography>
                         
-                            {loggedIn ?
+                            {/* {loggedIn ?
                                     
                                 <Stack
                                 display='flex'
@@ -58,7 +58,8 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                                 >
                                 <Typography
                                 sx={{ ml: 3}}
-                                >{isActive ? "Active" : "Not Active"}
+                                >
+                                    {isActive ? "Active" : "Not Active"}
                                 </Typography>
                                     {isActive ? 
                                         <CheckCircleIcon
@@ -72,7 +73,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
 
                                 :
                                 <></>
-                            }   
+                            }    */}
 
                     </Grid>
                 </Grid>

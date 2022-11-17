@@ -55,14 +55,14 @@ const Tracking = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
 
                  
 
-                        <Grid item lg={6} sm={12} xl={6} xs={12}>
+<Container fullWidth alignItems='center' justifyContetn='center'sx={{ mt:'30px', mr:'30px'}}>
                             <PositionsForm/>
-                        </Grid>
-
+                    </Container>
+{/* 
                         <Grid item lg={6} sm={12} xl={6} xs={12}>
                             <WalletStatus/>
                     
-                </Grid>
+                </Grid> */}
                 </Grid>
                 
             </Container>
