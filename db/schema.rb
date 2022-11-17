@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2022_11_17_014111) do
 
   create_table "active_bots", force: :cascade do |t|
     t.boolean "active"
-    t.bigint "user_id", null: false
-    t.bigint "bot_id", null: false
+    t.bigint "bot_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["bot_id"], name: "index_active_bots_on_bot_id"
@@ -28,11 +28,8 @@ ActiveRecord::Schema.define(version: 2022_11_17_014111) do
   create_table "bots", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.boolean "active", default: false
-    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_bots_on_user_id"
   end
 
   create_table "coins", force: :cascade do |t|
@@ -43,18 +40,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_014111) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "currencies", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.bigint "max_supply"
-    t.string "currency_symbol"
-    t.string "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "memberships", force: :cascade do |t|
-    t.boolean "active"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -77,13 +63,13 @@ ActiveRecord::Schema.define(version: 2022_11_17_014111) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "membership", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_bots", "bots"
   add_foreign_key "active_bots", "users"
-  add_foreign_key "bots", "users"
   add_foreign_key "memberships", "users"
   add_foreign_key "positions", "coins"
   add_foreign_key "positions", "users"

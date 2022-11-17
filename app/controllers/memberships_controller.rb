@@ -15,10 +15,18 @@ class MembershipsController < Knock::AuthTokenController
         render json: "You have successfully downgraded to the free plan.", status: :accepted
     end
 
+    def membership  
+        if self.user.membership == false
+          self.user.membership = true
+        end
+      end
+    
+    After self.user.membership = true add self.user.save
+
 private
 
     def membership_params
-        params.permit(:user:id)
+        params.permit(:user_id)
     end
 
 end

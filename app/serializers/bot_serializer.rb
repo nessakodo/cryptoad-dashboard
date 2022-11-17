@@ -1,3 +1,3 @@
-class JobSerializer < ActiveModel::Serializer
-  attributes :id, :name, :membership_required, :description
+class BotSerializer < ActiveModel::Serializer
+  attributes :id, :name, :description
 end

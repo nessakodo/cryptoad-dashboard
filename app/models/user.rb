@@ -2,7 +2,7 @@ class User < ApplicationRecord
     
     has_secure_password 
     
-    has_one :membership
+    has_one :membership, dependent: :destroy
 
     has_many :active_bots, dependent: :destroy
     has_many :bots, through: :active_bots

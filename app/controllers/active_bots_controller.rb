@@ -23,6 +23,6 @@ class ActiveBotsController < ApplicationController
 private
 
     def active_params
-        params.permit(:user_id, :bot_id, :active)
+        params.permit(:active)
     end
 end
