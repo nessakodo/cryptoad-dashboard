@@ -23,13 +23,14 @@ class UsersController < ApplicationController
 
 
     def update
-        @user.update!(user_params)
-        render json: @user, status: :accepted
-        end
+        user = User.find_by(id: params[:id])
+        user.update!(user_params)
+        render json: user, status: :accepted
+    end
 
     def destroy
         @user.destroy
-        end
+    end
 
 private
 

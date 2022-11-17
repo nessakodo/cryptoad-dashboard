@@ -12,21 +12,41 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 
 
-const Profile = ( {loggedIn, onAdd, setCoins, coins, currentUser, membership, setMembership}) => {
+const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser, membership, setMembership}) => {
 
 
     const theme = useTheme();
 
+    const [edit, setEdit] = useState(false);
+    const [isEditing, setIsEditing]  = useState(false);
+    const [checked, setChecked] = useState(true)
+    const [formData, setFormData] = useState({})
+
+      function handleCheckbox(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.checked })
+    }
+
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
+  
 
+    function handleInputChange(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(formData)
+    }
 
-    const password = currentUser.password
+    function handleCheckbox(e) {
+        setFormData({ ...formData, [e.target.name]: e.target.checked })
+    }
+
+    function handleChecked() {
+        setChecked(!checked)
+    }
+
 
     function handleSubmit(e) {
         fetch(`/users/${currentUser.id}`, {
@@ -40,6 +60,12 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, currentUser, membership, se
                 // setShowEdit(false)
                 // form.reset()
             });
+    }
+
+    function onEdit() {
+        setEdit(!edit)
+        setIsEditing(!isEditing)
+        form.scrollIntoView({ behavior: "smooth" });
     }
 
     return (
@@ -65,65 +91,8 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, currentUser, membership, se
 
                     <Spacer sx={{m: 5}}/>
 
-                    <Container maxWidth={true}>
-
-                    <Grid container spacing={3}>
-
-                        <Grid item lg={4} sm={12} xl={4} xs={12}>
-                        <Stack width='100' display='flex' flexDirection='row'>
-                            <FormLabel sx={{mt: '15px', mr: '15px'}}>
-                                Name: 
-                            </FormLabel>
-                        </Stack>
-                            
-                        </Grid>
-
-                        <Grid item lg={4} sm={12} xl={4} xs={12}>
-
-                        <Stack width='100' display='flex' flexDirection='row'>
-                            <FormLabel sx={{mt: '15px', mr: '15px'}}>
-                                Email: 
-                            </FormLabel>
-                        </Stack>
-
-                        </Grid>
-
-                   
-                    <Grid item lg={4} sm={12} xl={4} xs={12}>
-                        <Stack width='100' display='flex' flexDirection='row'>
-                            <FormLabel sx={{mt: '15px', mr: '15px'}}>
-                                Password: 
-                            </FormLabel>
-                            <TextField
-                                // value={currentUser.password}
-                                value= {password}
-                                // type= "password"
-                                variant="outlined"
-                                type={showPassword ? "text" : {password}} // <-- This is where the magic happens
-                                //   onChange={someChangeHandler}
-                                InputProps={{ // <-- This is where the toggle button is added.
-                                    endAdornment: (
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                    )
-                                }}
-                            />
-                        </Stack>
-                    </Grid>
-                   
-
-
              
-
-                </Grid>
-    
+   
                     <Grid 
                 fullWidth
                
@@ -146,19 +115,178 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, currentUser, membership, se
                     alignContent= 'center'
                     justifyContent='center'
                     >
+
+                    {edit ? 
+                        <></>
+
+                            :
+
+                            
                             <Button
+                                onClick={onEdit}
                                 alignContent= 'center'
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                href='/settings'
                                 sx={{height: 50, width: 250, fontSize: '15px'}}
                                 > Edit User Profile
                             </Button>
+
+                    }
                         </Grid>
                     </Grid>
                 </Container>
+
+
+
+                <Container maxWidth={true}>
+{isEditing ? 
+               
+          
+<Grid    fullWidth
+        container spacing= {0}
+               alignContent= 'center'
+               justifyContent='center'
+               alignItems='center'
+               display= 'flex'
+               flexDirection='row'>
+
+    <Grid item lg={3} sm={12} xl={3} xs={12}>
+    <Stack width='70' display='flex' flexDirection='row'>
+        
+        <FormLabel sx={{mt: '15px', mr: '25px'}}>
+            Name: 
+        </FormLabel>
+        <TextField
+         onSubmit={handleSubmit}
+         sx={{minWidth: 245, maxWidth: 245}}
+         onChange={handleInputChange}
+         placeholder= {currentUser.name}
+        //  value= {currentUser.name}
+         type= "name"
+         name="name"
+         id="name"
+         variant="outlined"
+         >
+        </TextField>
+    </Stack>
+        
+    </Grid>
+
+    <Grid item lg={3} sm={12} xl={3} xs={12}>
+
+    <Stack width='70' display='flex' flexDirection='row'>
+        <FormLabel sx={{mt: '15px', mr: '25px'}}>
+            Email: 
+        </FormLabel>
+        <TextField
+         onSubmit={handleSubmit}
+         sx={{minWidth: 245, maxWidth: 245}}
+         onChange={handleInputChange}
+         placeholder= {currentUser.email}
+        //  value= currentUser.email
+         type= "email"
+         name="email"
+         id="email"
+         variant="outlined"
+         >
+        </TextField>
+    </Stack>
+
+    </Grid>
+
+
+<Grid item lg={3.3} sm={12} xl={3.3} xs={12}>
+    <Stack width='70' display='flex' flexDirection='row'>
+      
+        <FormLabel sx={{mt: '15px', mr: '25px'}}>
+            Password: 
+        </FormLabel>
+        <Box sx={{minWidth: 245, maxWidth: 245}}>
+        <TextField
+           onSubmit={handleSubmit}
+           sx={{minWidth: 245, maxWidth: 245}}
+           onChange={handleInputChange}
+            // value={currentUser.password}
+            placeholder= "........."
+            name="password"
+            variant="outlined"
+            type='password' // <-- This is where the magic happens
+            //   onChange={someChangeHandler}
+            InputProps={{ // <-- This is where the toggle button is added.
+                endAdornment: (
+                <InputAdornment position="end">
+                    <IconButton
+                    aria-label="toggle password visibility"
+                    onChange={handleInputChange}
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                </InputAdornment>
+             
+                )
+            }}
+        />
+           </Box>
+        
+    </Stack>
+    
+</Grid>
+<Container maxWidth={true}>
+
+<Grid 
+                fullWidth
+               
+                alignContent= 'center'
+                justifyContent='center'
+                alignItems='center'
+                display= 'flex'
+                flexDirection='column'
+                sx={{ 
+                    backgroundColor: theme.palette.background.default, 
+                    minHeight: '100%', 
+                    py: 6,
+                }}
+                >
+
+
+
+
+<Grid item
+fullWidth
+                    alignContent= 'center'
+                    justifyContent='center'
+                    >
+
+
+                            <Button
+                                onClick={handleSubmit}
+                                alignContent= 'center'
+                                justifyContent='center'
+                                color='primary'
+                                variant='outlined'
+                                sx={{height: 50, width: 250, fontSize: '15px'}}
+                                > Submit Changes
+                            </Button>
+</Grid>
+</Grid>
+
+</Container>
+</Grid>
+
+
+
+
+: 
+<></>
+
+
+        }
+    
                 </Container>
+                
 
             </Box>
         </React.Fragment>

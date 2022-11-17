@@ -198,6 +198,7 @@ const App = () => {
                                     setCoins={setCoins}
                                     setMembership={setMembership}
                                     membership={membership}
+                                    setCurrentUser={setCurrentUser}
 
                                     />} 
                                 />

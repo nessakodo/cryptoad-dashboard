@@ -164,8 +164,8 @@ sx={{
                 id="email"
                 name="email"
                 autoComplete="email"
-				value={email}
-				onChange={handleChange}
+                value={email}
+                onChange={handleChange}
                 autoFocus
               />
 			  <FormLabel component="legend">Password</FormLabel>

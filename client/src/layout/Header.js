@@ -289,7 +289,7 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
             <Box sx={{ mt: 2 }}>
                 <MenuItem
                     component={Link}
-                    to='#'
+                    to='/profile'
                 >
                     <ListItemIcon>
                         <UserIcon fontSize='small' />
