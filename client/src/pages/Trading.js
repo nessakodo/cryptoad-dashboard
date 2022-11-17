@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 
 
-const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots, membership, setMembership}) => {
+const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots, membership, setMembership}) => {
     const theme = useTheme();
 
     useEffect(() => {
@@ -98,17 +98,7 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
                     <Spacer sx={{m: 6}}/>
 
 
-                    <Grid container spacing={3}>
-
-                        <Grid item lg={6} sm={12} xl={6} xs={12}>
-                            <PositionsForm/>
-                        </Grid>
-
-                        <Grid item lg={6} sm={12} xl={6} xs={12}>
-                            <WalletStatus/>
-                        </Grid>
-
-                    </Grid>
+        
 
                 </Container>
             </Box>
@@ -191,4 +181,4 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUs
     );
 };
 
-export default Trades;
+export default Trading;

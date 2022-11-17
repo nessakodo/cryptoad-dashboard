@@ -8,8 +8,8 @@ import { theme as customTheme } from './theme';
 import ColorModeContext from './components/ColorModeContext';
 import Layout from './layout/Layout';
 import Dashboard from './pages/Dashboard';
-import Trades from './pages/Trades';
-import Connect from './pages/Connect'
+import Trading from './pages/Trading';
+import Tracking from './pages/Tracking'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
@@ -154,9 +154,9 @@ const App = () => {
 
 
 
-    
+
     const fetchMyBots = () => {
-        axios.get(`/active/bots${currentUser.id}`, {
+        axios.get(`/active_bots`, {
             headers: {
                 'Accept': 'application/json',
             }
@@ -232,9 +232,9 @@ const App = () => {
                                     setLoggedIn={setLoggedIn}
                                     />} 
                                 />
-                                <Route exact path='/trades' 
+                                <Route exact path='/trade' 
                                     element={
-                                    <Trades 
+                                    <Trading 
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     onAdd={onAdd}
@@ -252,9 +252,9 @@ const App = () => {
 
                                     />} 
                                 />
-                                 <Route exact path='/connect' 
+                                 <Route exact path='/track' 
                                     element={
-                                    <Connect 
+                                    <Tracking 
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     />} 

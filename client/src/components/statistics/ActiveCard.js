@@ -15,7 +15,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const ActiveCard = ({name, description, myBots, setMyBots, membership}) => {
+const ActiveCard = ({name, onAddBots, description, myBots, setMyBots, membership, loggedIn, isActive}) => {
     const theme = useTheme();
 
     

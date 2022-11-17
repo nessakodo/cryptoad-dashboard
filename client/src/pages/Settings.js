@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -19,6 +19,11 @@ import FormLabel from '@mui/material/FormLabel';
 const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser, membership, setMembership}) => {
 
 
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
+  
     const theme = useTheme();
 
     const [edit, setEdit] = useState(false);

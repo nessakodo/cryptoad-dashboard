@@ -180,9 +180,9 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                         }}
                     >
                         <CustomButton 
-                            href='/connect'
+                            href='/track'
                             // icon={<HelpIcon />}
-                            text='CONNECT'
+                            text='TRACK'
                         />
                             <CustomButton 
                             href='/'
@@ -190,9 +190,9 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                             text='DASHBOARD'
                         />
                         <CustomButton 
-                            href='/trades'
+                            href='/trade'
                             // icon={<EmailIcon />}
-                            text='TRADES'
+                            text='TRADE'
                         />
                     </Stack>
                     <Divider

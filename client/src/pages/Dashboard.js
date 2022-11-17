@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
@@ -23,6 +23,11 @@ const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembershi
 
     
     
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
+  
     return (
         <React.Fragment>
             <Box 
