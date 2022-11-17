@@ -119,7 +119,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                         color='primary'
                         variant='outlined'
                         href='/settings'
-                        sx={{height: 40, width: 200, fontSize: '13px', borderRadius: 4, letterSpacing: '2px' }}
+                        sx={{height: 60, width: 280, fontSize: '13px', borderRadius: 4, letterSpacing: '2px' }}
                         >  Manage Membership
                     </Button>
 
@@ -131,7 +131,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                         color='primary'
                         variant='outlined'
                         href='/login'
-                        sx={{height: 60, width: 280, fontSize: '22px', borderRadius: 4, letterSpacing: '3px' }}
+                        sx={{height: 60, width: 280, fontSize: '18px', borderRadius: 4, letterSpacing: '3px' }}
                         >  Log In
                     </Button>}
                   

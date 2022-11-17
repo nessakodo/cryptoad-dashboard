@@ -114,7 +114,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                     justifyContent='center'
                     >
 
-                    {!edit && !loggedIn ? 
+                    {edit && loggedIn ? 
                         <></>
 
                             :
@@ -127,7 +127,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                sx={{mt: '80px', height: 50, width: 250, fontSize: '15px', borderRadius: 4  }}
+                                sx={{mt: '80px', height: 60, width: 280, fontSize: '18px', borderRadius: 4  }}
                                 > Edit User Profile
                             </Button>
 
@@ -143,7 +143,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                
           
 <Grid    fullWidth
-        container spacing= {0}
+        container spacing= {6}
                alignContent= 'center'
                justifyContent='center'
                alignItems='center'
@@ -205,19 +205,21 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
         <TextField
            onSubmit={handleSubmit}
            sx={{minWidth: 245, maxWidth: 245}}
-           onChange={handleInputChange}
+        //    onChange={handleInputChange}
             // value={currentUser.password}
-            placeholder= "........."
+            placeholder= "New Password"
             name="password"
+            id="password"
             variant="outlined"
-            type='password' // <-- This is where the magic happens
+            type={showPassword ? "text" : "password" } 
+             // <-- This is where the magic happens
             //   onChange={someChangeHandler}
             InputProps={{ // <-- This is where the toggle button is added.
                 endAdornment: (
                 <InputAdornment position="end">
                     <IconButton
                     aria-label="toggle password visibility"
-                    onChange={handleInputChange}
+
                     onClick={handleClickShowPassword}
                     onMouseDown={handleMouseDownPassword}
                     >
@@ -266,7 +268,7 @@ fullWidth
                                 justifyContent='center'
                                 color='primary'
                                 variant='outlined'
-                                sx={{height: 50, width: 250, fontSize: '15px', borderRadius: 4 }}
+                                sx={{height: 60, width: 280, fontSize: '18px', borderRadius: 4 }}
                                 > Submit Changes
                             </Button>
 </Grid>
@@ -275,11 +277,9 @@ fullWidth
 </Container>
 </Grid>
 
-
-
-
 : 
-<></>
+<>
+</>
 
 
         }

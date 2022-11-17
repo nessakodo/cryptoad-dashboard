@@ -4,6 +4,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CssBaseline from '@mui/material/CssBaseline';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
@@ -20,6 +24,11 @@ export default function SignInSide( {setCurrentUser, setLoggedIn} ) {
 
 	const history = useNavigate();
 	const theme = useTheme();
+
+	
+	const [showPassword, setShowPassword] = useState(false);
+	const handleClickShowPassword = () => setShowPassword(!showPassword);
+	const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
 	const [errors, setErrors] = useState([]);
     const [formData, setFormData] = useState({
@@ -71,7 +80,7 @@ function signUpClick() {
 
           <Grid 
             sx={{
-              my: 14,
+              my: 23,
               mx: 4,
 			  
               display: 'flex',
@@ -117,22 +126,35 @@ function signUpClick() {
                 fullWidth
                 id="email"
                 name="email"
-                autoComplete="email"
+                // autoComplete="email"
 				value={email}
 				onChange={handleChange}
-                autoFocus
+                // autoFocus
               />
 			  <FormLabel component="legend">Password</FormLabel>
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                name="password"
+				name="password"
 				value={password}
 				onChange={handleChange}
-                type="password"
+        type={showPassword ? "text" : "password"} 
                 id="password"
-                autoComplete="current-password"
+				InputProps={{ // <-- This is where the toggle button is added.
+					endAdornment: (
+					<InputAdornment position="end">
+						<IconButton
+						aria-label="toggle password visibility"
+						onClick={handleClickShowPassword}
+						onMouseDown={handleMouseDownPassword}
+						>
+						{showPassword ? <Visibility /> : <VisibilityOff />}
+						</IconButton>
+					</InputAdornment>
+					)
+				}}
+                // autoComplete="current-password"
               />
               
               <Stack display='flex' flexDirection='row' >

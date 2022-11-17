@@ -86,7 +86,7 @@ function guestClick() {
 
           <Grid 
             sx={{
-              my: 14,
+              my: 23,
               mx: 4,
               
               display: 'flex',
@@ -151,10 +151,10 @@ sx={{
                 fullWidth
                 id="name"
                 name="name"
-                autoComplete="name"
+                // autoComplete="name"
 				value={name}
 				onChange={handleChange}
-                autoFocus
+                // autoFocus
               />
 			<FormLabel component="legend">Email</FormLabel>
               <TextField
@@ -163,10 +163,10 @@ sx={{
                 fullWidth
                 id="email"
                 name="email"
-                autoComplete="email"
+                // autoComplete="email"
                 value={email}
                 onChange={handleChange}
-                autoFocus
+                // autoFocus
               />
 			  <FormLabel component="legend">Password</FormLabel>
               <TextField
@@ -178,7 +178,7 @@ sx={{
 				onChange={handleChange}
         type={showPassword ? "text" : "password"} 
                 id="password"
-                autoComplete="current-password"
+                // autoComplete="current-password"
                 InputProps={{ // <-- This is where the toggle button is added.
                   endAdornment: (
                   <InputAdornment position="end">
