@@ -149,6 +149,12 @@ variant='h8'>Position Tracking Form</Typography>
   </Grid>
 
   <Spacer sx={{m: 1}}/>
+  <Button
+                type="submit"
+                fullWidth
+                variant="outlined"
+                sx={{height: 60, width: 230, fontSize: '20px', borderRadius: 4, mt: 4, mb: 4, ml:30}}
+              >Submit</Button>
   </Box>
 
                     </Grid>
