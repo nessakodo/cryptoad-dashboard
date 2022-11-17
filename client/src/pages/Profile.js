@@ -33,19 +33,18 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
     const handleClickShowPassword = () => setShowPassword(!showPassword);
     const handleMouseDownPassword = () => setShowPassword(!showPassword);
   
+function handleChange(e) {
+	const { name, value } = e.target;
+	setFormData({ ...formData, [name]: value });
+}
 
-    function handleInputChange(e) {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-        console.log(formData)
-    }
+    // function handleCheckbox(e) {
+    //     setFormData({ ...formData, [e.target.name]: e.target.checked })
+    // }
 
-    function handleCheckbox(e) {
-        setFormData({ ...formData, [e.target.name]: e.target.checked })
-    }
-
-    function handleChecked() {
-        setChecked(!checked)
-    }
+    // function handleChecked() {
+    //     setChecked(!checked)
+    // }
 
 
     function handleSubmit(e) {
@@ -159,7 +158,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
         <TextField
          onSubmit={handleSubmit}
          sx={{minWidth: 245, maxWidth: 245}}
-         onChange={handleInputChange}
+         onChange={handleChange}
          placeholder= {currentUser.name}
         //  value= {currentUser.name}
          type= "name"
@@ -181,7 +180,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
         <TextField
          onSubmit={handleSubmit}
          sx={{minWidth: 245, maxWidth: 245}}
-         onChange={handleInputChange}
+         onChange={handleChange}
          placeholder= {currentUser.email}
         //  value= currentUser.email
          type= "email"
@@ -208,10 +207,12 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
         //    onChange={handleInputChange}
             // value={currentUser.password}
             placeholder= "New Password"
+            margin="normal"
             name="password"
+            // value={password}
+            onChange={handleChange}
+    type={showPassword ? "text" : "password"} 
             id="password"
-            variant="outlined"
-            type={showPassword ? "text" : "password" } 
              // <-- This is where the magic happens
             //   onChange={someChangeHandler}
             InputProps={{ // <-- This is where the toggle button is added.
