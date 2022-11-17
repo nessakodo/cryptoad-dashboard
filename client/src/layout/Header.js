@@ -142,7 +142,7 @@ const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLogge
                     </Box>
                 </Link>
 
-                <Toolbar sx={{ minHeight: 20 }}>
+                <Toolbar >
                     <Box 
                         alignItems='center'
                         sx={{ display: { md: 'block', lg: 'none' } }}

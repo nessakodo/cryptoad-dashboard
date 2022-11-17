@@ -8,7 +8,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -134,6 +134,8 @@ function signUpClick() {
                 id="password"
                 autoComplete="current-password"
               />
+              
+              <Stack display='flex' flexDirection='row' >
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -141,11 +143,12 @@ function signUpClick() {
               <Button
                 type="submit"
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 5 }}
+                variant="outlined"
+                sx={{height: 40, width: 200, fontSize: '15px', borderRadius: 4, mt: 4, mb: 4, ml:4}}
               >
-                Sign In
+                Log In
               </Button>
+              </Stack>
               <Grid container>
                 <Grid item xs>
 				<Button>

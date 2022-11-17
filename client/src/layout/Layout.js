@@ -53,7 +53,7 @@ const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn, 
             sx={{
                 backgroundColor: theme.palette.background.default,
                 height: '100%',
-                paddingTop: '90px'
+                // paddingTop: '90px'
             }}
         >
             <Header 

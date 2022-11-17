@@ -18,7 +18,7 @@ const DashboardHeader = ({currentUser, loggedIn}) => {
                 container
                 spacing={3}
                 xs={12}
-                style={{ marginTop: '-30px' }}
+                style={{ marginTop: '0px' }}
             >
                 <Grid item>
                         {loggedIn ? 
@@ -34,6 +34,7 @@ const DashboardHeader = ({currentUser, loggedIn}) => {
                         color={theme.palette.text.primary}
                         variant='h2'
                         ml='5px'
+                        mb='5px'
                     >
                         Welcome
                         </Typography>

@@ -34,8 +34,8 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
             sx={{ 
                 backgroundColor: theme.palette.background.default, 
                 minHeight: '100%', 
-                py: 8,
-                mt: '-700px'
+                py: 20,
+                // mt: '-700px'
             }}
             >
                 <Container maxWidth={true}>
@@ -113,8 +113,8 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
                 
                 <Grid 
                 fullWidth
-                minHeight= '400px'
-                maxHeight= '400px'
+                // minHeight= '400px'
+                // maxHeight= '400px'
                 alignContent= 'center'
                 justifyContent='center'
                 alignItems='center'
@@ -123,39 +123,54 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8,
-                    mt: '-700px'
+                    py: 22,
+                    // mt: '-700px'
                 }}
                 >
+
+                    <Button
+                        variant='outlined'
+                        href='/login'
+                        sx={{height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px'}}>
+                            Log In
+                        </Button>
+
+                        <Spacer sx={{m: 3}}/>
 
                     <Grid item
                     alignContent= 'center'
                     justifyContent='center'
                     >
-                        <Typography
-                        variant='h2'
+                         <Typography
+                        sx={{fontSize: '22px', letterSpacing: '2px'}}
                         gutterBottom 
+                        >Please log in to access these features.
+                        </Typography>
+
+                        </Grid>
+
+                        <Spacer sx={{m: 1}}/>
+
+                        <Grid item
+                    alignContent= 'center'
+                    justifyContent='center'
+                    >
+                        <Typography
+                        variant='h8'
+                        gutterBottom 
+                        sx={{fontSize: '35px'}}
                         >Please log in to access these features.
                         </Typography>
 
                     </Grid>
             
-                
-                <Spacer sx={{m: 3}}/>
+            
 
                     <Grid item
                     alignContent= 'center'
                     justifyContent='center'
                     >
-                        <Button
-                            alignContent= 'center'
-                            justifyContent='center'
-                            color='primary'
-                            variant='outlined'
-                            href='/login'
-                            sx={{height: 60, width: 150, fontSize: '20px'}}
-                            > Log In
-                        </Button>
+                        
                 </Grid>
             </Grid>
         </Stack>

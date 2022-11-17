@@ -74,8 +74,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8,
-                    mt: '-720px'
+                    py: 20,
                 }}
             >
                 <Container maxWidth={true}>
@@ -115,7 +114,7 @@ const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser
                     justifyContent='center'
                     >
 
-                    {edit ? 
+                    {!edit && !loggedIn ? 
                         <></>
 
                             :

@@ -75,10 +75,11 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8,
-                    mt: '-720px'
+                    py: 20,
                 }}
             >
+
+                {loggedIn ?
                 <Container maxWidth={true}>
 
                 <Stack maxWidth={true} >
@@ -108,6 +109,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                 >
                     <Grid item>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -116,6 +118,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Typography>
                         <Spacer sx={{m: 3}}/>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h2' 
                             color={theme.palette.text.primary}
                         >
@@ -123,6 +126,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Typography>
                         <Spacer sx={{m: 3}}/>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -148,13 +152,13 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         { membership ?
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4 }}>
+                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px'}}>
                             Downgrade
                         </Button> 
                         :
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark}}>
+                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px'}}>
                             Active
                         </Button>
                         }
@@ -180,6 +184,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                 >
                     <Grid item>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -188,6 +193,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Typography>
                         <Spacer sx={{m: 3}}/>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h2' 
                             color={theme.palette.text.primary}
                         >
@@ -195,6 +201,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Typography>
                         <Spacer sx={{m: 3}}/>
                         <Typography 
+                        sx={{letterSpacing: '2px'}}
                             variant='h6'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
@@ -222,13 +229,13 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         { membership ?
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark }}>
+                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, color: theme.palette.success.dark, borderColor: theme.palette.success.dark, letterSpacing: '3px' }}>
                             Active
                         </Button> 
                         :
                         <Button
                         variant='outlined'
-                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4 }}>
+                        sx={{mt: '20px',height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px' }}>
                             Upgrade
                         </Button>
                         }
@@ -246,24 +253,53 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                     </Grid>
                     </Stack>
                 </Container>
-                <Spacer sx={{m: 10}}/>
-                <Container maxWidth={true}>
+
+:
+
+<Container maxWidth={true}>
 
 <Stack maxWidth={true} >
 <Grid fullWidth
-                        container spacing={3}
+                        container spacing={0}
                         alignContent= 'center'
                         justifyContent='center'
                         alignItems='center'
                         display='flex'
                         flexDirection='row'
                     >
-<Typography>Your Current Plan: </Typography>
+                        <Button
+                        variant='outlined'
+                        href='/login'
+                        sx={{mt: '20px', height: 80, width: 300, fontSize: '28px', borderRadius: 4, letterSpacing: '3px'}}>
+                            Log In
+                        </Button>
+
 </Grid>
-<Spacer sx={{m: 2}}/>
+</Stack>
+</Container>
+
+}
+
+    
+                <Spacer sx={{m: 7}}/>
+                <Container maxWidth={true}>
+
+<Stack maxWidth={true} >
+<Grid fullWidth
+                        container spacing={0}
+                        alignContent= 'center'
+                        justifyContent='center'
+                        alignItems='center'
+                        display='flex'
+                        flexDirection='row'
+                    >
+<Typography
+sx={{fontSize: '22px', letterSpacing: '2px'}}>Your Current Plan: </Typography>
+</Grid>
+<Spacer sx={{m: 1}}/>
 
 <Grid 
-                        container spacing={3}
+                        container spacing={0}
                         alignContent= 'center'
                         justifyContent='center'
                         alignItems='center'

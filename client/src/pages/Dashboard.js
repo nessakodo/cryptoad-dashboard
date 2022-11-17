@@ -20,6 +20,8 @@ import AreaChart from '../components/charts/AreaChart';
 
 const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembership, membership}) => {
     const theme = useTheme();
+
+    
     
     return (
         <React.Fragment>
@@ -27,8 +29,8 @@ const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembershi
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8,
-                    mt: '-700px'
+                    py: 15,
+                    // mt: '-700px'
                 }}
             >
                 <Container maxWidth={true}>

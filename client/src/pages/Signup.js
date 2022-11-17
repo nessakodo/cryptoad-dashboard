@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
-import CssBaseline from '@mui/material/CssBaseline';
+import Stack from '@mui/material/Stack';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
@@ -88,7 +88,7 @@ function guestClick() {
             sx={{
               my: 14,
               mx: 4,
-			  
+              
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -142,7 +142,7 @@ sx={{
   <br></br>
           {e[0] + ': '}</Typography> {e[1]}</Typography>) : null}
 </Box>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, }}>
 
             <FormLabel component="legend">Name</FormLabel>
               <TextField
@@ -193,6 +193,8 @@ sx={{
                   )
               }}
               />
+
+              <Stack display='flex' flexDirection='row' >
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -200,11 +202,13 @@ sx={{
               <Button
                 type="submit"
                 fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 5 }}
+                variant="outlined"
+                sx={{height: 40, width: 200, fontSize: '15px', borderRadius: 4, mt: 4, mb: 4, ml:4}}
               >
                 Sign Up
               </Button>
+              </Stack>
+
               <Grid container>
                 <Grid item xs>
                   <Button onClick={guestClick}>

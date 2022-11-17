@@ -27,8 +27,8 @@ const Connect = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8,
-                    mt: '-700px'
+                    py: 15,
+                    // mt: '-700px'
                 }}
             >
                 <Container maxWidth={true}>

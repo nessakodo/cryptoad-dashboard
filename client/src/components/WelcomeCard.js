@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
@@ -13,9 +14,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membership, setMembership}) => {
     const theme = useTheme();
 
-    
+    let history = useNavigate();
+
+      
+    function toLogin() {
+        history('/login');
+        location.reload();
+    }
 
     return (
+
+        
         <Card
         sx={ { borderRadius: 4, p: 2 } }
        
@@ -37,21 +46,22 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                             Welcome Back,
                         </Typography>
                         <Typography 
-                            variant='h2' 
-                            fontSize='29px'
+                            variant='h8' 
+                            fontSize='35px'
                             gutterBottom 
                             color={theme.palette.text.primary}
-                            sx={{mb: 1}}
+                            sx={{mb: 3}}
                         >
-                           {currentUser.name}
+                         {loggedIn ? currentUser.name : "Guest"}
                         </Typography>
+                        <Spacer sx={{m: 1}}/>
                         <Typography 
                             variant='h6'
                             fontSize='18px'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
                         >
-                        Glad to see you again!
+                         {loggedIn ? "Glad to see you again!" : "Glad to have you here!"}
                         </Typography>
 
                         </Grid>
@@ -80,8 +90,9 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                 {membership ? 
                     <Grid item>
                     <Typography 
-                            variant='h3'
-                            fontSize='13px'
+                    sx={{letterSpacing: '1.5px'}}
+                            variant='h8'
+                            fontSize='16px'
                             color={theme.palette.text.secondary} 
                         > Membership Status: PRO Membership
                     </Typography>
@@ -89,24 +100,40 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membershi
                     :
                     <Grid item>
                     <Typography 
-                            variant='h3'
-                            fontSize='13px'
+                    sx={{letterSpacing: '1.5px'}}
+                            variant='h8'
+                            fontSize='16px'
                             color={theme.palette.text.secondary} 
                         > Membership Status: No Current Membership
                     </Typography>
                     </Grid>
                 }
 
-                        <Spacer sx={{m: 2}}/>
+                    <Spacer sx={{m: 2}}/>
+
+                    {loggedIn ?
+
                     <Button
                         alignContent= 'center'
                         justifyContent='center'
                         color='primary'
                         variant='outlined'
                         href='/settings'
-                        sx={{height: 40, width: 200, fontSize: '13px', borderRadius: 4 }}
-                        > Manage Membership
+                        sx={{height: 40, width: 200, fontSize: '13px', borderRadius: 4, letterSpacing: '2px' }}
+                        >  Manage Membership
                     </Button>
+
+                    :
+
+                    <Button
+                        alignContent= 'center'
+                        justifyContent='center'
+                        color='primary'
+                        variant='outlined'
+                        href='/login'
+                        sx={{height: 60, width: 280, fontSize: '22px', borderRadius: 4, letterSpacing: '3px' }}
+                        >  Log In
+                    </Button>}
                   
     
             </CardContent>
