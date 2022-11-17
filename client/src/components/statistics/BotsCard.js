@@ -11,20 +11,20 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
-const BotsCard = ({name, description, active, loggedIn, currentUser}) => {
+const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, setMyBots, onAddBots}) => {
     const theme = useTheme();
 
     
 
-    function handleSetActive() {
-        // coins.map()
-        // setCoin(coin.id)
-        // onAdd(coin.id)
-        // setToAdd(!toAdd)
-        // setHideAlert("")
-        // setTimeout(function () { setHideAlert("hidden") }, 5000)
-        // console.log(coin.id)
-    }
+    // function handleSetActive() {
+    //     // coins.map()
+    //     // setCoin(coin.id)
+    //     // onAdd(coin.id)
+    //     // setToAdd(!toAdd)
+    //     // setHideAlert("")
+    //     // setTimeout(function () { setHideAlert("hidden") }, 5000)
+    //     // console.log(coin.id)
+    // }
 
 
     const [isActive, setIsActive] = useState(false)
@@ -36,10 +36,10 @@ const BotsCard = ({name, description, active, loggedIn, currentUser}) => {
         sx={ { borderRadius: 4, p: 2} }>
             <CardContent>
                 <Grid 
-                    minHeight= '300px'
-                    maxHeight= '300px'
-                    minWidth= '200px'
-                    maxWidth= '200px'
+                    minHeight= '270px'
+                    maxHeight= '270px'
+                    minWidth= '270px'
+                    maxWidth= '270px'
                 >
                     <Grid item>
                         <Typography 
@@ -68,10 +68,10 @@ const BotsCard = ({name, description, active, loggedIn, currentUser}) => {
                                 flexDirection="row"
                                 justifyContent='center'
                                 position= "absolute"
-                                bottom= '35px'
+                                bottom= '275px'
                                 >
                                 <Typography
-                                sx={{display: { md: 'inline',   xs: 'inline' }}}
+                                sx={{ ml: 3}}
                                 >{isActive ? "Active" : "Not Active"}
                                 </Typography>
                                     {isActive ? 
@@ -79,7 +79,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser}) => {
                                         sx={{fontSize: '25px', ml: 7}}/>
                                         :
                                         <AddCircleOutlineIcon
-                                        onClick={handleSetActive}
+                                        onClick={onAddBots}
                                         sx={{ fontSize: '25px', ml: 7}}/>
                                     }
                                 </Stack>

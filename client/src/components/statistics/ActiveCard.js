@@ -9,7 +9,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const TradesCard = () => {
+const ActiveCard = () => {
     const theme = useTheme();
 
     const [exchanges, setExchanges] = useState([]);
@@ -40,4 +40,4 @@ const TradesCard = () => {
     );
 };
 
-export default TradesCard;
+export default ActiveCard;

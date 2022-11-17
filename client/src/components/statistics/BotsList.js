@@ -17,29 +17,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setActive}) => {
+const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setActive, bots, setBots, myBots, setMyBots, onAddBots}) => {
 
     const theme = useTheme();
     const [details, setDetails] = useState([])
-    const [bots, setBots] = useState([]);
-
     
-    const fetchBots = () => {
-        axios.get('/bots', {
-            headers: {
-                'Accept': 'application/json',
-            }
-        })
-        .then(response => {
-            setBots(response.data);
-        })
-        .catch(error => console.log(error));
-    };
-
-    useEffect(() => {
-        fetchBots();
-    }, []);
-
     
 
 
@@ -58,6 +40,9 @@ return (
                 key={bot.id}
                 name={bot.name}
                 description={bot.description}
+                myBots={myBots}
+                setMyBots={setMyBots}
+                onAddBots={onAddBots}
             />
         )}
                     

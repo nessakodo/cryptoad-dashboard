@@ -14,6 +14,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
 import Profile from './pages/Profile';
+import axios from 'axios';
 
 // import axios from 'axios'
 
@@ -22,10 +23,13 @@ import Profile from './pages/Profile';
 
 
 const App = () => {
+
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
     const [coins, setCoins] = useState([])
     const [membership, setMembership] = useState(false)
+    const [myBots, setMyBots] = useState([])
+    const [bots, setBots] = useState([]);
 
 
     const [mode, setMode] = useState('dark');
@@ -59,6 +63,7 @@ const App = () => {
             .then(
               user => {
                 setCurrentUser(user)
+                setMyBots(user.bots)
               }
             )
             if (currentUser.membership == true) {
@@ -71,45 +76,23 @@ const App = () => {
     )
   }, [loggedIn]);
 
-//   setMembership(user.membership)
 
 
-
-
-    // function getStatus() {
-
-    // }
-    // membership fetch
-    // useEffect(() => {
-    //     fetch(`/status`)
-    //        .then(r => r.json())
-
-    //           setLoggedIn(true)
-    //           res.json()
-    //          
-    //               }
-    //             )
-    //         }
-    //       }
-    //       )
-    //   }, []);
+      function onAddBots(addedBot) {
+        const add = {
+          user_id: currentUser.id,
+          bot_id: addedBot.id,
+          added: true
+        }
+        fetch('/active_bots', {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(add),
+        })
+          .then((res) => res.json())
+          .then(setMyBots([...myBots, addedBot]))
     
-
-    //   function onApply(appliedJob) {
-    //     const apply = {
-    //       candidate_id: currentCandidate.id,
-    //       job_id: appliedJob.id,
-    //       applied: true
-    //     }
-    //     fetch('/applied_jobs', {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify(apply),
-    //     })
-    //       .then((res) => res.json())
-    //       .then(setMyJobs([...myJobs, appliedJob]))
-    
-    //   }
+      }
   
   function onAdd() {
     const add = {
@@ -126,6 +109,41 @@ const App = () => {
       .then(setMyCoins([...coins, coin]))
 
   }
+
+
+    
+    const fetchBots = () => {
+        axios.get('/bots', {
+            headers: {
+                'Accept': 'application/json',
+            }
+        })
+        .then(response => {
+            setBots(response.data);
+        })
+        .catch(error => console.log(error));
+    };
+
+    useEffect(() => {
+        fetchBots();
+    }, []);
+
+    
+//   function onRemove(removedJob) {
+//     fetch(`/remove?job=${removedJob.id}&candidate=${currentCandidate.id}`, { 
+//       method: "DELETE" })
+//       .then(res => {
+//         if (res.ok) {
+//           setMyJobs(myJobs.filter(job => job.id !== removedJob.id))
+//         }
+//         else {
+//           console.log("error")
+//         }
+
+//       })
+
+//   }
+
 
     return (
         <HelmetProvider>
@@ -178,6 +196,11 @@ const App = () => {
                                     onAdd={onAdd}
                                     coins={coins}
                                     setCoins={setCoins}
+                                    bots={bots}
+                                    setBots={setBots}
+                                    myBots={myBots}
+                                    setMyBots={setMyBots}
+                                    onAddBots={onAddBots}
 
                                     />} 
                                 />

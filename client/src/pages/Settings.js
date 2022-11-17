@@ -75,7 +75,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 20,
+                    py: 15,
                 }}
             >
 
@@ -163,6 +163,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Button>
                         }
                         </Stack>
+                        <Spacer sx={{m: 3}}/>
                     </Grid>
                 </Grid>
             </CardContent>
@@ -182,7 +183,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                     sx={{ justifyContent: 'space-between' }}
                     
                 >
-                    <Grid item>
+                    <Grid item >
                         <Typography 
                         sx={{letterSpacing: '2px'}}
                             variant='h6'
@@ -211,7 +212,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                     </Grid>
 
                     
-                    <Grid item>
+                    <Grid item lg={12} sm={12} xl={12} xs={12}>
                     <Stack maxWidth={true} display="flex" flexDirection="row"  sx={{gap: 5}}>
                         <Avatar
                             sx={{
@@ -240,6 +241,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                         </Button>
                         }
                         </Stack>
+                        <Spacer sx={{m: 3}}/>
                     </Grid>
                 </Grid>
             </CardContent>

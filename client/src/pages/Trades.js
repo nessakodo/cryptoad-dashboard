@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import WelcomeCard from '../components/WelcomeCard';
 import PositionsCard from '../components/statistics/PositionsCard';
 import BotsList from '../components/statistics/BotsList';
-import TradesCard from '../components/statistics/TradesCard';
+import ActiveCard from '../components/statistics/ActiveCard';
 import TradingHeader from '../components/TradingHeader';
 import PositionsForm from '../components/statistics/PositionsForm';
 import WalletStatus from '../components/statistics/WalletStatus';
@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 
 
-const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive, isActive, setActive}) => {
+const Trades = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots}) => {
     const theme = useTheme();
 
     useEffect(() => {
@@ -34,7 +34,7 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
             sx={{ 
                 backgroundColor: theme.palette.background.default, 
                 minHeight: '100%', 
-                py: 20,
+                py: 18,
                 // mt: '-700px'
             }}
             >
@@ -49,8 +49,9 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
 
                     <Spacer sx={{m: 3}}/>
 
-                    <Grid fullWidth alignContent='center' justifyContent='center'>
-                        <Grid item lg={3} sm={12} xl={3} xs={24}  gap={3}
+                    <Grid  alignContent='center' justifyContent='center'
+                     sx={{  display: 'flex', flexDirection: 'row' }}>
+                        <Grid item lg={12} sm={12} xl={12} xs={12}  gap={3}
                         sx={{  display: 'flex', flexDirection: 'row' }}>
                             <BotsList 
                             loggedIn={loggedIn}
@@ -58,6 +59,12 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
                             handleIsActive={handleIsActive}
                             isActive={isActive}
                             setActive={setActive}
+                            bots={bots}
+                            setBots={setBots}
+                            myBots={myBots}
+                            setMyBots={setMyBots}
+                            onAddBots={onAddBots}
+
                             />
                         </Grid>
 
@@ -68,7 +75,17 @@ const Trades = ( {loggedIn, onAdd, setCoins, coins, currentUser, handleIsActive,
                     <Grid container spacing={3}>
 
                         <Grid item lg={3} sm={6} xl={3} xs={12}>
-                            <TradesCard />
+                            <ActiveCard 
+                            loggedIn={loggedIn}
+                            currentUser={currentUser}
+                            handleIsActive={handleIsActive}
+                            isActive={isActive}
+                            setActive={setActive}
+                            bots={bots}
+                            setBots={setBots}
+                            myBots={myBots}
+                            setMyBots={setMyBots}
+                            />
                         </Grid>
 
                     </Grid>
