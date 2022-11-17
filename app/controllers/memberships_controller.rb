@@ -10,9 +10,9 @@ class MembershipsController < Knock::AuthTokenController
         render json: membership, status: :accepted
     end
 
-    def downgrade
-        downgrade = Membership.where(user_id: params[:user_id]).destroy_all
-        render json: "You have successfully downgraded to the free plan.", status: :accepted
+    def update
+        downgrade = Membership.where(user_id: params[:user_id]).update!(membership_params)
+        render json: "You have successfully changed your membership plan.", status: :accepted
     end
 
     # def membership  
@@ -26,7 +26,7 @@ class MembershipsController < Knock::AuthTokenController
 private
 
     def membership_params
-        params.permit(:user_id)
+        params.permit(:membership, :user_id)
     end
 
 end

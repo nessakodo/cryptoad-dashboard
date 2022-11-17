@@ -13,11 +13,14 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import FormLabel from '@mui/material/FormLabel';
+import { Typography } from '@mui/material';
 
 
 const Profile = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUser, membership, setMembership}) => {
 
-    
+    const [message, setMessage] = useState(false)
+    const [show, setShow] = useState(false);
+
     useEffect(() => {
         // 👇️ scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
@@ -62,14 +65,17 @@ function handleChange(e) {
             .then((res) => res.json())
             .then((data) => {
                 setCurrentUser(data)
-                // setShowEdit(false)
-                // form.reset()
+                setMessage(true)
+                setShow(false)
             });
+            
     }
+    
 
     function onEdit() {
         setEdit(!edit)
         setIsEditing(!isEditing)
+        setShow(true)
         form.scrollIntoView({ behavior: "smooth" });
     }
 
@@ -118,23 +124,32 @@ function handleChange(e) {
                     alignContent= 'center'
                     justifyContent='center'
                     >
+                        {message ? <Typography>You have successfully updated your profile</Typography> :
 
-                    {edit && loggedIn ? 
+                        <></>
+
+                        }
+
+                    {show  && edit ?
                         <></>
 
                             :
 
-                            
+                  
+                            <Grid fullWidth>
                             <Button
                         
                                 onClick={onEdit}
                                 alignContent= 'center'
                                 justifyContent='center'
+                                display='flex'
+                                flexDirection='row'
                                 color='primary'
                                 variant='outlined'
-                                sx={{mt: '80px', height: 60, width: 280, fontSize: '18px', borderRadius: 4  }}
+                                sx={{ ml: '50px', mt: '40px', height: 60, width: 280, fontSize: '18px', borderRadius: 4  }}
                                 > Edit User Profile
                             </Button>
+                            </Grid>
 
                     }
                         </Grid>
@@ -144,7 +159,8 @@ function handleChange(e) {
 
 
                 <Container maxWidth={true}>
-{isEditing ? 
+                <Spacer sx={{m: 6}}/>
+{isEditing && show ? 
                
           
 <Grid    fullWidth
@@ -177,7 +193,7 @@ function handleChange(e) {
         
     </Grid>
 
-    <Grid item lg={3} sm={12} xl={3} xs={12}>
+    <Grid item lg={3} sm={12} xl={3} xs={12} mr='15px'>
 
     <Stack width='70' display='flex' flexDirection='row' >
         <FormLabel sx={{mt: '15px', mr: '25px'}}>
@@ -203,7 +219,7 @@ function handleChange(e) {
 <Grid item lg={3.3} sm={12} xl={3.3} xs={12}>
     <Stack width='70' display='flex' flexDirection='row'>
       
-        <FormLabel sx={{mt: '15px', mr: '25px'}}>
+        <FormLabel sx={{mt: '25px', mr: '25px'}}>
             Password: 
         </FormLabel>
         <Box sx={{minWidth: 245, maxWidth: 245}}>
@@ -273,9 +289,10 @@ fullWidth
                                 onClick={handleSubmit}
                                 alignContent= 'center'
                                 justifyContent='center'
+                                
                                 color='primary'
                                 variant='outlined'
-                                sx={{height: 60, width: 280, fontSize: '18px', borderRadius: 4 }}
+                                sx={{height: 60, width: 280, ml: '40px', fontSize: '18px', borderRadius: 4 }}
                                 > Submit Changes
                             </Button>
 </Grid>

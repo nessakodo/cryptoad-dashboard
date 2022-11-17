@@ -2,7 +2,6 @@ require "net/http"
 
 class PositionsController < ApplicationController
 
-  before_action :authenticate_user
   before_action :set_positions, only: [:index, :summary, :delete]
 
   def index
