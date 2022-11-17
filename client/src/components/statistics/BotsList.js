@@ -20,9 +20,7 @@ library.add(ChartAreaIcon)
 const BotsList = () => {
 
     const theme = useTheme();
-
     const [details, setDetails] = useState([])
-
     const [bots, setBots] = useState([]);
 
     
@@ -46,29 +44,17 @@ const BotsList = () => {
 return (
 
 
-<div>
-<React.Fragment>
+    <React.Fragment>
 
-<Stack
-    justifyContent="center"
-    gap={3}
-    fullWidth
-    flexDirection="row"
-    width={1.0}
-    flexWrap="wrap"
->
-
-{bots.map((bot) =>
-                <BotsCard
-                    key={bot.id}
-                    name={bot.name}
-                    description={bot.description}
-                />)}
-
-               </Stack>
-
-</React.Fragment>
-</div>
+        {bots.map((bot) =>
+            <BotsCard
+                key={bot.id}
+                name={bot.name}
+                description={bot.description}
+            />
+        )}
+                    
+    </React.Fragment>
 
 );
 };

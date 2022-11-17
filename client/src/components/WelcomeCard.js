@@ -13,7 +13,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
 
     return (
         <Card
-        sx={ { borderRadius: 4 } }
+        sx={ { borderRadius: 4, p: 2 } }
         >
             <CardContent>
                 <Grid 
@@ -25,6 +25,7 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
                     <Grid item>
                         <Typography 
                             variant='h6'
+                            fontSize='18px'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
                         >
@@ -32,15 +33,16 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
                         </Typography>
                         <Typography 
                             variant='h2' 
-                            // fontSize='45px'
+                            fontSize='29px'
                             gutterBottom 
                             color={theme.palette.text.primary}
-                            sx={{mb: 2}}
+                            sx={{mb: 4}}
                         >
                            {currentUser.name}
                         </Typography>
                         <Typography 
                             variant='h6'
+                            fontSize='13px'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
                         >

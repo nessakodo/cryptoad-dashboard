@@ -13,50 +13,46 @@ const BotsCard = ({name, description, active}) => {
 
     return (
 
-        <Grid size xs={12}>
-        <Card>
+        <Card
+        sx={ { borderRadius: 4, p: 2} }>
             <CardContent>
                 <Grid 
-                fullWidth
-                    minHeight= '400px'
-                    maxHeight= '400px'
-                    alignContent= 'center'
-                    justifyContent='center'
-                    display= 'flex'
-                    flexDirection='row'
-                    // container 
-                    spacing={6} 
-                    sx={{ justifyContent: 'space-between' }}
+                    minHeight= '200px'
+                    maxHeight= '200px'
+                    minWidth= '200px'
+                    maxWidth= '200px'
                 >
                     <Grid item>
                         <Typography 
                             variant='h2'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
-
                             // sx={{mt: 2, mb: 4}}
                         >
                             {name}
                         </Typography>
+
                         <Typography 
                             variant='h6' 
                             color={theme.palette.text.primary}
-                            sx={{mb: -1}}
+                            sx={{mb: -10, fontSize: '13px'}}
+                            
                         >
                             {description}
                         </Typography>
+
                         <Typography 
                             variant='h6' 
                             color={theme.palette.text.primary}
                             sx={{mb: -1}}
                         >
                             {active}
-                        </Typography>
+                        </Typography> 
+
                     </Grid>
                 </Grid>
-            </CardContent>
-        </Card>
-        </Grid>
+            </CardContent> 
+        </Card>   
     );
 };
 
