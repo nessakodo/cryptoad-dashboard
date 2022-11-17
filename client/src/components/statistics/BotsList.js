@@ -20,10 +20,7 @@ library.add(ChartAreaIcon)
 const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setActive, bots, setBots, myBots, setMyBots, onAddBots}) => {
 
     const theme = useTheme();
-    const [details, setDetails] = useState([])
     
-    
-
 
 return (
 

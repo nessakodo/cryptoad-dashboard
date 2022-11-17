@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
 
+  get '/active_bots', to: 'bots#show'
+
   # Authenication routes
   post '/signup', to: 'users#create'
   post "/login", to: "sessions#create"

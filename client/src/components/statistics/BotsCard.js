@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Container from '@mui/material/Container';
 import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
@@ -11,24 +11,9 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 
-const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, setMyBots, onAddBots}) => {
+const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, setMyBots, onAddBots, isActive, setIsActive}) => {
     const theme = useTheme();
 
-    
-
-    // function handleSetActive() {
-    //     // coins.map()
-    //     // setCoin(coin.id)
-    //     // onAdd(coin.id)
-    //     // setToAdd(!toAdd)
-    //     // setHideAlert("")
-    //     // setTimeout(function () { setHideAlert("hidden") }, 5000)
-    //     // console.log(coin.id)
-    // }
-
-
-    const [isActive, setIsActive] = useState(false)
- 
 
     return (
 

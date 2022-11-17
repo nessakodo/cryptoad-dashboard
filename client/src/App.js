@@ -30,6 +30,7 @@ const App = () => {
     const [membership, setMembership] = useState(false)
     const [myBots, setMyBots] = useState([])
     const [bots, setBots] = useState([]);
+    const [isActive, setIsActive] = useState(false)
 
 
     const [mode, setMode] = useState('dark');
@@ -71,10 +72,33 @@ const App = () => {
             } else {
                 setMembership(false)
             }
+            console.log(currentUser.bots)
         }
       }
     )
   }, [loggedIn]);
+
+
+//  // active bots fetch
+//  useEffect(() => {
+//     fetch(`/users/${currentUser.id}`)
+//        .then((res) => res.json())
+//             .then(
+//               user => {
+//                 setCurrentUser(user)
+//                 setMyBots(user.bots)
+//               }
+//             )
+//             if (currentUser.membership == true) {
+//                 setMembership(true)
+//             } else {
+//                 setMembership(false)
+//             }
+//             console.log(currentUser.bots)
+//         }
+//       }
+//     )
+//   }, [loggedIn]);
 
 
 
@@ -201,6 +225,8 @@ const App = () => {
                                     myBots={myBots}
                                     setMyBots={setMyBots}
                                     onAddBots={onAddBots}
+                                    isActive={isActive}
+                                    setIsActive={setIsActive}
 
                                     />} 
                                 />
