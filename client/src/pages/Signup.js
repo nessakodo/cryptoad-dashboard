@@ -7,6 +7,10 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CssBaseline from '@mui/material/CssBaseline';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
@@ -20,6 +24,10 @@ export default function SignInSide( {setCurrentUser, setLoggedIn} ) {
 
 	const history = useNavigate();
 	const theme = useTheme();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
 	const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
@@ -168,9 +176,22 @@ sx={{
                 name="password"
 				value={password}
 				onChange={handleChange}
-                type="password"
+        type={showPassword ? "text" : "password"} 
                 id="password"
                 autoComplete="current-password"
+                InputProps={{ // <-- This is where the toggle button is added.
+                  endAdornment: (
+                  <InputAdornment position="end">
+                      <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                  </InputAdornment>
+                  )
+              }}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}

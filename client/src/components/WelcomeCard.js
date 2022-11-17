@@ -1,15 +1,19 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
+import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Spacer from '../components/Spacer';
 import { useTheme } from '@mui/material/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
+const TradesCard = ({ text, value, color, icon, currentUser, loggedIn, membership, setMembership}) => {
     const theme = useTheme();
+
+    
 
     return (
         <Card
@@ -36,20 +40,26 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
                             fontSize='29px'
                             gutterBottom 
                             color={theme.palette.text.primary}
-                            sx={{mb: 4}}
+                            sx={{mb: 1}}
                         >
                            {currentUser.name}
                         </Typography>
                         <Typography 
                             variant='h6'
-                            fontSize='13px'
+                            fontSize='18px'
                             color={theme.palette.text.secondary} 
                             gutterBottom 
                         >
                         Glad to see you again!
                         </Typography>
+
+                        </Grid>
                     </Grid>
-                    <Grid item>
+
+                    <Spacer sx={{m: 4}}/>
+                     
+                   
+                    {/* <Grid item> */}
                         {/* <Avatar
                             sx={{
                                 backgroundColor: color,
@@ -63,9 +73,41 @@ const TradesCard = ({ text, value, color, icon, currentUser, loggedIn }) => {
                                 color={theme.palette.common.white}
                             /> */}
                         {/* </Avatar> */}
+                    {/* </Grid> */}
+
+                    
+                {membership ? 
+                    <Grid item>
+                    <Typography 
+                            variant='h3'
+                            fontSize='13px'
+                            color={theme.palette.text.secondary} 
+                        > Membership Status: PRO Membership
+                    </Typography>
                     </Grid>
+                    :
+                    <Grid item>
+                    <Typography 
+                            variant='h3'
+                            fontSize='13px'
+                            color={theme.palette.text.secondary} 
+                        > Membership Status: No Current Membership
+                    </Typography>
+                    </Grid>
+                }
+
+                        <Spacer sx={{m: 4}}/>
+                    <Button
+                        alignContent= 'center'
+                        justifyContent='center'
+                        color='primary'
+                        variant='outlined'
+                        href='/settings'
+                        sx={{height: 50, width: 230, fontSize: '15px'}}
+                        > Manage Membership
+                    </Button>
                   
-                </Grid>
+    
             </CardContent>
         </Card>
     );

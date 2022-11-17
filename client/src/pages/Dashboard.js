@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
-import { Helmet } from 'react-helmet-async';
 
 import DashboardHeader from '../components/DashboardHeader';
 import Categories from '../components/statistics/Categories';
@@ -17,10 +16,9 @@ import DoughnutChart from '../components/charts/DoughnutChart';
 import PolarAreaChart from '../components/charts/PolarAreaChart';
 import LineChart from '../components/charts/LineChart';
 import AreaChart from '../components/charts/AreaChart';
-import Spacer from '../components/Spacer';
 
 
-const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
+const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembership, membership}) => {
     const theme = useTheme();
     
     return (
@@ -35,7 +33,10 @@ const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
             >
                 <Container maxWidth={true}>
                     <Grid container spacing={3}>
-                        <DashboardHeader />
+                        <DashboardHeader 
+                        currentUser={currentUser} 
+                        loggedIn={loggedIn}
+                        />
 
                     <Grid item lg={3} sm={6} xl={3} xs={12}>
                         <Categories />

@@ -17,7 +17,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const BotsList = () => {
+const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setActive}) => {
 
     const theme = useTheme();
     const [details, setDetails] = useState([])
@@ -40,6 +40,8 @@ const BotsList = () => {
         fetchBots();
     }, []);
 
+    
+
 
 return (
 
@@ -48,6 +50,11 @@ return (
 
         {bots.map((bot) =>
             <BotsCard
+                loggedIn={loggedIn}
+                currentUser={currentUser}
+                handleIsActive={handleIsActive}
+                isActive={isActive}
+                setActive={setActive}
                 key={bot.id}
                 name={bot.name}
                 description={bot.description}

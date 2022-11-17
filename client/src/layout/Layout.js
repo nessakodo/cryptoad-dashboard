@@ -13,7 +13,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 
-const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
+const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn, membership, setMembership}) => {
     const theme = useTheme();
     const isLg = useMediaQuery(
         theme.breakpoints.up('lg'),
@@ -62,6 +62,8 @@ const Layout = ({ children, loggedIn, setCurrentUser, currentUser, setLoggedIn }
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
             setLoggedIn={setLoggedIn}
+            setMembership={setMembership}
+            membership={membership}
             />
             <Sidebar 
                 onClose={handleSidebarClose}

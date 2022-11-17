@@ -11,7 +11,7 @@ import CoinsCard from '../components/statistics/BotsCard';
 import PositionsCard from '../components/statistics/PositionsCard';
 import BotsCard from '../components/statistics/BotsCard';
 import TradesCard from '../components/statistics/TradesCard';
-import PositionsHeader from '../components/PositionsHeader';
+import PositionsHeader from '../components/TradingHeader';
 import PositionsForm from '../components/statistics/PositionsForm';
 import WalletStatus from '../components/statistics/WalletStatus';
 import TextField from '@mui/material/TextField';

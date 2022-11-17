@@ -25,6 +25,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
     const [coins, setCoins] = useState([])
+    const [membership, setMembership] = useState(false)
 
 
     const [mode, setMode] = useState('dark');
@@ -58,16 +59,57 @@ const App = () => {
             .then(
               user => {
                 setCurrentUser(user)
-                // setMyWatchlist(candidate.jobs)
-                // fetchProfPhoto(candidate.id)
               }
             )
+            if (currentUser.membership == true) {
+                setMembership(true)
+            } else {
+                setMembership(false)
+            }
         }
       }
-      )
+    )
   }, [loggedIn]);
 
+//   setMembership(user.membership)
 
+
+
+
+    // function getStatus() {
+
+    // }
+    // membership fetch
+    // useEffect(() => {
+    //     fetch(`/status`)
+    //        .then(r => r.json())
+
+    //           setLoggedIn(true)
+    //           res.json()
+    //          
+    //               }
+    //             )
+    //         }
+    //       }
+    //       )
+    //   }, []);
+    
+
+    //   function onApply(appliedJob) {
+    //     const apply = {
+    //       candidate_id: currentCandidate.id,
+    //       job_id: appliedJob.id,
+    //       applied: true
+    //     }
+    //     fetch('/applied_jobs', {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify(apply),
+    //     })
+    //       .then((res) => res.json())
+    //       .then(setMyJobs([...myJobs, appliedJob]))
+    
+    //   }
   
   function onAdd() {
     const add = {
@@ -97,11 +139,15 @@ const App = () => {
                          loggedIn={loggedIn}
                          currentUser={currentUser}
                          setLoggedIn={setLoggedIn}
-                         setCurrentUser={setCurrentUser}  
+                         setCurrentUser={setCurrentUser} 
+                         setMembership={setMembership}
+                         membership={membership} 
                          >
                             <Routes>
                                 <Route exact path='/' element=
                                 {<Dashboard 
+                                    setMembership={setMembership}
+                                    membership={membership}
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
                                     onAdd={onAdd}
@@ -140,10 +186,6 @@ const App = () => {
                                     <Connect 
                                     currentUser={currentUser}
                                     loggedIn={loggedIn}
-                                    onAdd={onAdd}
-                                    coins={coins}
-                                    setCoins={setCoins}
-
                                     />} 
                                 />
                                 <Route exact path='/profile' 
@@ -154,6 +196,8 @@ const App = () => {
                                     onAdd={onAdd}
                                     coins={coins}
                                     setCoins={setCoins}
+                                    setMembership={setMembership}
+                                    membership={membership}
 
                                     />} 
                                 />

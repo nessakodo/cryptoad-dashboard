@@ -6,7 +6,7 @@ import { green } from '@mui/material/colors';
 import { alpha, useTheme } from '@mui/material/styles';
 
 
-const PositionsHeader = ({currentUser, LoggedIn}) => {
+const TradingHeader = ({currentUser, LoggedIn}) => {
     const theme = useTheme();
 
     return (
@@ -26,7 +26,7 @@ const PositionsHeader = ({currentUser, LoggedIn}) => {
                         variant='h2'
                         ml='5px'
                     >
-                        Positions
+                        Trading Overview
                     </Typography>
                     <Box sx={{ pt: 2, pb: 3 }}>
                         <Typography
@@ -50,7 +50,7 @@ const PositionsHeader = ({currentUser, LoggedIn}) => {
                                 {new Date().toLocaleDateString('en-US', {
                                     weekday: 'short', 
                                     year: 'numeric', 
-                                    month: 'long', 
+                                    month: 'short', 
                                     day: 'numeric'
                                 })}
                                 
@@ -63,4 +63,4 @@ const PositionsHeader = ({currentUser, LoggedIn}) => {
     );
 };
 
-export default PositionsHeader;
+export default TradingHeader;

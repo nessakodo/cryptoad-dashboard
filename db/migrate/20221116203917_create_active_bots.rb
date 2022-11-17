@@ -4,6 +4,7 @@ class CreateActiveBots < ActiveRecord::Migration[6.1]
       t.boolean :active
       t.references :bot, foreign_key: true
       t.references :user, foreign_key: true
+      t.references :membership, foreign_key: true
       t.timestamps
     end
   end

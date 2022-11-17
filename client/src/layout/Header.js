@@ -42,7 +42,7 @@ import CustomButton from '../components/CustomButton';
 import toad from "../assets/toad.png"
 import cryptoad from "../assets/cryptoad.png"
 
-const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
+const Header = ({ onSideBarOpen, loggedIn, setCurrentUser, currentUser, setLoggedIn, membership, setMembership }) => {
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const anchorRef = useRef(null);
@@ -267,12 +267,23 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                 >
                     {loggedIn ? `${currentUser.name}` : "Guest"}
                 </Typography>
+
+                { membership ? 
                 <Typography
                     color={theme.palette.text.secondary}
                     variant='subtitle2'
                 >
-                    Your plan: Free
+                    Your plan: PRO
                 </Typography>
+                :
+                <Typography
+                color={theme.palette.text.secondary}
+                variant='subtitle2'
+            >
+                Your plan: Free
+            </Typography>
+                
+                }
             </Box>
             <Divider />
             <Box sx={{ mt: 2 }}>

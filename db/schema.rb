@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_16_203917) do
+ActiveRecord::Schema.define(version: 2022_11_17_014111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2022_11_16_203917) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.boolean "active"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "positions", force: :cascade do |t|
     t.integer "shares"
     t.money "purchase_price", scale: 2
@@ -76,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_11_16_203917) do
   add_foreign_key "active_bots", "bots"
   add_foreign_key "active_bots", "users"
   add_foreign_key "bots", "users"
+  add_foreign_key "memberships", "users"
   add_foreign_key "positions", "coins"
   add_foreign_key "positions", "users"
 end

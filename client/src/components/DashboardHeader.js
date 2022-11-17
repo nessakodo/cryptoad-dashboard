@@ -6,7 +6,7 @@ import { green } from '@mui/material/colors';
 import { alpha, useTheme } from '@mui/material/styles';
 
 
-const DashboardHeader = () => {
+const DashboardHeader = ({currentUser, loggedIn}) => {
     const theme = useTheme();
 
     return (
@@ -21,13 +21,23 @@ const DashboardHeader = () => {
                 style={{ marginTop: '-30px' }}
             >
                 <Grid item>
-                    <Typography
+                        {loggedIn ? 
+                        <Typography
                         color={theme.palette.text.primary}
                         variant='h2'
                         ml='5px'
                     >
-                        Overview
-                    </Typography>
+                        Welcome, {currentUser.name}
+                        </Typography> 
+                        : 
+                        <Typography
+                        color={theme.palette.text.primary}
+                        variant='h2'
+                        ml='5px'
+                    >
+                        Welcome
+                        </Typography>
+                        }
                     <Box sx={{ pt: 2, pb: 3 }}>
                         <Typography
                             color={theme.palette.text.secondary}
@@ -50,7 +60,7 @@ const DashboardHeader = () => {
                                 {new Date().toLocaleDateString('en-US', {
                                     weekday: 'short', 
                                     year: 'numeric', 
-                                    month: 'long', 
+                                    month: 'short', 
                                     day: 'numeric'
                                 })}
                                 

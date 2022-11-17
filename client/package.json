@@ -24,7 +24,8 @@
     "react-helmet-async": "^1.2.3",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.1",
-    "react-table": "^7.7.0"
+    "react-table": "^7.7.0",
+    "redux-form": "^8.3.8"
   },
   "scripts": {
     "start": "PORT=4000 react-scripts start",

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :bots
   resources :active_bots
+  resources :memberships
 
 # API routes
   scope '/api' do
@@ -20,16 +21,15 @@ Rails.application.routes.draw do
   end
 
 
-  root 'currencies#index'
-  post 'search', to: 'currencies#search'
-  post 'calculate', to: 'currencies#calculate'
-
-
   # Authenication routes
   post '/signup', to: 'users#create'
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/logged_in", to: "sessions#logged_in"
+
+  # Membership fetches
+  post '/upgrade', to: "memberships#create"
+  get '/status', to: "memberships#show"
 
    # Remove bot route
    delete "/remove", to: "bots#remove"
