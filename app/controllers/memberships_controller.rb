@@ -1,17 +1,24 @@
 class MembershipsController < Knock::AuthTokenController
 
+    def index
+        memberships = Membership.all 
+        render json: memberships, status: :ok
+    end
+
+
     def create
-        membership = Membership.create!(membership_params)
+        membership = Membership.create!(user_id: params[:user_id])
         render json: membership, status: :created
     end
 
     def show
-        membership = Membership.find_by(id: params[:id])
+        membership = Membership.find_by(params[:user_id])
         render json: membership, status: :accepted
     end
 
     def update
-        downgrade = Membership.where(user_id: params[:user_id]).update!(membership_params)
+        update = Membership.find_by(params[:user_id])
+        update.update!(membership_params)
         render json: "You have successfully changed your membership plan.", status: :accepted
     end
 
@@ -26,7 +33,7 @@ class MembershipsController < Knock::AuthTokenController
 private
 
     def membership_params
-        params.permit(:membership, :user_id)
+        params.permit(:type)
     end
 
 end

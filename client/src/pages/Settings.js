@@ -60,8 +60,8 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
           user_id: currentUser.id,
           membership: true
         }
-        fetch(`/memberships/${currentUser.id}`, {
-          method: "POST",
+        fetch(`/users/${currentUser.id}`, {
+          method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(upgrade),
         })
@@ -71,19 +71,20 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
       }
     
 
-    function handleDowngrade(e) {
-        fetch(`/users/${currentUser.id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+      function handleDowngrade() {
+        const upgrade = {
+          user_id: currentUser.id,
+          membership: false
+        }
+        fetch(`/status/${currentUser.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(upgrade),
         })
-            .then((res) => res.json())
-            .then((data) => {
-                setCurrentUser(data)
-                setMembership(false)
-            });
-    }
-
+          .then((res) => res.json())
+          .then(setMembership(false))
+    
+      }
     
 
     function onEdit() {

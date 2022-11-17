@@ -15,8 +15,8 @@ technical = Bot.create(name: "Technical", description: "Technical trading bots a
 
 nessa = User.create(email: 'nessa@nessakodo.com', name: 'Nessa Kodo', password: 'kodo', password_confirmation: 'kodo')
 
-nessa.active_bots.create(bot_id: 3)
-nessa.active_bots.create(bot_id: 1)
+# nessa.active_bots.create(bot_id: 3)
+# nessa.active_bots.create(bot_id: 1)
 
 
 

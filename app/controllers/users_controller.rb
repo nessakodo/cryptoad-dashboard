@@ -32,10 +32,16 @@ class UsersController < ApplicationController
         @user.destroy
     end
 
+    def status
+        status = Membership.where(membership_id: params[:membership], user_id: params[:user])
+        status.update!(membership_params)
+        render json: "you have successfully changed your membership plan", status: :accepted
+    end
+
 private
 
     def user_params
-        params.permit(:name, :email, :password, :password_confirmation)
+        params.permit(:name, :email, :password, :password_confirmation, :membership)
     end
     
 end

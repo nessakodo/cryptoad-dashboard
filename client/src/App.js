@@ -27,7 +27,7 @@ const App = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [currentUser, setCurrentUser] = useState({})
     const [coins, setCoins] = useState([])
-    const [membership, setMembership] = useState(false)
+    const [membership, setMembership] = useState("")
     const [myBots, setMyBots] = useState([])
     const [bots, setBots] = useState([]);
     const [isActive, setIsActive] = useState(false)
@@ -72,7 +72,7 @@ const App = () => {
             } else {
                 setMembership(false)
             }
-            // console.log(currentUser.membership)
+            console.log(currentUser.membership)
         }
       }
     )
@@ -100,23 +100,30 @@ const App = () => {
 //     )
 //   }, [loggedIn]);
 
+function onAddBots(addedBot) {
+    setIsActive(true)
+    (setMyBots([...myBots, addedBot]))
+}
 
 
-      function onAddBots(addedBot) {
-        const add = {
-          user_id: currentUser.id,
-          bot_id: addedBot.id,
-          added: true
-        }
-        fetch('/active_bots', {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(add),
-        })
-          .then((res) => res.json())
-          .then(setMyBots([...myBots, addedBot]))
+
+    //   function onAddBots(addedBot) {
+    //     // key={myBot.id}
+    //     // const add = {
+    //     //   user_id: currentUser.id,
+    //     //   bot_id: addedBot.id,
+    //     //   added: true
+    //     // }
+    //     // fetch(`/users/${currentUser}`, {
+    //     //   method: "POST",
+    //     //   headers: { "Content-Type": "application/json" },
+    //     //   body: JSON.stringify(add),
+    //     // })
+    //     //   .then((res) => res.json())
+    //     //   .then
+    //       (setMyBots([...myBots, addedBot]))
     
-      }
+    //   }
   
   function onAdd() {
     const add = {
@@ -155,22 +162,22 @@ const App = () => {
 
 
 
-    const fetchMyBots = () => {
-        axios.get(`/active_bots`, {
-            headers: {
-                'Accept': 'application/json',
-            }
-        })
-        .then(response => {
-            setMyBots(response.data);
-            console.log(myBots)
-        })
-        .catch(error => console.log(error));
-    };
+    // const fetchMyBots = () => {
+    //     axios.get(`/active_bots`, {
+    //         headers: {
+    //             'Accept': 'application/json',
+    //         }
+    //     })
+    //     .then(response => {
+    //         setMyBots(response.data);
+    //         console.log(myBots)
+    //     })
+    //     .catch(error => console.log(error));
+    // };
 
-    useEffect(() => {
-        fetchMyBots();
-    }, []);
+    // useEffect(() => {
+    //     fetchMyBots();
+    // }, []);
 
     
 //   function onRemove(removedJob) {

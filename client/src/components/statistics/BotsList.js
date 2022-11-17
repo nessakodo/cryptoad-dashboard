@@ -17,7 +17,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setActive, bots, setBots, myBots, setMyBots, onAddBots, setMembership, membership}) => {
+const BotsList = ({loggedIn, currentUser, handleIsActive, isActive, setIsActive, bots, setBots, myBots, setMyBots, onAddBots, setMembership, membership}) => {
 
     const theme = useTheme();
     
@@ -33,7 +33,7 @@ return (
                 currentUser={currentUser}
                 handleIsActive={handleIsActive}
                 isActive={isActive}
-                setActive={setActive}
+                setIsActive={setIsActive}
                 key={bot.id}
                 name={bot.name}
                 description={bot.description}
@@ -42,6 +42,7 @@ return (
                 onAddBots={onAddBots}
                 setMembership={setMembership}
                 membership={membership}
+                
             />
         )}
                     

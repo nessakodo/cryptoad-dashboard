@@ -15,19 +15,20 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
 library.add(ChartAreaIcon)
 
-const ActiveCard = ({name, onAddBots, description, myBots, setMyBots, membership, loggedIn, isActive}) => {
+const ActiveCard = ({id, name, onAddBots, description, myBots, setMyBots, membership, loggedIn, setIsActive, isActive}) => {
     const theme = useTheme();
 
     
     return (
+        
         <Card
         sx={ { borderRadius: 4, p: 2} }>
             <CardContent>
                 <Grid 
-                    minHeight= '270px'
-                    maxHeight= '270px'
-                    minWidth= '200px'
-                    maxWidth= '200px'
+                    minHeight= '200px'
+                    maxHeight= '200px'
+                    minWidth= '270px'
+                    maxWidth= '270px'
                 >
                     <Grid item>
                         <Typography 
@@ -49,7 +50,6 @@ const ActiveCard = ({name, onAddBots, description, myBots, setMyBots, membership
                             {description}
                         </Typography>
                         
-                            {loggedIn ?
                                     
                                 <Stack
                                 display='flex'
@@ -60,22 +60,16 @@ const ActiveCard = ({name, onAddBots, description, myBots, setMyBots, membership
                                 >
                                 <Typography
                                 sx={{ ml: 3}}
-                                >{isActive ? "Active" : "Not Active"}
+                                > Active
                                 </Typography>
-                                    {isActive ? 
+                                    
                                         <CheckCircleIcon
                                         sx={{fontSize: '25px', ml: 7}}/>
-                                        :
-                                        <AddCircleOutlineIcon
-                                        onClick={onAddBots}
-                                        sx={{ fontSize: '25px', ml: 3}}/>
-                                    }
+                                       
+                                    
                                 </Stack>
 
-                                :
-                                <></>
-                            }   
-
+                     
                     </Grid>
                 </Grid>
             </CardContent> 

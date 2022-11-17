@@ -15,6 +15,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
     const theme = useTheme();
 
 
+
     return (
 
         <Card
@@ -61,7 +62,7 @@ const BotsCard = ({name, description, active, loggedIn, currentUser, myBots, set
                                 </Typography>
                                     {isActive ? 
                                         <CheckCircleIcon
-                                        sx={{fontSize: '25px', ml: 7}}/>
+                                        sx={{fontSize: '25px', ml: 3}}/>
                                         :
                                         <AddCircleOutlineIcon
                                         onClick={onAddBots}

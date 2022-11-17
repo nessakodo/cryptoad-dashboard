@@ -19,6 +19,7 @@ scope '/api' do
   end
 
   get '/active_bots', to: 'bots#show'
+  get '/memberships', to: 'memberships#show'
   post '/memberships', to: 'memberships#create'
 
   # Authenication routes
@@ -26,6 +27,8 @@ scope '/api' do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/logged_in", to: "sessions#logged_in"
+
+  patch "/status", to: "users#status"
 
   # Membership fetches
   # post '/upgrade', to: "memberships#create"

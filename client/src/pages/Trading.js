@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material/styles';
 
 
-const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setActive, bots, setBots, onAddBots, membership, setMembership}) => {
+const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentUser, handleIsActive, isActive, setIsActive, bots, setBots, onAddBots, membership, setMembership}) => {
     const theme = useTheme();
 
     useEffect(() => {
@@ -57,7 +57,7 @@ const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentU
                             currentUser={currentUser}
                             handleIsActive={handleIsActive}
                             isActive={isActive}
-                            setActive={setActive}
+                            setIsActive={setIsActive}
                             bots={bots}
                             setBots={setBots}
                             myBots={myBots}
@@ -71,18 +71,20 @@ const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentU
 
                     </Grid>
                         
-                    <Spacer sx={{m: 6}}/>
+                    <Spacer sx={{m: 16}}/>
 
-                    <Grid container spacing={3}>
-
-                        <Grid item lg={12} sm={12} xl={12} xs={12}>
+                    <Grid  alignContent='center' justifyContent= 'center' 
+                     sx={{  display: 'flex', flexDirection: 'row' }}>
+                        <Grid item lg={3} sm={12} xl={3} xs={12}  gap={3}  alignContent='center' justifyContent= 'center'
+                        sx={{  display: 'flex', flexDirection: 'row', wrap: 'nowrap', p: '20px'}}>
                             <ActiveList 
                             loggedIn={loggedIn}
                             currentUser={currentUser}
                             handleIsActive={handleIsActive}
                             isActive={isActive}
-                            setActive={setActive}
-                            setBots={setBots}
+                            setIsActive={setIsActive}
+                            setBots={setBots}  
+                            bots={bots}
                             myBots={myBots}
                             setMyBots={setMyBots}
                             membership={membership}
