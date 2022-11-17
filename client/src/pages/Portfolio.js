@@ -1,5 +1,7 @@
+import { Box } from '@mui/material'
 import React, { Component } from 'react'
 import PortfolioItem from './PortfolioItem'
+import Typography from '@mui/material/Typography';
 
 class Portfolio extends Component {
   constructor(props){
@@ -12,15 +14,30 @@ class Portfolio extends Component {
     const formatted_total = total.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
 
     return (
-      <div>
+
+   
+          <Box 
+        fullWidth
+        
+        alignContent= 'center'
+        justifyContent='center'
+        alignItems='center'
+        display= 'flex'
+        flexDirection='column'
+        >
+                    
         <div className="portfolio-value">
-          <div className="portfolio-value--header">Your Total Portfolio Value Is:</div>
-          <div className="portfolio-value--content">${formatted_total}</div>
+            <br></br>
+          <Box className="portfolio-value--header">Your Total Portfolio Value Is:</Box>
+          <Typography variant='h2'
+          >${formatted_total}</Typography>
         </div>
-        <div className="portfolio-items">
+        <Box  alignContent= 'center'
+        justifyContent='center'
+        alignItems='center'>
           {portfolioItems}
-        </div>
-      </div>
+        </Box>
+      </Box>
     )
   }
 }

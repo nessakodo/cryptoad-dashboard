@@ -1,5 +1,11 @@
 import React from 'react'
 import SearchResult from './SearchResult'
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
 
 const Search = (props) => {
   const results = props.searchResults.map( curr => {
@@ -13,18 +19,29 @@ const Search = (props) => {
   })
 
   return(
-    <div>
+    <Grid
+    
+    alignContent= 'center'
+    justifyContent='center'
+    alignItems='center'
+    display= 'flex'
+    flexDirection='column'>
       <h1>Cryptocurrency Portfolio Calculator</h1>
       <form>
-        <div className="form-group">
-          <label>Search for a Currency:</label><br/>
-          <input onChange={props.handleChange} autoComplete="off" type="text" name="name" placeholder="Ex: Bitcoin, Litecoin, Ethereum..." value={props.name} className="field"/>
-        </div>
+        <Grid item 
+         alignContent= 'center'
+         justifyContent='center'
+         alignItems='center'
+         display= 'flex'
+         flexDirection='column'>
+          <FormLabel>Search for a Currency:</FormLabel><br/>
+          <TextField onChange={props.handleChange} autoComplete="off" type="text" name="name" placeholder="Ex: Bitcoin, Litecoin, Ethereum..." value={props.name} className="field"/>
+        </Grid>
         <div className="currency-list">
           {results}
         </div>
       </form>
-    </div>
+    </Grid>
   )
 }
 

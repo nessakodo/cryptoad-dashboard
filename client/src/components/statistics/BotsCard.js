@@ -1,42 +1,62 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import Container from '@mui/material/Container';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import CustomCard from '../CustomCard';
 
-// Font Awesome Icon
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faChartArea as ChartAreaIcon } from '@fortawesome/free-solid-svg-icons';
-library.add(ChartAreaIcon)
-
-const BotsCard = () => {
+const BotsCard = ({name, description, active}) => {
     const theme = useTheme();
 
-    const [bots, setBots] = useState([]);
-
-    const fetchBots = () => {
-        axios.get('https://api.coingecko.com/api/v3/exchanges', {
-            headers: {
-                'Accept': 'application/json',
-            }
-        })
-        .then(response => {
-            setBots(response.data);
-        })
-        .catch(error => console.log(error));
-    };
-
-    useEffect(() => {
-        fetchBots();
-    }, []);
-    
     return (
-        <CustomCard 
-            text='EXCHANGES'
-            // value={exchanges.length}
-            color={theme.palette.success.dark}
-            // icon={ChartAreaIcon}
-        />
+
+        <Grid size xs={12}>
+        <Card>
+            <CardContent>
+                <Grid 
+                fullWidth
+                    minHeight= '400px'
+                    maxHeight= '400px'
+                    alignContent= 'center'
+                    justifyContent='center'
+                    display= 'flex'
+                    flexDirection='row'
+                    // container 
+                    spacing={6} 
+                    sx={{ justifyContent: 'space-between' }}
+                >
+                    <Grid item>
+                        <Typography 
+                            variant='h2'
+                            color={theme.palette.text.secondary} 
+                            gutterBottom 
+
+                            // sx={{mt: 2, mb: 4}}
+                        >
+                            {name}
+                        </Typography>
+                        <Typography 
+                            variant='h6' 
+                            color={theme.palette.text.primary}
+                            sx={{mb: -1}}
+                        >
+                            {description}
+                        </Typography>
+                        <Typography 
+                            variant='h6' 
+                            color={theme.palette.text.primary}
+                            sx={{mb: -1}}
+                        >
+                            {active}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </CardContent>
+        </Card>
+        </Grid>
     );
 };
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Search from './Search'
 import Calculate from './Calculate'
 import Portfolio from './Portfolio'
+import { Grid } from '@mui/material'
 
 import axios from 'axios'
 
@@ -74,14 +75,20 @@ class PortfolioContainer extends Component {
       handleChange={this.handleChange} />
 
     return(
-      <div className="grid">
-        <div className="left">
+
+      <Grid
+      alignContent= 'center'
+      justifyContent='center'
+      alignItems='center'
+      display= 'flex'
+      flexDirection='column'
+      >
           {searchOrCalculate}
-        </div>
-        <div className="right">
+
+          <Grid item>
           <Portfolio portfolio={this.state.portfolio}/>
-        </div>
-      </div>
+          </Grid>
+      </Grid>
     )
   }
 }

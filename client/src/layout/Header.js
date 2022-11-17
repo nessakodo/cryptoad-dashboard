@@ -120,7 +120,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                         </Box>
                         <Box
                             mt= '10px'
-                            mb= '10px'
+                            mb= '0px'
                         >
                             <Typography 
                                 variant='h1' 
@@ -322,7 +322,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                      color='primary'
                      fullWidth
                      variant='outlined'
-                     href='#'
+                     href='/'
                  > Log Out
                 </Button>
 					:
@@ -331,7 +331,7 @@ const Header = ({ loggedIn, setCurrentUser, currentUser, setLoggedIn }) => {
                     color='primary'
                     fullWidth
                     variant='outlined'
-                    href='#'
+                    href='/login'
                 > Log In
                 </Button>
 				}

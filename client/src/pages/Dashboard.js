@@ -25,14 +25,12 @@ const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser}) => {
     
     return (
         <React.Fragment>
-            <Helmet>
-                <title>CRYPTOAD</title>
-            </Helmet>
             <Box 
                 sx={{ 
                     backgroundColor: theme.palette.background.default, 
                     minHeight: '100%', 
-                    py: 8
+                    py: 8,
+                    mt: '-700px'
                 }}
             >
                 <Container maxWidth={true}>

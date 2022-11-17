@@ -18,7 +18,7 @@ const PositionsHeader = ({currentUser, LoggedIn}) => {
                 container
                 spacing={3}
                 xs={12}
-                style={{ marginTop: '-30px' }}
+                // style={{ marginTop: '-30px' }}
             >
                 <Grid item>
                     <Typography
