@@ -18,7 +18,7 @@ import LineChart from '../components/charts/LineChart';
 import AreaChart from '../components/charts/AreaChart';
 
 
-const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembership, membership}) => {
+const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, onAddList, toAdd, setToAdd, setMembership, membership}) => {
     const theme = useTheme();
 
     
@@ -64,7 +64,10 @@ const Dashboard = ( {loggedIn, onAdd, setCoins, coins, currentUser, setMembershi
                     <Grid item lg={12} sm={12} xl={12} xs={12} maxWidth={true}>
                         <CoinMarkets 
                         onAdd={onAdd}
+                        // onAddList={onAddList}
                         loggedIn={loggedIn}
+                        // setToAdd={setToAdd}
+                        // toAdd={toAdd}
                         coins={coins}
                         setCoins={setCoins}/>
                     </Grid>

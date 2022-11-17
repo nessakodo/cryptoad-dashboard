@@ -21,15 +21,18 @@ import { useTheme } from '@mui/material/styles';
 import TablePaginationActions from './TablePaginationActions';
 import { Typography } from '@mui/material';
 
-const CoinMarkets = ( {loggedIn, onAdd} ) => {
+const CoinMarkets = ( {loggedIn} ) => {
     const theme = useTheme();
 
+    
+    const [myWatchlist, setMyWatchlist]= useState([])
+    const [toAdd, setToAdd] = useState(false)
     const [coins, setCoins] = useState([]);
     const [coin, setCoin] = useState([])
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    const [toAdd, setToAdd] = useState(false)
+
 
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -62,16 +65,32 @@ const CoinMarkets = ( {loggedIn, onAdd} ) => {
     }, []);
 
 
+    function onAddList(addedCoin)  {
+        {coins.map((coin) => {
+            if(coin == addedCoin) {
+                setToAdd(!toAdd)
+                (setMyWatchlist([...myWatchlist, addedCoin]))
+                console.log(addedCoin)
+            }
+            else {
+                console.log("oops")
+            }
+        } )
+       
+        }}
 
-    function handleAdd() {
-        coins.map()
-        setCoin(coin.id)
-        // onAdd(coin.id)
-        setToAdd(!toAdd)
-        // setHideAlert("")
-        // setTimeout(function () { setHideAlert("hidden") }, 5000)
-        console.log(coin.id)
-    }
+        
+
+
+    // function handleAdd() {
+    //     coins.map()
+    //     setCoin(coin.id)
+    //     // onAdd(coin.id)
+    //     setToAdd(!toAdd)
+    //     // setHideAlert("")
+    //     // setTimeout(function () { setHideAlert("hidden") }, 5000)
+    //     console.log(coin.id)
+    // }
 
  
 
@@ -201,7 +220,7 @@ const CoinMarkets = ( {loggedIn, onAdd} ) => {
                                                         }}/>
                                                         :
                                                         <AddCircleOutlineIcon
-                                                        onClick={handleAdd}
+                                                        onClick={onAddList}
                                                         sx={{
                                                         fontSize: '20px',
                                                         ml: 3,

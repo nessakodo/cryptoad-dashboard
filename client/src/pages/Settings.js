@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import PolicyRoundedIcon from '@mui/icons-material/PolicyRounded';
 import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
@@ -160,7 +162,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                     </Grid>
                     <Grid item>
                     <Stack maxWidth={true} display="flex" flexDirection="row"  sx={{gap: 5}}>
-                        <Avatar
+                        <PolicyRoundedIcon
                             sx={{
                                 // backgroundColor: color,
                                 height: 80,
@@ -172,7 +174,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                                 size='lg' 
                                 color={theme.palette.common.white}
                             /> */}
-                        </Avatar>
+                        </PolicyRoundedIcon>
                         { membership ?
                         <Button
                         onClick={handleDowngrade}
@@ -239,9 +241,8 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                     
                     <Grid item lg={12} sm={12} xl={12} xs={12}>
                     <Stack maxWidth={true} display="flex" flexDirection="row"  sx={{gap: 5}}>
-                        <Avatar
+                        <VerifiedIcon
                             sx={{
-                                // backgroundColor: color,
                                 height: 80,
                                 width: 80,
                             }}
@@ -251,7 +252,7 @@ const Settings = ( {loggedIn, onAdd, setCoins, coins, setCurrentUser, currentUse
                                 size='lg' 
                                 color={theme.palette.common.white}
                             /> */}
-                        </Avatar>
+                        </VerifiedIcon>
                         { membership ?
                         <Button
                         variant='outlined'

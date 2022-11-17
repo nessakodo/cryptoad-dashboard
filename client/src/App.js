@@ -31,7 +31,7 @@ const App = () => {
     const [myBots, setMyBots] = useState([])
     const [bots, setBots] = useState([]);
     const [isActive, setIsActive] = useState(false)
-
+  
 
     const [mode, setMode] = useState('dark');
     const colorMode = useMemo(
@@ -142,6 +142,7 @@ function onAddBots(addedBot) {
   }
 
 
+
     
     const fetchBots = () => {
         axios.get('/bots', {
@@ -222,6 +223,9 @@ function onAddBots(addedBot) {
                                     onAdd={onAdd}
                                     coins={coins}
                                     setCoins={setCoins}
+                                    // onAddList={onAddList}
+                                    // setToAdd={setToAdd}
+                                    // toAdd={toAdd}
 
                                 />} />
                                 <Route exact path='/login' 
