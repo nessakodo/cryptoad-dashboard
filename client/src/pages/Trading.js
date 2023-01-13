@@ -50,7 +50,7 @@ const Trading = ( {loggedIn, onAdd, setCoins, coins, myBots, setMyBots, currentU
 
                     <Typography
                     variant='h8'>Cryptoad Trading Bots</Typography>
-                       <Spacer sx={{m: 6}}/>
+                       <Spacer sx={{m: 4}}/>
                     <Grid  alignContent='center' justifyContent= 'center' 
                      sx={{  display: 'flex', flexDirection: 'row' }}>
                         <Grid item lg={4} sm={12} xl={4} xs={12}  gap={3}
